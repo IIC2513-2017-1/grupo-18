@@ -3,12 +3,15 @@ class User < ApplicationRecord
   require 'securerandom'
   attr_accessor :password
   validates :username, presence: true, uniqueness: true, length: { in: 3..20 }
-  validates :email, presence: true, uniqueness: true, format: /\A([\w+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i 
+  validates :email, presence: true, uniqueness: true, format: /\A([\w+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
   validates_presence_of :password, on: :create
   validates_length_of :password, minimum: 4, allow_blank: true
   validates :password, confirmation: true # password_confirmation attr
   before_save :encrypt_password
   after_save :clear_password
+  has_many :user_bets
+  has_many :payments
+  #TODO: Salt using secure random and
   def encrypt_password
     return unless password.present?
     self.encrypted_password = Digest::SHA256.hexdigest(password)

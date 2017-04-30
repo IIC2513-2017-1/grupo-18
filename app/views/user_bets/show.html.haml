@@ -1,0 +1,13 @@
+%p#notice= notice
+%p
+  %strong Amount:
+  = @user_bet.amount
+%p
+  %strong User:
+  = @user_bet.user
+%p
+  %strong Bet:
+  = @user_bet.bet
+= link_to 'Edit', edit_user_bet_path(@user_bet)
+|
+= link_to 'Back', user_bets_path

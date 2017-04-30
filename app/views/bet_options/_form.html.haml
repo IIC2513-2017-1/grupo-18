@@ -1,0 +1,20 @@
+= form_for(bet_option) do |f|
+  - if bet_option.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(bet_option.errors.count, "error")
+        prohibited this bet_option from being saved:
+      %ul
+        - bet_option.errors.full_messages.each do |message|
+          %li= message
+  .field
+    = f.label :description
+    = f.text_field :description
+  .field
+    = f.label :percentage
+    = f.text_field :percentage
+  .field
+    = f.label :bet_id
+    = f.text_field :bet_id
+  .actions
+    = f.submit
