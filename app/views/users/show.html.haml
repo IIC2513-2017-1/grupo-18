@@ -1,0 +1,22 @@
+%p#notice= notice
+%p
+  %strong Username:
+  = @user.username
+%p
+  %strong Email:
+  = @user.email
+%p
+  %strong Encrypted password:
+  = @user.password
+%p
+  %strong Confirmation token:
+  = @user.confirmation_token
+%p
+  %strong Confirmed at:
+  = @user.confirmed_at
+%p
+  %strong Type:
+  = @user.user_type
+= link_to 'Edit', edit_user_path(@user)
+|
+= link_to 'Back', users_path
