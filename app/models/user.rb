@@ -11,6 +11,8 @@ class User < ApplicationRecord
   after_save :clear_password
   has_many :user_bets
   has_many :payments
+  validates :balance, :numericality => { :greater_than_or_equal_to => 0}
+
   #TODO: Salt using secure random and
   def encrypt_password
     return unless password.present?

@@ -17,6 +17,9 @@
 %p
   %strong Type:
   = @user.user_type
+%p
+  %strong Balance:
+  = @user.balance
 = link_to 'Edit', edit_user_path(@user)
 |
 = link_to 'Back', users_path
