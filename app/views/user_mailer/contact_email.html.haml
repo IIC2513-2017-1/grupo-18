@@ -1,0 +1,20 @@
+.email-content{style: "font-family: 'Source Sans Pro', sans-serif;color: #111;font-size: 14px;margin-top: 15px;"}
+  = render partial: 'user_mailer/header'
+
+  .email-body{style: "margin: 30px 30px 40px;text-align: justify;"}
+    %dl
+      %dt{style: "font-weight: bold; line-height: 1.428571429; float: left; width: 160px; clear: left; text-align: right; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"} Enviado por:
+      %dd{style: "margin-left: 180px; line-height: 1.428571429;"}= @name
+      %dt{style: "font-weight: bold; line-height: 1.428571429; float: left; width: 160px; clear: left; text-align: right; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"} Correo de contacto:
+      %dd{style: "margin-left: 180px; line-height: 1.428571429;"}= @email
+      %dt{style: "font-weight: bold; line-height: 1.428571429; float: left; width: 160px; clear: left; text-align: right; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"} Teléfono:
+      %dd{style: "margin-left: 180px; line-height: 1.428571429;"}= @phone
+      %dt{style: "font-weight: bold; line-height: 1.428571429; float: left; width: 160px; clear: left; text-align: right; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"} Rol:
+      %dd{style: "margin-left: 180px; line-height: 1.428571429;"}= @rol
+      %dt{style: "font-weight: bold; line-height: 1.428571429; float: left; width: 160px; clear: left; text-align: right; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"} Asunto:
+      %dd{style: "margin-left: 180px; line-height: 1.428571429;"}= @subject
+      %dt{style: "font-weight: bold; line-height: 1.428571429; float: left; width: 160px; clear: left; text-align: right; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"} Contenido:
+      %dd{style: "margin-left: 180px; line-height: 1.428571429;"}= @content.html_safe
+    %span{:style => "width:420px; display:inline-block;"}
+    %a{:href => "#", :style => "display: inline-block; margin-bottom: 0; font-weight: normal; text-align: center; vertical-align: middle; cursor: pointer; background-image: none; border: 1px solid #666666; padding: 6px 12px; font-size: 14px; line-height: 1.428571429; border-radius: 4px; color:#666666; text-decoration:none;"} Link de acción
+  = render :partial => 'user_mailer/footer'
