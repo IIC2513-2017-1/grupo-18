@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170430175140) do
+ActiveRecord::Schema.define(version: 20170510205245) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,10 +41,10 @@ ActiveRecord::Schema.define(version: 20170430175140) do
   end
 
   create_table "payments", force: :cascade do |t|
-    t.float    "amount"
+    t.float    "amount",       default: 0.0
     t.integer  "user_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.integer  "payment_type"
     t.index ["user_id"], name: "index_payments_on_user_id", using: :btree
   end
@@ -60,16 +60,18 @@ ActiveRecord::Schema.define(version: 20170430175140) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "username"
+    t.string   "username",           limit: 20
     t.string   "email"
     t.string   "encrypted_password"
     t.string   "confirmation_token"
     t.string   "confirmed_at"
     t.integer  "user_type"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
-    t.float    "balance"
+    t.datetime "created_at",                                  null: false
+    t.datetime "updated_at",                                  null: false
+    t.float    "balance",                       default: 0.0
     t.string   "name"
+    t.string   "password_hash"
+    t.string   "password_digest"
   end
 
   add_foreign_key "bet_options", "bets"
