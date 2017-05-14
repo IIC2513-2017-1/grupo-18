@@ -6,6 +6,11 @@
     = csrf_meta_tags
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    /
+      Flash notifications
+    .container
+      - flash.each do |message_type, message|
+        %div{:class => "alert alert-#{message_type}"}= message
   %body
     %center
       = yield
