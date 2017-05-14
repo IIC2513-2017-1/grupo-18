@@ -87,6 +87,14 @@ include UsersHelper
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
+      admin_access? && admin_user_filter || normal_user_filter
+    end
+
+    ## Helpers for user_params
+    def normal_user_filter
       params.require(:user).permit(:username, :email, :password)
+    end
+    def admin_user_filter
+      params.require(:user).permit(:username, :email, :password, :user_type)
     end
 end
