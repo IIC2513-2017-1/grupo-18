@@ -23,7 +23,7 @@ class User < ApplicationRecord
   # Validates
   validates :username, presence: true, uniqueness: true, length: { in: 3..20 }
   validates :email, presence: true, uniqueness: true, format: /\A([\w+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
-  validates :password, length: { in: 8..72 }
+  validates :password, length: { in: 8..72 }, on: :create
   validates :balance, :numericality => { :greater_than_or_equal_to => 0}
 
   # Model relationships
@@ -32,11 +32,17 @@ class User < ApplicationRecord
 
   # Triggers
   after_create :send_confirmation
+  before_create :default_values
 
   # Methods
   
   ## Sends email with confirmation token to validate user
   def send_confirmation
+  end
+
+  def default_values
+    # Normal user
+    self.user_type = 0
   end
 
 end

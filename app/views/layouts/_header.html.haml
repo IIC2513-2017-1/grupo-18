@@ -10,6 +10,7 @@
             %li= link_to "Users (change to admins-only?)",   users_path
             / %li= link_to "Help",   '#'
             / %li= link_to "Log in", '#'
+            %strong= user_type_string
 
           - if logged_in?
             / %li= link_to "Users", '#'
