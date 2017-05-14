@@ -1,7 +1,12 @@
 class UsersController < ApplicationController
+include UsersHelper
+# include SessionsHelper
+
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   skip_before_action :check_logged_in, only: [:new, :create]
+
+  before_action :admin_barrier, only: [:edit, :destroy]
 
   # GET /users
   # GET /users.json
@@ -65,6 +70,16 @@ class UsersController < ApplicationController
   end
 
   private
+
+    # Blocks edit and destroy access for non-admins.
+    ## It allows self-edit and self-destruct, though.
+    def admin_barrier
+      unless admin_access? || logged_in? && current_user == @user
+        flash[:error] = "You must have admin access to do that."
+        redirect_to :back
+      end
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_user
       @user = User.find(params[:id])
