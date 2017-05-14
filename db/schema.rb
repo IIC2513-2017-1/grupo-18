@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170510221520) do
+ActiveRecord::Schema.define(version: 20170514223919) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,14 @@ ActiveRecord::Schema.define(version: 20170510221520) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["bet_id"], name: "index_comments_on_bet_id", using: :btree
+  end
+
+  create_table "friends", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "friend_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_friends_on_user_id", using: :btree
   end
 
   create_table "payments", force: :cascade do |t|
@@ -74,6 +82,7 @@ ActiveRecord::Schema.define(version: 20170510221520) do
 
   add_foreign_key "bet_options", "bets"
   add_foreign_key "comments", "bets"
+  add_foreign_key "friends", "users"
   add_foreign_key "payments", "users"
   add_foreign_key "user_bets", "bet_options"
   add_foreign_key "user_bets", "users"

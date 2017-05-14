@@ -32,10 +32,12 @@ class User < ApplicationRecord
 
   # Triggers
   after_create :send_confirmation
+
   before_create :default_values
+  has_many :friends
 
   # Methods
-  
+
   ## Sends email with confirmation token to validate user
   def send_confirmation
   end
@@ -44,5 +46,6 @@ class User < ApplicationRecord
     # Normal user
     self.user_type = 0
   end
+
 
 end
