@@ -20,19 +20,6 @@
     .field
       = f.label "Admin"
       = f.check_box :user_type, {:class => "myclass", :style => "mystyle"}, 1, 0
-
-
-    / = radio_button_tag(:user_type, 0)
-    / = label_tag(:user_type_0, "Normal user")
-    / = radio_button_tag(:user_type, 1)
-    / = label_tag(:user_type_1, "Admin user")
-
-  / .field
-  /   = f.label :confirmation_token
-  /   = f.text_field :confirmation_token
-  / .field
-  /   = f.label :confirmed_at
-  /   = f.text_field :confirmed_at
   / .field
   /   = f.label :balance
   /   = f.number_field :balance
