@@ -8,4 +8,8 @@ include SessionsHelper
   def user_type_string
   	admin_access? && 'Admin user' || 'Normal user'
   end
+
+  def user_name
+  	current_user.username
+  end
 end
