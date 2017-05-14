@@ -15,6 +15,7 @@ class BetsController < ApplicationController
   # GET /bets/new
   def new
     @bet = Bet.new
+    @bonos = @bet.bet_options#1.times { @bet.bet_options.build }
   end
 
   # GET /bets/1/edit
@@ -24,8 +25,12 @@ class BetsController < ApplicationController
   # POST /bets
   # POST /bets.json
   def create
-    @bet = Bet.new(bet_params)
-
+    aux = params
+    aux[:bet][:bet_options_attributes] = params[:bet_options]
+    aux[:bet][:bet_options_attributes].delete("{index}")
+    aux.delete("bet_options")
+    aux = aux.require(:bet).permit(:execution_date, :description, bet_options_attributes: [:description, :percentage])
+    @bet = Bet.new(aux)
     respond_to do |format|
       if @bet.save
         format.html { redirect_to @bet, notice: 'Bet was successfully created.' }
@@ -69,6 +74,6 @@ class BetsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def bet_params
-      params.require(:bet).permit(:execution_date, :description)
+      params.require(:bet).permit(:execution_date, :description, bets_options_attributes: [:description, :percentage])
     end
 end
