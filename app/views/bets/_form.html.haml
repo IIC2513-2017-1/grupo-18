@@ -13,5 +13,62 @@
   .field
     = f.label :description
     = f.text_field :description
+  %h4 Opciones de apuesta
+  .row.additional_info
+    %h4
+      ="Descripción"
+
+      ="Porcentaje"
+    .meh
+      .doh{style: "display:inline-block"}
+        = text_field_tag "bet_options[{index}][description]",nil, class: 'form-control', placeholder: "Ej; Gana la cato"
+      .doh{style: "display:inline-block"}
+        = text_field_tag "bet_options[{index}][percentage]",nil, class: 'form-control',data:currency_field
+      .doh{style: "display:inline-block"}
+        .field
+          %h4 &nbsp;
+          .button.addAdditionalInfo{start_at: 0, target: ".additional_infos"} Agregar
+          .button.red.deleteAdditionalInfo{style:"display:none"} Eliminar
+  -begin
+    .additional_infos
+      - @bonos.each_with_index do |b,index|
+        .row.additional_info
+          .field
+            = text_field_tag "bet_options[#{index}][description]", b.name, class: 'form-control'
+          .field
+            = text_field_tag "bet_options[#{index}][percentage]", b.value, class: 'form-control',data:currency_field
+          .field
+            .button.red.deleteAdditionalInfo Eliminar
+  -rescue
+
+
   .actions
     = f.submit
+
+:javascript
+  $(function() {
+    var delete_additional_info;
+    delete_additional_info = function() {
+      return $(".deleteAdditionalInfo").click(function() {
+        var row;
+        row = $(this).parents(".additional_info");
+        return row.remove();
+      });
+    };
+    delete_additional_info();
+    return $(".addAdditionalInfo").click(function() {
+      var index, new_row, row;
+      index = $(this).attr("start_at");
+      row = $(this).parents(".additional_info");
+      new_row = row.clone().prependTo($(this).attr("target"));
+      new_row.find("input").each(function() {
+        return $(this).attr("name", $(this).attr("name").replace("{index}", index));
+      });
+      new_row.find(".deleteAdditionalInfo").show();
+      new_row.find(".addAdditionalInfo").hide();
+      new_row.find("h4").remove();
+      delete_additional_info();
+      $(this).attr("start_at", parseInt(index) + 1);
+      return row.find("input").val("");
+    });
+  });
