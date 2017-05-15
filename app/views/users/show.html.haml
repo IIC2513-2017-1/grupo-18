@@ -11,6 +11,31 @@
 %p
   %strong Balance:
   = @user.balance
+%p
+  - if friends?
+    %strong You are friends!
+    %li.nav= link_to "Destroy friendshiṕ", friends_path, method: :delete
+    / %br
+    / = form_for(:friendship, method: :delete, url: friends_path) do |f|
+    /   .field
+    /     = f.text_field :user_id, :value => current_user.id, style: "display: none;"
+    /   .field
+    /     = f.text_field :friend_id, :value => @user.id, style: "display: none;"
+    /   .actions
+    /     = f.submit "Destroy friendship"
+
+  - else
+    %strong You are not friends :(
+    %br
+    = form_for(:friendship, url: friends_path) do |f|
+      .field
+        = f.text_field :user_id, :value => current_user.id, style: "display: none;"
+      .field
+        = f.text_field :friend_id, :value => @user.id, style: "display: none;"
+      .actions
+        = f.submit "Become friends"
+
+
 = link_to 'Edit', edit_user_path(@user)
 |
 = link_to 'Back', users_path
