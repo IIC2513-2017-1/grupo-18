@@ -35,6 +35,7 @@ class User < ApplicationRecord
 
   before_create :default_values
   has_many :friends
+  has_many :comments
 
   # Methods
 

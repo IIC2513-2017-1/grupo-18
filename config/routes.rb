@@ -16,6 +16,10 @@ Rails.application.routes.draw do
   # Navbar paths
   root 'home#index'
 
+  # Comments
+  # post  
+  resources :comments
+
 
 
 
