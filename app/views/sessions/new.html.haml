@@ -1,13 +1,13 @@
 - provide(:title, "Log in")
 %h1 Log in
 .row
-  .col-md-6.col-md-offset-3
+  .jojoj
     = form_for(:session, url: login_path) do |f|
       = f.label :email
       = f.email_field :email, class: 'form-control'
       = f.label :password
       = f.password_field :password, class: 'form-control'
-      .row
-        = f.submit "Log in", class: "btn btn-primary"
-.row
-  = link_to "Sign up",   new_user_path
+      %br/
+      .row{style:"margin-top: 5px;"}
+        = f.submit "Log in" , class: "button blue", style: "padding: 5px;"
+        = link_to "Sign up", new_user_path, class: "button gray", style: "padding: 5px;"
