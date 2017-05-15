@@ -19,6 +19,7 @@
         / %td= user.confirmed_at
         %td= user.user_type
         %td= user.balance
+        -
         %td= link_to 'Show', user
         %td= link_to 'Edit', edit_user_path(user)
         %td= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' }

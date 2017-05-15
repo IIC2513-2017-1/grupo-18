@@ -29,13 +29,15 @@ class User < ApplicationRecord
   # Model relationships
   has_many :user_bets
   has_many :payments
+  has_many :friends
+  has_many :comments
 
   # Triggers
   after_create :send_confirmation
-
   before_create :default_values
   has_many :friends
   has_many :bets
+
   # Methods
 
   ## Sends email with confirmation token to validate user

@@ -10,5 +10,11 @@
 #
 
 class Comment < ApplicationRecord
+include SessionsHelper
+
+  # Model relationships
   belongs_to :bet
+  belongs_to :user
+  # Validates
+  validates :content, length: { in: 1..512 }
 end

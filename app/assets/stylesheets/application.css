@@ -35,6 +35,12 @@ li.nav  {
 	margin-left: 15px;
 }
 
+li.navR  { 
+	float: right; 
+	list-style-type: none; 
+	margin-right: 15px;
+}
+
 strong.nav  {
 	float: left;
 	list-style-type: none;
