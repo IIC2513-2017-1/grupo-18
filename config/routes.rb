@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   # Comments
   # post  
   resources :comments
+  resources :friends
 
 
 
