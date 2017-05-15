@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: user_bets
+#
+#  id            :integer          not null, primary key
+#  amount        :float
+#  user_id       :integer
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#  bet_option_id :integer
+#
+
 class UserBet < ApplicationRecord
   belongs_to :user
   belongs_to :bet_option

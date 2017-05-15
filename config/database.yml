@@ -26,6 +26,7 @@ development:
   database: proyecto_web_development
   user: proyecto
   password: web
+  host: localhost
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
