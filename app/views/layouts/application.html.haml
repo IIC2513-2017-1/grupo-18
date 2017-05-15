@@ -13,8 +13,7 @@
         %div{:class => "alert alert-#{message_type}"}= message
   %body
     = render 'layouts/header'
-    
-    .div
-      %center
+    .container
+      %center{style: "padding-top:15px;"}
         = yield
       / = render 'layouts/footer'
