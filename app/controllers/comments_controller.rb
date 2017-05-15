@@ -12,33 +12,32 @@ class CommentsController < ApplicationController
 
   def create
     @comment = Comment.new(comment_params)
-    # respond_to do |format|
-      @comment.save
+
+    if @comment.save
+      redirect_to bet_path(@comment.bet)
+    else
       redirect_to :back
-      # format.html { redirect_to bet_path(Bet.find_by(id: @comment.bet_id)), notice: 'Comment was successfully created.' }
-    # end
+    end
   end
 
   # PATCH/PUT /comments/1
   def update
-    respond_to do |format|
-      if @comment.update(comment_params)
-		format.html { redirect_to bet_path(Bet.find_by(id: @comment.bet_id)) }
-	  else
-	  	format.html { render :edit }
-      end
+    if @comment.update(comment_params)
+	  redirect_to bet_path(@comment.bet)
+    else
+      redirect_to :back
     end
   end
 
   # DELETE /comments/1
   def destroy
-  	this_bet = Bet.find_by(id: @comment.bet_id)
+  	this_bet = @comment.bet
 
     @comment.destroy
 
     redirect_to bet_path(this_bet)
-
   end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_comment

@@ -21,13 +21,15 @@
   / .field
   /   = f.text_field :entry_id, :value => @entry.id, style: "display: none;"
   .actions
-    = f.submit "Crear comentario"
+    = f.submit "Post"
 
 
 %h3 Comments
--Comment.all.each do |comment|
+-@bet.comments.each do |comment|
   .container.row{style:"border: 1px solid #eee;"}
     %h4
+      ="#{comment.user.username}:"
+    %h5
       =comment.content
   %br
 / = link_to 'Edit', edit_entry_path(@entry)
