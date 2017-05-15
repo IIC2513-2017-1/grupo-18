@@ -8,13 +8,13 @@
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
     /
       Flash notifications
-    .container
+    .div
       - flash.each do |message_type, message|
         %div{:class => "alert alert-#{message_type}"}= message
   %body
     = render 'layouts/header'
     
-    .container
+    .div
       %center
         = yield
       / = render 'layouts/footer'
