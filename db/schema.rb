@@ -28,10 +28,10 @@ ActiveRecord::Schema.define(version: 20170514235335) do
   create_table "bets", force: :cascade do |t|
     t.datetime "execution_date"
     t.string   "description"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
     t.integer  "user_id"
-    t.boolean  "visible"
+    t.boolean  "visible",        default: true
     t.index ["user_id"], name: "index_bets_on_user_id", using: :btree
   end
 
