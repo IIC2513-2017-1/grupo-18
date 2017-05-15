@@ -35,7 +35,7 @@ class User < ApplicationRecord
 
   before_create :default_values
   has_many :friends
-
+  has_many :bets
   # Methods
 
   ## Sends email with confirmation token to validate user

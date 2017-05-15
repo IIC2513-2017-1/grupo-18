@@ -1,5 +1,5 @@
 !!!
-%html
+%html{style: "height: 100%"}
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %title ProyectoWeb
@@ -11,10 +11,8 @@
     .container
       - flash.each do |message_type, message|
         %div{:class => "alert alert-#{message_type}"}= message
-  %body
+  %body{style: "height: 100%"}
     = render 'layouts/header'
-
-    .container
-      %center{style: "padding-top:15px;"}
-        = yield
+    %center{style: "padding-top:15px; height: calc(100% - 39px); margin-top: 6px;"}
+      = yield
       / = render 'layouts/footer'
