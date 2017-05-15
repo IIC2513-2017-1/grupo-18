@@ -12,7 +12,6 @@ class CommentsController < ApplicationController
 
   def create
     @comment = Comment.new(comment_params)
-
     # respond_to do |format|
       @comment.save
       redirect_to :back
@@ -36,9 +35,9 @@ class CommentsController < ApplicationController
   	this_bet = Bet.find_by(id: @comment.bet_id)
 
     @comment.destroy
-    
+
     redirect_to bet_path(this_bet)
-    
+
   end
   private
     # Use callbacks to share common setup or constraints between actions.

@@ -14,6 +14,10 @@
   .field
     = "Comment: "
     = f.text_field :content, required: true
+  .field
+    = f.text_field :bet_id, :value => @bet.id, style: "display: none;"
+  .field
+    = f.text_field :user_id, :value => current_user.id, style: "display: none;"
   / .field
   /   = f.text_field :entry_id, :value => @entry.id, style: "display: none;"
   .actions
