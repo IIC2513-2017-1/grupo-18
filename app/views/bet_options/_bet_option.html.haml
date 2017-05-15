@@ -1,0 +1,20 @@
+%p#notice= notice
+%p{style: "display:inline-block"}
+  %strong Description:
+  = bet_option.description
+%p{style: "display:inline-block"}
+  %strong Percentage:
+  = bet_option.percentage
+.doh{style: "display:inline-block"}
+  = form_for(:user_bet, url: user_bets_path) do |f|
+    .doh{style: "display:inline-block"}
+      .field
+        %strong Amount:
+        = f.text_field :amount
+    .field{style: "display: none;"}
+      = f.text_field :user_id, :value => current_user.id, style: "display: none;"
+    .field{style: "display: none;"}
+      = f.text_field :bet_option_id, :value => bet_option.id, style: "display: none;"
+    .doh{style: "display:inline-block"}
+    .actions
+      = f.submit 'Wager', style: "display:inline-block"

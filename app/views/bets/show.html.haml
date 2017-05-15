@@ -1,8 +1,10 @@
 %p#notice= notice
-%h1{style: "border-bottom: 1px solid #eee; font-size: 44	px;"}
+%h1{style: "font-size: 44	px;"}
   = @bet.description
 %h2
 = "Bet is due at #{@bet.execution_date}"
+%h2 Options
+=render @bet.bet_options
 %p
 = link_to 'Edit', edit_bet_path(@bet)
 |
