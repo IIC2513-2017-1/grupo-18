@@ -92,9 +92,9 @@ include UsersHelper
 
     ## Helpers for user_params
     def normal_user_filter
-      params.require(:user).permit(:username, :email, :password)
+      params.require(:user).permit(:username, :email, :password, :image)
     end
     def admin_user_filter
-      params.require(:user).permit(:username, :email, :password, :user_type)
+      params.require(:user).permit(:username, :email, :password, :image, :user_type)
     end
 end

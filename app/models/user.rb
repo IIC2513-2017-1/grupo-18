@@ -38,6 +38,9 @@ class User < ApplicationRecord
   has_many :friends
   has_many :bets
 
+  # Avatar uploader mounting
+  mount_uploader :image, AvatarUploader
+
   # Methods
 
   ## Sends email with confirmation token to validate user

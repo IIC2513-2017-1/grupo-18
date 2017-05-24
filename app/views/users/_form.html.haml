@@ -16,6 +16,9 @@
   .field
     = f.label :password
     = f.text_field :password
+  .field
+    = f.label :image
+    = f.file_field :image
   - if admin_access?
     .field
       = f.label "Admin"
