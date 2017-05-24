@@ -2,9 +2,10 @@
 %p
   %strong Username:
   = @user.username
-%p
-  %strong Email:
-  = @user.email
+- if private_view_access?
+  %p
+    %strong Email:
+    = @user.email
 %p
   %strong Avatar:
   %br
@@ -12,9 +13,10 @@
 %p
   %strong Type:
   = user_type_string
-%p
-  %strong Balance:
-  = @user.balance
+- if private_view_access?
+  %p
+    %strong Balance:
+    = @user.balance
 %p
   - if different_user?
     - if friends?
