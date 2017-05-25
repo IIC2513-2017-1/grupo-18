@@ -1,0 +1,13 @@
+%div
+  %div{style: "float: right"}
+    =link_to 'https://www.comunidadfeliz.cl' do
+      =image_tag( attachments['cf_green_logo.png'].url)
+  %div{style: "background-color: #76c42e;height: 30px;position: relative;margin-right: 35px;border-radius: 11px;"}
+  %div{style: "margin-left: 30px;margin-top: 40px;color: #76c42e"}
+    -if @title
+      %h2{style: "margin: 0px;"}= @title
+      %h4{style: "margin: 0px; color: #666666;"}= @subtitle
+    -else
+      %h2{style: "margin: 0px;"}= @community
+      %h4{style: "margin: 0px; color: #666666;"}= @community.present? ? "Administración: #{@community.administrator}" : "Copropietarios felices, administración sobresaliente"
+  %div
