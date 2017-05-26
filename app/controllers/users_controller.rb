@@ -33,16 +33,21 @@ include UsersHelper
   def create
     @user = User.new(user_params)
 
-    respond_to do |format|
-      if @user.save
-        log_in @user
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
-        format.json { render :show, status: :created, location: @user }
-      else
-        format.html { render :new }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
+    # respond_to do |format|
+    if @user.save
+      UserMailer.account_activation(@user).deliver_now
+      flash[:info] = "Please check your email to activate your account."
+      redirect_to root_url
+
+      # log_in @user
+      # format.html { redirect_to @user, notice: 'User was successfully created.' }
+      # format.json { render :show, status: :created, location: @user }
+    else
+      render :new
+      # format.html { render :new }
+      # format.json { render json: @user.errors, status: :unprocessable_entity }
     end
+    
   end
 
   # PATCH/PUT /users/1

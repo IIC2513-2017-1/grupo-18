@@ -1,7 +1,0 @@
-.email-content{style: "font-family: 'Source Sans Pro', sans-serif;color: #111;font-size: 14px;margin-top: 15px;"}
-  = render partial: 'user_mailer/header'
-
-  .email-body{style: "margin: 30px 30px 40px;text-align: justify;"}
-    Puedes cambiar tu contraseña haciendo click en el siguiente link:
-    %a{href: "#{@url}", style: "color: #66b11b; text-decoration: none;"}= @url
-  = render partial: 'user_mailer/footer'
