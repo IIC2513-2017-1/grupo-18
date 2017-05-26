@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170524195716) do
+ActiveRecord::Schema.define(version: 20170525221240) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -78,12 +78,15 @@ ActiveRecord::Schema.define(version: 20170524195716) do
     t.string   "confirmation_token"
     t.string   "confirmed_at"
     t.integer  "user_type"
-    t.datetime "created_at",                                  null: false
-    t.datetime "updated_at",                                  null: false
+    t.datetime "created_at",                                    null: false
+    t.datetime "updated_at",                                    null: false
     t.float    "balance",                       default: 0.0
     t.string   "name"
     t.string   "password_digest"
     t.string   "image"
+    t.string   "activation_digest"
+    t.boolean  "activated",                     default: false
+    t.datetime "activated_at"
   end
 
   add_foreign_key "bet_options", "bets"
