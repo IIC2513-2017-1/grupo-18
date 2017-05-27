@@ -22,6 +22,17 @@ class BetsController < ApplicationController
   def edit
   end
 
+  def import
+    # Nombre de la apuesta
+    # Autor o entidad relacionada a la apuesta
+    # Fecha de inicio
+    # Fecha de termino
+    # Cantidad de apostantes
+    # Suma total apostada por los apostantes
+    # Opcion ganadora de la apuesta
+    
+  end
+
   # POST /bets
   # POST /bets.json
   def create
