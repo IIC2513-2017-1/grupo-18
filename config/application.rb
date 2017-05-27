@@ -8,6 +8,9 @@ Bundler.require(*Rails.groups)
 
 module ProyectoWeb
   class Application < Rails::Application
+  	# mail: mailer.grupo.18.web@gmail.com
+  	# password: web1web2
+
     config.action_mailer.smtp_settings = {
       :user_name => "farojos",
       :password => "web1web2",

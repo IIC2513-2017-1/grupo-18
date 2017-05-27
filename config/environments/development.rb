@@ -26,6 +26,7 @@ Rails.application.configure do
     config.cache_store = :null_store
   end
 
+  #### Mailer settings ###
   host = 'localhost:3000' 
   config.action_mailer.default_url_options = { host: host, protocol: 'http' }
 
@@ -39,6 +40,7 @@ Rails.application.configure do
    :authentication       => "plain",
    :enable_starttls_auto => true
   }
+  ########################
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
