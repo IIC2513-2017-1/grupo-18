@@ -16,6 +16,13 @@
   .field
     = f.label :password
     = f.password_field :password
+  .field
+    = f.label :image
+    = f.file_field :image
+    - if f.object.image?
+      = image_tag f.object.image.thumb.url
+      = f.label :remove_image
+      = f.check_box :remove_image
   - if admin_access?
     .field
       = f.label "Admin"

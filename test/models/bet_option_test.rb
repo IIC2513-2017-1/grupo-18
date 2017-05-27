@@ -9,6 +9,7 @@
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  win         :boolean
+#  user_bet_id :integer
 #
 
 require 'test_helper'

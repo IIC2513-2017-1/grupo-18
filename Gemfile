@@ -36,6 +36,7 @@ gem 'bcrypt', '~> 3.1.7'
 # For photo uploads of users
 # Files too, if we want to
 gem 'carrierwave', '~> 1.0'
+gem 'mini_magick'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

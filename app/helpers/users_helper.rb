@@ -12,4 +12,12 @@ include SessionsHelper
   def user_name
   	current_user.username
   end
+
+  def different_user?
+  	current_user.id != @user.id 
+  end
+
+  def private_view_access?
+  	!different_user? || friends? || admin_access?
+  end
 end

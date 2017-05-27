@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20170527192703) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.boolean  "win"
+    t.integer  "user_bet_id"
     t.index ["bet_id"], name: "index_bet_options_on_bet_id", using: :btree
   end
 
@@ -94,11 +95,15 @@ ActiveRecord::Schema.define(version: 20170527192703) do
     t.string   "confirmation_token"
     t.string   "confirmed_at"
     t.integer  "user_type"
-    t.datetime "created_at",                                  null: false
-    t.datetime "updated_at",                                  null: false
+    t.datetime "created_at",                                    null: false
+    t.datetime "updated_at",                                    null: false
     t.float    "balance",                       default: 0.0
     t.string   "name"
     t.string   "password_digest"
+    t.string   "image"
+    t.string   "activation_digest"
+    t.boolean  "activated",                     default: false
+    t.datetime "activated_at"
   end
 
   add_foreign_key "bet_options", "bets"

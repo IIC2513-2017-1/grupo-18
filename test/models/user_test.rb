@@ -13,6 +13,10 @@
 #  balance            :float            default("0.0")
 #  name               :string
 #  password_digest    :string
+#  image              :string
+#  activation_digest  :string
+#  activated          :boolean          default("false")
+#  activated_at       :datetime
 #
 
 require 'test_helper'

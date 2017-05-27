@@ -33,16 +33,13 @@ include UsersHelper
   def create
     @user = User.new(user_params)
 
-    respond_to do |format|
-      if @user.save
-        log_in @user
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
-        format.json { render :show, status: :created, location: @user }
-      else
-        format.html { render :new }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
+    if @user.save
+      flash[:info] = "Please check your email to activate your account."
+      redirect_to root_url
+    else
+      render :new
     end
+    
   end
 
   # PATCH/PUT /users/1
@@ -92,9 +89,9 @@ include UsersHelper
 
     ## Helpers for user_params
     def normal_user_filter
-      params.require(:user).permit(:username, :email, :password)
+      params.require(:user).permit(:username, :email, :password, :image, :remove_image)
     end
     def admin_user_filter
-      params.require(:user).permit(:username, :email, :password, :user_type)
+      params.require(:user).permit(:username, :email, :password, :image, :remove_image, :user_type)
     end
 end

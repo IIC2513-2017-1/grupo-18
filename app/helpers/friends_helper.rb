@@ -1,6 +1,11 @@
 module FriendsHelper
+  def different_user?
+  	current_user.id != @user.id 
+  end
+
   def friends?
-  	Friend.find_by(user_id: current_user.id) && Friend.find_by(user_id: current_user.id).friend_id==@user.id
+  	Friend.find_by(user_id: current_user.id, friend_id: @user.id)
+  	#Friend.find_by(user_id: current_user.id) && Friend.find_by(user_id: current_user.id, friend_id: @user.id).friend_id==@user.id
   end
 
   def our_friendship
