@@ -40,7 +40,7 @@ class User < ApplicationRecord
   has_many :bets
 
   # Triggers
-  after_create  :send_confirmation
+  after_create  :send_activation_email
   before_create :default_values, :create_activation_digest
   before_save   :downcase_email
 
@@ -50,7 +50,14 @@ class User < ApplicationRecord
   # Methods
 
   ## Sends email with confirmation token to validate user
-  def send_confirmation
+  def send_activation_email
+    UserMailer.account_activation(self).deliver_now
+  end
+
+  # Activates an account.
+  def activate
+    update_attribute(:activated,    true)
+    update_attribute(:activated_at, Time.zone.now)
   end
 
   def authenticated?(attribute, token)
