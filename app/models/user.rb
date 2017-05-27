@@ -78,7 +78,7 @@ class User < ApplicationRecord
     SecureRandom.urlsafe_base64
   end
 
-  private
+  # private
     # To be able to use it and compare it easily
     def downcase_email
       self.email = email.downcase
