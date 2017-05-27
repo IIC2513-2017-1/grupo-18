@@ -16,7 +16,7 @@ class SessionsController < ApplicationController
   		# Couldn't find that user
   		flash.now[:danger] = "User doesn't exist"
   		render 'new'
-    elsif(!user.activated)
+    elsif(!(user.user_type > 0) && !user.activated)
       flash.now[:danger] = "User isn't activated"
       render 'new'
   	elsif(!user.authenticate(password))

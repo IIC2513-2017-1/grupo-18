@@ -1,16 +1,14 @@
-%h1 Bet #{@bet.id} was finished.
+%strong Bet #{@bet.id} was finished
+%p Hi, #{@user.name},
+%p A bet you've been following has just ended its active period.
 %p
-  Hi #{@user.name},
+  %strong Bet description
+%p #{@bet.description}
 %p
-  A bet you've been following has just ended its active period.
+  %strong Result
+%p The winning option was: RESULT
 %p
-%h2 Bet description
-  #{@bet.description}
-
-%h2 Result
-%p
-  The winning option was: "TODO: ADD RESULT"
-
-%h2 Check it out!
-%p
-  = link_to "Go check on this bet!", bet_path(@bet)
+  %strong Check it out!
+%p Link: 
+= link_to "Go check on this bet!", @bet
+%p Sayonara!
