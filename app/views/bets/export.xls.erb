@@ -20,11 +20,10 @@
         <Cell><Data ss:Type="Number"><%= bet.id %></Data></Cell>
         <Cell><Data ss:Type="String"><%= bet.name %></Data></Cell>
         <%- if bet.user.present? %>
-        <Cell><Data ss:Type="Number"><%= bet.user.id %></Data></Cell>
-        <%- else %>
-        <Cell><Data ss:Type="String">Usuario no registrado</Data></Cell>
+          <Cell><Data ss:Type="Number"><%= bet.user.id %></Data></Cell>
+          <%- else %>
+          <Cell><Data ss:Type="String">Usuario no registrado</Data></Cell>
         <% end %>
-        <Cell><Data ss:Type="Number"><%= %></Data></Cell>
         <Cell><Data ss:Type="String"><%= bet.created_at.to_s %></Data></Cell>
         <Cell><Data ss:Type="String"><%= bet.execution_date %></Data></Cell>
         <Cell><Data ss:Type="Number"><%= bet.get_total %></Data></Cell>

@@ -37,7 +37,7 @@ gem 'bcrypt', '~> 3.1.7'
 # Files too, if we want to
 gem 'carrierwave', '~> 1.0'
 gem 'mini_magick'
-
+gem 'validates_timeliness', '~> 4.0'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

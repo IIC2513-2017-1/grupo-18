@@ -18,7 +18,7 @@ class Bet < ApplicationRecord
   accepts_nested_attributes_for :bet_options
   belongs_to :user
   mount_uploader :avatar, AvatarUploader
-
+  validates :execution_date, timeliness: { on_or_after: lambda { Date.current }, type: :date }
   # To be run after a bet's execution date has been reached.
   def finish_bet
   	# Foreach user that's following this bet
