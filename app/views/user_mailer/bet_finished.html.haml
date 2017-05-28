@@ -1,0 +1,14 @@
+%strong Bet #{@bet.id} was finished
+%p Hi, #{@user.name},
+%p A bet you've been following has just ended its active period.
+%p
+  %strong Bet description
+%p #{@bet.description}
+%p
+  %strong Result
+%p The winning option was: RESULT
+%p
+  %strong Check it out!
+%p Link: 
+= link_to "Go check on this bet!", @bet
+%p Sayonara!

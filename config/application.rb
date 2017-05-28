@@ -8,8 +8,17 @@ Bundler.require(*Rails.groups)
 
 module ProyectoWeb
   class Application < Rails::Application
-    # Settings in config/environments/* take precedence over those specified here.
-    # Application configuration should go into files in config/initializers
-    # -- all .rb files in that directory are automatically loaded.
+  	# mail: mailer.grupo.18.web@gmail.com
+  	# password: web1web2
+
+    config.action_mailer.smtp_settings = {
+      :user_name => "farojos",
+      :password => "web1web2",
+      :domain => 'http://proyecto-web-g18.herokuapp.com/login',
+      :address => 'smtp.sendgrid.net',
+      :port => 587,
+      :authentication => :plain,
+      :enable_starttls_auto => true
+    }
   end
 end
