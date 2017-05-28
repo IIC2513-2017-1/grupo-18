@@ -7,7 +7,7 @@
 #  email              :string
 #  confirmation_token :string
 #  confirmed_at       :string
-#  user_type          :integer
+#  user_type          :integer          default("0")
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
 #  balance            :float            default("0.0")
@@ -41,7 +41,7 @@ class User < ApplicationRecord
 
   # Triggers
   after_create  :send_activation_email
-  before_create :default_values, :create_activation_digest
+  before_create :create_activation_digest
   before_save   :downcase_email
 
   # Avatar uploader mounting
@@ -88,10 +88,4 @@ class User < ApplicationRecord
       self.activation_token  = User.new_token
       self.activation_digest = User.digest(activation_token)
     end
-
-    def default_values
-      # Normal user
-      self.user_type = 0
-    end
-
 end
