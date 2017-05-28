@@ -4,12 +4,14 @@ class BetsController < ApplicationController
   # GET /bets
   # GET /bets.json
   def index
-    @bets = Bet.all
+    @bets = Bet.all unless current_user.user_type.zero?
+    @bets = Bet.where(visible: true).or(Bet.where(user_id: Friend.where(friend_id:current_user.id).pluck(:user_id))) if current_user.user_type.zero?
   end
 
   # GET /bets/1
   # GET /bets/1.json
   def show
+    redirect_to home_path, notice: 'Bet not found' unless @bet.present?
   end
 
   # GET /bets/new
@@ -20,9 +22,10 @@ class BetsController < ApplicationController
 
   # GET /bets/1/edit
   def edit
+    redirect_to home_path, notice: 'Bet not found' unless @bet.present?
   end
 
-  def import
+  def export
     # Nombre de la apuesta
     # Autor o entidad relacionada a la apuesta
     # Fecha de inicio
@@ -30,7 +33,12 @@ class BetsController < ApplicationController
     # Cantidad de apostantes
     # Suma total apostada por los apostantes
     # Opcion ganadora de la apuesta
-    
+    @bets = Bet.all unless current_user.user_type.zero?
+    @bets = Bet.where(visible: true).or(Bet.where(user_id: Friend.where(friend_id:current_user.id).pluck(:user_id))) if current_user.user_type.zero?
+    respond_to do |format|
+      format.xls
+    end
+
   end
 
   # POST /bets
@@ -42,6 +50,7 @@ class BetsController < ApplicationController
     aux.delete("bet_options")
     aux = aux.require(:bet).permit(:execution_date, :description, bet_options_attributes: [:description, :percentage])
     @bet = Bet.new(aux)
+    @bet.user = current_user
     respond_to do |format|
       if @bet.save
         format.html { redirect_to @bet, notice: 'Bet was successfully created.' }
@@ -80,11 +89,17 @@ class BetsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_bet
-      @bet = Bet.find(params[:id])
+      if current_user.present?
+        bets = Bet.all unless current_user.user_type.zero?
+        bets = Bet.where(visible: true).or(Bet.where(user_id: Friend.where(friend_id:current_user.id).pluck(:user_id))) if current_user.user_type.zero?
+        @bet = bets.find_by(id: params[:id])
+      else
+        @bet = nil
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def bet_params
-      params.require(:bet).permit(:execution_date, :description, bets_options_attributes: [:description, :percentage])
+      params.require(:bet).permit(:execution_date, :description, :avatar,bets_options_attributes: [:description, :percentage])
     end
 end

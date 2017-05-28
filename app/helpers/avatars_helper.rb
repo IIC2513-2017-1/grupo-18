@@ -7,6 +7,10 @@ include SessionsHelper
 
   def this_user_thumb
   	@user.image.thumb.url || default_thumb
+    #abort
+  end
+  def bet_medium bet
+    bet.avatar.medium.url || default_bet
   end
 
   def default_thumb
@@ -15,5 +19,8 @@ include SessionsHelper
 	# image.format "png"
 	# image.write "public/default_thumb.png"
 	"/default_thumb.png"
+  end
+  def default_bet
+    "/default_bet.png"
   end
 end

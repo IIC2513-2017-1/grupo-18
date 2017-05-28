@@ -17,7 +17,7 @@ class Bet < ApplicationRecord
   has_many :comments
   accepts_nested_attributes_for :bet_options
   belongs_to :user
-
+  mount_uploader :avatar, AvatarUploader
 
   # To be run after a bet's execution date has been reached.
   def finish_bet
@@ -29,5 +29,20 @@ class Bet < ApplicationRecord
   	end
 
   	#FIXME: also give each winning user their prize
+  end
+  def get_total
+    amount  = 0
+    self.user_bets.each do |ub|
+      amount = amount + ub.amount
+    end
+    amount
+  end
+  def winners
+    win = self.bet_options.where(win: true)
+    st = ""
+    win.each do |q|
+      st = st + q.id.to_s + " ; "
+    end
+    st[0...-3]
   end
 end

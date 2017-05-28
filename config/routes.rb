@@ -4,11 +4,15 @@ Rails.application.routes.draw do
   resources :user_bets
   resources :bet_options
   resources :payments
-  resources :bets
+  resources :bets do
+    collection do
+      get 'export', as: 'export'
+    end
+  end
   resources :users
-  get '/', to: 'home#index'
+  get '/', to: 'home#index', as: 'home'
 
-  # Sessions  
+  # Sessions
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
@@ -17,7 +21,7 @@ Rails.application.routes.draw do
   root 'home#index'
 
   # Comments
-  # post  
+  # post
   resources :comments
   resources :friends
 
