@@ -9,6 +9,8 @@
 #  updated_at     :datetime         not null
 #  user_id        :integer
 #  visible        :boolean          default("true")
+#  name           :string
+#  avatar         :string
 #
 
 require 'test_helper'
