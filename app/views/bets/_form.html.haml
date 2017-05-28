@@ -10,24 +10,31 @@
   .field
     = f.label :execution_date
     = f.datetime_select :execution_date
+  .field{style: "display:inline-block"}
+    = f.label :description , {style: "display:inline-block"}
+    = f.text_field :description , {style: "display:inline-block"}
   .field
-    = f.label :description
-    = f.text_field :description
+    = f.label :avatar
+    = f.file_field :avatar
+    - if f.object.avatar?
+      = image_tag f.object.avatar.medium.url
+      = f.label :remove_avatar
+      = f.check_box :remove_avatar
   %h4 Opciones de apuesta
   .row.additional_info
-    %h4
-      ="Descripción"
-
-      ="Porcentaje"
     .meh
       .doh{style: "display:inline-block"}
+        %h4
+          ="Descripción"
         = text_field_tag "bet_options[{index}][description]",nil, class: 'form-control', placeholder: "Ej; Gana la cato"
       .doh{style: "display:inline-block"}
+        %h4
+          ="Porcentaje"
         = text_field_tag "bet_options[{index}][percentage]",nil, class: 'form-control',data:currency_field
       .doh{style: "display:inline-block"}
         .field
-          .button.addAdditionalInfo{start_at: 0, target: ".additional_infos"} Agregar
-          .button.red.deleteAdditionalInfo{style:"display:none"} Eliminar
+          .button.addAdditionalInfo.tiny{start_at: 0, target: ".additional_infos"} Agregar
+          .button.red.deleteAdditionalInfo.tiny{style:"display:none"} Eliminar
   -begin
     .additional_infos
       - @bonos.each_with_index do |b,index|
@@ -37,7 +44,7 @@
           .field
             = text_field_tag "bet_options[#{index}][percentage]", b.value, class: 'form-control',data:currency_field
           .field
-            .button.red.deleteAdditionalInfo Eliminar
+            .button.red.deleteAdditionalInfo.tiny Eliminar
   -rescue
 
 

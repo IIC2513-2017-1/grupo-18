@@ -11,7 +11,6 @@
 #  win         :boolean
 #  user_bet_id :integer
 #
-
 class BetOption < ApplicationRecord
   belongs_to :bet, required: false
   has_many :user_bets

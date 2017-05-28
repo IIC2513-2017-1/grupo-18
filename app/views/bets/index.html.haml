@@ -15,4 +15,5 @@
         %td= link_to 'Edit', edit_bet_path(bet)
         %td= link_to 'Destroy', bet, method: :delete, data: { confirm: 'Are you sure?' }
 %br/
+= link_to "Excel", export_bets_path(format: "xls")
 = link_to 'New Bet', new_bet_path
