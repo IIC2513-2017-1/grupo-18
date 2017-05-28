@@ -25,7 +25,6 @@ class Bet < ApplicationRecord
   	# Send that user a mail with this bet's result
   	self.user_bets.each do |usr_bet|
   	  UserMailer.bet_finished(usr_bet.user, self).deliver_now
-  	  # usr_bet.user.send_activation_email
   	end
 
   	#FIXME: also give each winning user their prize
