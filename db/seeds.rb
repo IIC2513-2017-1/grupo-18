@@ -78,22 +78,43 @@ Friend.create!(
 
 surf = Bet.create!(
 	user: pepe,
-	description: "Who will win at the surfing contest?",
+	name: "Who will win at the surfing contest?",
+	description: %q(
+"Surf's up! 
+Pepe el pollo, Cody Maverick and El Tanque are surfing for the great prize of the finals!),
+	remote_avatar_url: "https://images.askmen.com/720x540/entertainment/better_look/surfing-films/3-1454432243.jpg",
 	execution_date: Time.zone.now + 24.hours)
 
 sandwich = Bet.create!(
 	user: pato,
-	description: "Cuál será el día de sandwich?",
+	name: "Cuál será el día de sandwich?",
+	description: %q(
+Lilo por qué estas tan mojada?
+-Es día de sandwich, cada ~~~s le doy a pato el pez un sandwich de mermelada-
+-Pato es un pez?-
+-Y hoy no hay mermelada, y entonces mi hermana me﻿ dijo que le diera un sandwich de atún, no le puedo dar a pato atún.. Tú sabes lo que es atún?-
+-Pez?-
+-ES PEZ SI PATO COMO PEZ SERÍA UNA ABOMINACIÓN!!!!. Llegué tarde por ir a la tienda, por mermelada, porque solo había ese, ese tonto atún!-
+-Lilo, Lilo, por que es tan importante?-
+-Pato controla el clima-),
+	# remote_avatar_url: "http://68.media.tumblr.com/tumblr_m5tokh9VLL1rnra94o1_500.gif",
+	remote_avatar_url: "https://i.ytimg.com/vi/6INkgXyFwiI/hqdefault.jpg",
 	execution_date: Time.zone.now + 2.days)
 
 reverencia = Bet.create!(
 	user: felix,
-	description: "El viento sopla. La montaña, lo reverencia?",
+	name: "El viento sopla. La montaña, lo reverencia?",
+	description: %q(
+Li Shang v/s El Emperador),
+	remote_avatar_url: "https://s-media-cache-ak0.pinimg.com/originals/07/95/86/079586311a1bef0cd6f1a0ca10624d09.jpg",
 	execution_date: Time.zone.now + 2.hours)
 
 feelingBlue = Bet.create!(
 	user: felipe,
-	description: "What's the use of feeling blue?",
+	name: "What's the use of feeling blue?",
+	description:%q(
+Come on Pearl, sing for her. Make her feel better.),
+	remote_avatar_url: "http://funnypictures3.fjcdn.com/pictures/Blue_50da62_6144448.jpg",
 	execution_date: Time.zone.now + 1.day)
 ###########################################
 
@@ -153,7 +174,7 @@ será_domingo = BetOption.create!(
 	bet: sandwich)
 
 ## Emperador v/s Shen Long
-shen_long = BetOption.create!(
+li_shang = BetOption.create!(
 	description: "Sí",
 	percentage: 1.8,
 	bet: reverencia)
@@ -226,7 +247,7 @@ UserBet.create!(
 UserBet.create!(
 	user: pato, 
 	amount: 150,
-	bet_option: shen_long)
+	bet_option: li_shang)
 
 ###########################################
 

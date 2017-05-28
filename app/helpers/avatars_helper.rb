@@ -18,7 +18,7 @@ include SessionsHelper
   	# image.resize "150x150"
 	# image.format "png"
 	# image.write "public/default_thumb.png"
-	"/default_thumb.png"
+	  "/default_thumb.png"
   end
   def default_bet
     "/default_bet.png"
