@@ -13,54 +13,30 @@
   =#      %th{:colspan => "3"}
   =#  %tbody
   .card_container{style: "padding-left:10%; padding-right:10%;"}
+    -@bets.each do |bet|
+      %a{href: bet_path(bet)}
+        -if bet.visible
+          .card
+            %img{:alt => "Avatar", :src => bet_medium(bet), :style => "width:100%"}/
+            .container
+              %h4
+                %b
+                  =bet.name
+              %p
+                =bet.description
+        -else
+          .card{style: "background-color: red;"}
+            %img{:alt => "Avatar", :src => bet_medium(bet), :style => "width:100%"}/
+            .container
+              %h4
+                %b
+                  =bet.name
+              %p
+                =bet.description
 
-    .card
-      %img{:alt => "Avatar", :src => "http://cdn.images.s3.amazonaws.com/pokergratis.es/images/images/2010/10/fichas_apuestas.jpg", :style => "width:100%"}/
-      .container
-        %h4
-          %b Jane Doe
-        %p Interior Designer
-    .card
-      %img{:alt => "Avatar", :src => "http://cdn.images.s3.amazonaws.com/pokergratis.es/images/images/2010/10/fichas_apuestas.jpg", :style => "width:100%"}/
-      .container
-        %h4
-          %b Jane Doe
-        %p Interior Designer
-
-    .card
-      %img{:alt => "Avatar", :src => "http://cdn.images.s3.amazonaws.com/pokergratis.es/images/images/2010/10/fichas_apuestas.jpg", :style => "width:100%"}/
-      .container
-        %h4
-          %b Jane Doe
-        %p Interior Designer
-    .card
-      %img{:alt => "Avatar", :src => "http://cdn.images.s3.amazonaws.com/pokergratis.es/images/images/2010/10/fichas_apuestas.jpg", :style => "width:100%"}/
-      .container
-        %h4
-          %b Jane Doe
-        %p Interior Designer
-    .card
-      %img{:alt => "Avatar", :src => "http://cdn.images.s3.amazonaws.com/pokergratis.es/images/images/2010/10/fichas_apuestas.jpg", :style => "width:100%"}/
-      .container
-        %h4
-          %b Jane Doe
-        %p Interior Designer
-    .card
-      %img{:alt => "Avatar", :src => "http://cdn.images.s3.amazonaws.com/pokergratis.es/images/images/2010/10/fichas_apuestas.jpg", :style => "width:100%"}/
-      .container
-        %h4
-          %b Jane Doe
-        %p Interior Designer
-
-    .card
-      %img{:alt => "Avatar", :src => "http://cdn.images.s3.amazonaws.com/pokergratis.es/images/images/2010/10/fichas_apuestas.jpg", :style => "width:100%"}/
-      .container
-        %h4
-          %b Jane Doe
-        %p Interior Designer
-    .card
-      %img{:alt => "Avatar", :src => "http://cdn.images.s3.amazonaws.com/pokergratis.es/images/images/2010/10/fichas_apuestas.jpg", :style => "width:100%"}/
-      .container
-        %h4
-          %b Jane Doe
-        %p Interior Designer
+    =#.card
+    =#  %img{:alt => "Avatar", :src => "http://cdn.images.s3.amazonaws.com/pokergratis.es/images/images/2010/10/fichas_apuestas.jpg", :style => "width:100%"}/
+    =#  .container
+    =#    %h4
+    =#      %b Jane Doe
+    =#    %p Interior Designer
