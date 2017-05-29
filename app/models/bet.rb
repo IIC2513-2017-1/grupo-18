@@ -21,6 +21,13 @@ class Bet < ApplicationRecord
   belongs_to :user
   mount_uploader :avatar, AvatarUploader
   validates :execution_date, timeliness: { on_or_after: lambda { Date.current }, type: :date }
+  
+  after_save :automanage_execution
+
+  def automanage_execution
+    self.delay(run_at: execution_date).finish_bet
+  end
+
   # To be run after a bet's execution date has been reached.
   def finish_bet
   	# Foreach user that's following this bet
