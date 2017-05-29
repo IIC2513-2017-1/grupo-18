@@ -32,7 +32,7 @@ class Bet < ApplicationRecord
   	#FIXME: also give each winning user their prize
   end
   def get_total
-    amount  = 0
+    amount = 0
     self.user_bets.each do |ub|
       amount = amount + ub.amount
     end
