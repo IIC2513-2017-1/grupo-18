@@ -55,17 +55,23 @@ Rails.application.configure do
   # Use a real queuing backend for Active Job (and separate queues per environment)
   # config.active_job.queue_adapter     = :resque
   # config.active_job.queue_name_prefix = "proyecto_web_#{Rails.env}"
-  config.action_mailer.perform_caching = false
+  # config.action_mailer.perform_caching = false
 
-  # config.action_mailer.smtp_settings = {
-  #     :user_name => farojos,
-  #     :password => web1web2,
-  #     :domain => 'http://proyecto-web-g18.herokuapp.com',
-  #     :address => 'smtp.sendgrid.net',
-  #     :port => 587,
-  #     :authentication => :plain,
-  #     :enable_starttls_auto => true
-  #   }
+  #### Mailer settings ###
+  host = 'localhost:3000' 
+  config.action_mailer.default_url_options = { host: host, protocol: 'http' }
+
+  config.action_mailer.delivery_method = :smtp
+  # SMTP settings for gmail
+  config.action_mailer.smtp_settings = {
+   :address              => "smtp.gmail.com",
+   :port                 => 587,
+   :user_name            => "mailer.grupo.18.web@gmail.com",
+   :password             => "web1web2",
+   :authentication       => "plain",
+   :enable_starttls_auto => true
+  }
+  ########################
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.

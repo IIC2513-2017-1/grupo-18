@@ -21,16 +21,9 @@ class Bet < ApplicationRecord
   belongs_to :user
   mount_uploader :avatar, AvatarUploader
   validates :execution_date, timeliness: { on_or_after: lambda { Date.current }, type: :date }
-  # To be run after a bet's execution date has been reached.
-  def finish_bet
-  	# Foreach user that's following this bet
-  	# Send that user a mail with this bet's result
-  	self.user_bets.each do |usr_bet|
-  	  UserMailer.bet_finished(usr_bet.user, self).deliver_now
-  	end
+  
+  after_save :automanage_execution
 
-  	#FIXME: also give each winning user their prize
-  end
   def get_total
     amount = 0
     self.user_bets.each do |ub|
@@ -62,4 +55,22 @@ class Bet < ApplicationRecord
     end
     description
   end
+
+  private
+    def automanage_execution
+      self.delay(run_at: execution_date).finish_bet
+    end
+
+    # To be run after a bet's execution date has been reached.
+    def finish_bet
+      # win = self.bet_options.where(win: true)
+      
+
+
+      # Foreach user that's following this bet
+      # Send that user a mail with this bet's result
+      self.user_bets.each do |usr_bet|
+        UserMailer.bet_finished(usr_bet.user, self).deliver_now
+      end
+    end
 end
