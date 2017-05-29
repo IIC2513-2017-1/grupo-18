@@ -9,7 +9,7 @@ puts("Seeding the database...")
 
 ## Step 1: basic elements of the DB.
 pepe = User.create!(
-	username: "pepe_el_pollo", 
+	username: "pepe_el_pollo",
 	email: "pepe.el.pollo.gmail@gmail.com",
 	user_type: 0,
 	balance: 100,
@@ -17,7 +17,7 @@ pepe = User.create!(
 	password: "1234567890")
 
 pato = User.create!(
-	username: "pato_el_pez", 
+	username: "pato_el_pez",
 	email: "pato.el.pez.gmail@gmail.com",
 	user_type: 0,
 	balance: 300,
@@ -25,7 +25,7 @@ pato = User.create!(
 	password: "1234567890")
 
 felix = User.create!(
-	username: "felix91gr", 
+	username: "felix91gr",
 	email: "felix91gr@gmail.com",
 	user_type: 1,
 	balance: 9001,
@@ -33,14 +33,14 @@ felix = User.create!(
 	password: "wololowololo",
 	remote_image_url: "https://steamuserimages-a.akamaihd.net/ugc/595886736952637584/BAD4E4DF66A7C18C1C37C2BE37B8AB2D75BDAA9A/")
 
-felipe = User.create!(
-	username: "felipe", 
-	email: "farojos@uc.cl",
-	user_type: 1,
-	balance: 9001,
-	name: "Felipe Rojos",
-	password: "jojooojo",
-	remote_image_url: "http://vignette4.wikia.nocookie.net/alejoyvalentina/images/9/91/El_viejo_del_viejo.png/revision/latest?cb=20120129130054&path-prefix=es")
+  felipe = User.create!(
+  	username: "felipe",
+  	email: "farojosaaaaa@uc.cl",
+  	user_type: 1,
+  	balance: 9001,
+  	name: "Felipe Rojos",
+  	password: "jojooojo",
+  	remote_image_url: "http://vignette4.wikia.nocookie.net/alejoyvalentina/images/9/91/El_viejo_del_viejo.png/revision/latest?cb=20120129130054&path-prefix=es")
 
 User.all.each do |usr|
 	usr.activate
@@ -80,7 +80,7 @@ surf = Bet.create!(
 	user: pepe,
 	name: "Who will win at the surfing contest?",
 	description: %q(
-"Surf's up! 
+"Surf's up!
 Pepe el pollo, Cody Maverick and El Tanque are surfing for the great prize of the finals!),
 	remote_avatar_url: "https://images.askmen.com/720x540/entertainment/better_look/surfing-films/3-1454432243.jpg",
 	execution_date: Time.zone.now + 24.hours)
@@ -209,43 +209,43 @@ BetOption.create!(
 
 ## Pepe cree que ganará su amigo
 UserBet.create!(
-	user: pepe, 
+	user: pepe,
 	amount: 10,
 	bet_option: gana_cody)
 ## Pato el pez cree que Tanque es el mejor
 UserBet.create!(
-	user: pato, 
+	user: pato,
 	amount: 50,
 	bet_option: gana_tanque)
 
 ## Pato el pez sabe que el jueves es el día de sandwich
 UserBet.create!(
-	user: pato, 
+	user: pato,
 	amount: 100,
 	bet_option: será_jueves)
 ## El iluso... xD
 UserBet.create!(
-	user: felix, 
+	user: felix,
 	amount: 200,
 	bet_option: será_lunes)
 ## Otro más... xD
 UserBet.create!(
-	user: felipe, 
+	user: felipe,
 	amount: 150,
 	bet_option: será_domingo)
 
 ## Creemos en el emperador
 UserBet.create!(
-	user: felix, 
+	user: felix,
 	amount: 200,
 	bet_option: emperador)
 UserBet.create!(
-	user: felipe, 
+	user: felipe,
 	amount: 250,
 	bet_option: emperador)
 ## Pato el pez no >:c
 UserBet.create!(
-	user: pato, 
+	user: pato,
 	amount: 150,
 	bet_option: li_shang)
 

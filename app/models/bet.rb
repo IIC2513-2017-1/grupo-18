@@ -38,6 +38,7 @@ class Bet < ApplicationRecord
     end
     amount
   end
+
   def winners
     win = self.bet_options.where(win: true)
     st = ""
@@ -45,5 +46,20 @@ class Bet < ApplicationRecord
       st = st + q.id.to_s + " ; "
     end
     st[0...-3]
+  end
+
+  def short_description
+    #byebug
+    unless description[0..30] == description
+      auxiliar = description
+      auxiliar2 = description[0..30]
+      truncated = auxiliar[31] == ' ' || auxiliar2[30] == ' '
+      unless truncated
+        text = auxiliar2.split(/ /)
+        text.pop
+        return text.join(' ') + ' ...'
+      end
+    end
+    description
   end
 end
