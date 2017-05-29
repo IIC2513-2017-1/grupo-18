@@ -8,7 +8,7 @@
 #  bet_id      :integer
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
-#  win         :boolean
+#  win         :boolean          default("false")
 #  user_bet_id :integer
 #
 

@@ -14,9 +14,9 @@
 #
 
 class Bet < ApplicationRecord
-  has_many :bet_options
+  has_many :bet_options, :dependent => :destroy
   has_many :user_bets, :through => :bet_options
-  has_many :comments
+  has_many :comments, :dependent => :destroy
   accepts_nested_attributes_for :bet_options
   belongs_to :user
   mount_uploader :avatar, AvatarUploader
