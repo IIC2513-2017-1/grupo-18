@@ -22,6 +22,7 @@ class BetsController < ApplicationController
 
   # GET /bets/1/edit
   def edit
+    @bonos = @bet.bet_options
     redirect_to home_path, notice: 'Bet not found' unless @bet.present?
   end
 
@@ -48,7 +49,7 @@ class BetsController < ApplicationController
     aux[:bet][:bet_options_attributes] = params[:bet_options]
     aux[:bet][:bet_options_attributes].delete("{index}")
     aux.delete("bet_options")
-    aux = aux.require(:bet).permit(:execution_date, :description, bet_options_attributes: [:description, :percentage])
+    aux = aux.require(:bet).permit(:execution_date, :description, bet_options_attributes: [:description, :percentage, :win])
     @bet = Bet.new(aux)
     @bet.user = current_user
     respond_to do |format|
@@ -65,8 +66,14 @@ class BetsController < ApplicationController
   # PATCH/PUT /bets/1
   # PATCH/PUT /bets/1.json
   def update
+    aux = params
+    aux[:bet][:bet_options_attributes] = params[:bet_options]
+    aux[:bet][:bet_options_attributes].delete("{index}")
+    aux.delete("bet_options")
+    aux = aux.require(:bet).permit(:execution_date, :description, bet_options_attributes: [:description, :percentage, :win, :id])
     respond_to do |format|
-      if @bet.update(bet_params)
+      if @bet.update(aux)
+
         format.html { redirect_to @bet, notice: 'Bet was successfully updated.' }
         format.json { render :show, status: :ok, location: @bet }
       else
@@ -100,6 +107,6 @@ class BetsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def bet_params
-      params.require(:bet).permit(:execution_date, :description, :avatar,bets_options_attributes: [:description, :percentage])
+      params.require(:bet).permit(:execution_date, :description, :avatar,bets_options_attributes: [:description, :percentage, :win])
     end
 end
