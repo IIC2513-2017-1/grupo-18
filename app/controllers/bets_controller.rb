@@ -49,11 +49,12 @@ class BetsController < ApplicationController
     aux[:bet][:bet_options_attributes] = params[:bet_options]
     aux[:bet][:bet_options_attributes].delete("{index}")
     aux.delete("bet_options")
-    aux = aux.require(:bet).permit(:execution_date, :description, bet_options_attributes: [:description, :percentage, :win])
+    aux = aux.require(:bet).permit(:execution_date, :description, bet_options_attributes: [:description, :percentage, :win, :id])
     @bet = Bet.new(aux)
     @bet.user = current_user
     respond_to do |format|
       if @bet.save
+
         format.html { redirect_to @bet, notice: 'Bet was successfully created.' }
         format.json { render :show, status: :created, location: @bet }
       else
@@ -71,6 +72,7 @@ class BetsController < ApplicationController
     aux[:bet][:bet_options_attributes].delete("{index}")
     aux.delete("bet_options")
     aux = aux.require(:bet).permit(:execution_date, :description, bet_options_attributes: [:description, :percentage, :win, :id])
+    abort
     respond_to do |format|
       if @bet.update(aux)
 
