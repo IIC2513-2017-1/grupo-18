@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170528204124) do
+ActiveRecord::Schema.define(version: 20170529025831) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,9 +19,9 @@ ActiveRecord::Schema.define(version: 20170528204124) do
     t.string   "description"
     t.float    "percentage"
     t.integer  "bet_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.boolean  "win"
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.boolean  "win",         default: false
     t.integer  "user_bet_id"
     t.index ["bet_id"], name: "index_bet_options_on_bet_id", using: :btree
   end

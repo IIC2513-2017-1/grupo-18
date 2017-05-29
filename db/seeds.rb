@@ -125,7 +125,8 @@ Come on Pearl, sing for her. Make her feel better.),
 BetOption.create!(
 	description: "Pepe el pollo",
 	percentage: 1.45,
-	bet: surf)
+	bet: surf,
+	win: true)
 
 gana_cody = BetOption.create!(
 	description: "Cody Maverick",
@@ -156,7 +157,8 @@ BetOption.create!(
 será_jueves = BetOption.create!(
 	description: "Jueves",
 	percentage: 0.001,
-	bet: sandwich)
+	bet: sandwich,
+	win: true)
 
 BetOption.create!(
 	description: "Viernes",
@@ -182,7 +184,8 @@ li_shang = BetOption.create!(
 emperador = BetOption.create!(
 	description: "No",
 	percentage: 0.1,
-	bet: reverencia)
+	bet: reverencia,
+	win: true)
 
 ## What's the use of feeling blue?
 BetOption.create!(
@@ -203,7 +206,8 @@ BetOption.create!(
 BetOption.create!(
 	description: "https://www.youtube.com/watch?v=dYqlYyQqzgY",
 	percentage: 0.1,
-	bet: feelingBlue)
+	bet: feelingBlue,
+	win: true)
 
 ###########################################
 
