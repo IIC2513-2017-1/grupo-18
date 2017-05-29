@@ -39,6 +39,7 @@
         <Cell><Data ss:Type="String">Opcion_id</Data></Cell>
         <Cell><Data ss:Type="String">Descripcion</Data></Cell>
         <Cell><Data ss:Type="String">Porcentaje</Data></Cell>
+        <Cell><Data ss:Type="String">Ganador</Data></Cell>
       </Row>
     <% @bets.each do |bet| %>
       <% bet.bet_options.each do |option| %>
@@ -47,6 +48,11 @@
           <Cell><Data ss:Type="Number"><%= option.id %></Data></Cell>
           <Cell><Data ss:Type="String"><%= option.description %></Data></Cell>
           <Cell><Data ss:Type="Number"><%= option.percentage %></Data></Cell>
+          <%- if option.win %>
+          <Cell><Data ss:Type="String">Si</Data></Cell>
+          <%- else %>
+          <Cell><Data ss:Type="String">No</Data></Cell>
+          <% end %>
         </Row>
       <% end %>
     <% end %>
