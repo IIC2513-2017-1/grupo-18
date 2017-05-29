@@ -1,19 +1,20 @@
 %p#notice= notice
 %h1 Bets
-%table
-  %thead
-    %tr
-      %th Execution date
-      %th Description
-      %th{:colspan => "3"}
-  %tbody
-    - @bets.each do |bet|
+.index_bets{style: "padding-left:20%; padding-right:20%;"}
+  %table
+    %thead
       %tr
-        %td= bet.execution_date
-        %td= bet.description
-        %td= link_to 'Show', bet
-        %td= link_to 'Edit', edit_bet_path(bet)
-        %td= link_to 'Destroy', bet, method: :delete, data: { confirm: 'Are you sure?' }
-%br/
-= link_to "Excel", export_bets_path(format: "xls")
-= link_to 'New Bet', new_bet_path
+        %th Execution date
+        %th Description
+        %th{:colspan => "3"}
+    %tbody
+      - @bets.each do |bet|
+        %tr
+          %td= bet.execution_date
+          %td= bet.description
+          %td= link_to 'Show', bet
+          %td= link_to 'Edit', edit_bet_path(bet)
+          %td= link_to 'Destroy', bet, method: :delete, data: { confirm: 'Are you sure?' }
+  %br/
+  = link_to "Excel", export_bets_path(format: "xls")
+  = link_to 'New Bet', new_bet_path

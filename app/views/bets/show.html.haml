@@ -1,9 +1,10 @@
+-if notice.present?
+  %p#notice= notice
 .bet_container{style: "padding-left:20%; padding-right:20%;"}
   %h1{style: "font-size: 44	px;"}
     = @bet.name
-  %p
-    = image_tag bet_medium @bet
-  %h3
+  = image_tag bet_medium @bet
+  %pre{style:"text-align: left; overflow:auto"}
     = @bet.description
   %h2
   = "Bet is due at #{@bet.execution_date}"
