@@ -9,6 +9,10 @@ include SessionsHelper
   	admin_access? && 'Admin user' || 'Normal user'
   end
 
+  def see_this_userS_type
+    @user.user_type != 0 && 'Admin user' || 'Normal user'
+  end
+
   def user_name
   	current_user.username
   end
