@@ -16,8 +16,13 @@ class UserBet < ApplicationRecord
   delegate :bet, to: :bet_option
   validates :amount, :numericality => { :greater_than_or_equal_to => 0}
   before_create :update_balance
+  before_destroy :devolver_plata
   def update_balance
     user.balance = user.balance - amount
+    user.save
+  end
+  def devolver_plata
+    user.balance = user.balance + amount
     user.save
   end
 end
