@@ -32,11 +32,11 @@ class FriendsController < ApplicationController
 
   # DELETE /comments/1
   def destroy
-  	#this_friend = @friendship.friend
+  	this_friend = @friendship.friend
 
     @friendship.destroy
 
-    redirect_to home_path
+    redirect_to user_path(this_friend)
   end
 
   private

@@ -20,7 +20,7 @@ module FriendsHelper
     !usr_to_friend(user, friend) && usr_to_friend(friend, user)
   end
 
-  def we_both_are_friends(user, friend)
+  def are_we_both_friends?(user, friend)
     usr_to_friend(user, friend) && usr_to_friend(friend, user)
   end
 
