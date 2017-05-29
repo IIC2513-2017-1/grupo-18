@@ -1,5 +1,5 @@
 class FriendsController < ApplicationController
-
+  before_action :set_friendship, only: [:show, :edit, :update, :destroy]
   def show
   	redirect_to user_path(@friendship.friend)
   end
@@ -32,11 +32,11 @@ class FriendsController < ApplicationController
 
   # DELETE /comments/1
   def destroy
-  	this_friend = @friendship.friend
+  	#this_friend = @friendship.friend
 
     @friendship.destroy
 
-    redirect_to user_path(this_friend)
+    redirect_to home_path
   end
 
   private

@@ -17,7 +17,7 @@
       %a{href: bet_path(bet)}
         -if bet.visible
           .card
-            %img{:alt => "Avatar", :src => bet_medium(bet), :style => "width:100%"}/
+            %img{:alt => "Avatar", :src => bet_medium(bet)}/
             .container
               %h4
                 %b
@@ -32,7 +32,7 @@
                 %b
                   =bet.name
               %p
-                =bet.description
+                =bet.short_description
 
     =#.card
     =#  %img{:alt => "Avatar", :src => "http://cdn.images.s3.amazonaws.com/pokergratis.es/images/images/2010/10/fichas_apuestas.jpg", :style => "width:100%"}/

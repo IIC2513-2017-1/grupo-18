@@ -22,13 +22,16 @@
     - if friends?
       %strong You are friends!
       %br
-      = form_for(:friendship, method: :delete, url: friends_path) do |f|
-        .field
-          = f.text_field :user_id, :value => current_user.id, style: "display: none;"
-        .field
-          = f.text_field :friend_id, :value => @user.id, style: "display: none;"
-        .actions
-          = f.submit "Destroy friendship"
+        =link_to "Eliminar amigo", friend_path(friends?) , class: "button red tiny", method: :delete
+
+
+      =# form_for(:friendship, method: :delete, url: friends_path) do |f|
+      =#  .field
+      =#    = f.text_field :user_id, :value => current_user.id, style: "display: none;"
+      =#  .field
+      =#    = f.text_field :friend_id, :value => @user.id, style: "display: none;"
+      =#  .actions
+      =#    = f.submit "Destroy friendship"
 
     - else
       %strong You are not friends :(
@@ -39,7 +42,7 @@
         .field
           = f.text_field :friend_id, :value => @user.id, style: "display: none;"
         .actions
-          = f.submit "Become friends"
+          = f.submit "Become friends", class: 'button green tiny'
 
 
 = link_to 'Edit', edit_user_path(@user)

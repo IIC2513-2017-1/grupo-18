@@ -35,7 +35,7 @@ felix = User.create!(
 
   felipe = User.create!(
   	username: "felipe",
-  	email: "farojosaaaaa@uc.cl",
+  	email: "farojos@uc.cl",
   	user_type: 1,
   	balance: 9001,
   	name: "Felipe Rojos",
