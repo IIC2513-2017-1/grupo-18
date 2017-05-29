@@ -1,5 +1,5 @@
 class FriendsController < ApplicationController
-
+  before_action :set_friendship, only: [:show, :edit, :update, :destroy]
   def show
   	redirect_to user_path(@friendship.friend)
   end

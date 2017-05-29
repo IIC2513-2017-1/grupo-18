@@ -2,37 +2,55 @@
 %p
   %strong Username:
   = @user.username
+- if private_view_access?
+  %p
+    %strong Email:
+    = @user.email
 %p
-  %strong Email:
-  = @user.email
+  %strong Avatar:
+  %br
+  = image_tag this_user_thumb
 %p
   %strong Type:
   = user_type_string
+- if private_view_access?
+  %p
+    %strong Balance:
+    = @user.balance
 %p
-  %strong Balance:
-  = @user.balance
-%p
-  - if friends?
-    %strong You are friends!
-    %br
-    = form_for(:friendship, method: :delete, url: friends_path) do |f|
-      .field
-        = f.text_field :user_id, :value => current_user.id, style: "display: none;"
-      .field
-        = f.text_field :friend_id, :value => @user.id, style: "display: none;"
-      .actions
-        = f.submit "Destroy friendship"
+  - if different_user?
+    - if are_we_both_friends?(current_user, @user)
+      %strong You are friends 😃
+      %br
+      %br
+        = link_to "Delete friendship", friend_path(friends?) , class: "button red tiny", method: :delete
 
-  - else
-    %strong You are not friends :(
-    %br
-    = form_for(:friendship, url: friends_path) do |f|
-      .field
-        = f.text_field :user_id, :value => current_user.id, style: "display: none;"
-      .field
-        = f.text_field :friend_id, :value => @user.id, style: "display: none;"
-      .actions
-        = f.submit "Become friends"
+    - elsif only_I_am_friend?(current_user, @user)
+      %strong They haven't accepted your friendship yet 😟
+      %br
+      %br
+        = link_to "Remove friendship request", friend_path(friends?) , class: "button red tiny", method: :delete
+
+    - elsif only_he_is_friend?(current_user, @user)
+      %strong They have added you as friend 😃
+      %br
+      = form_for(:friendship, url: friends_path) do |f|
+        .field
+          = f.text_field :user_id, :value => current_user.id, style: "display: none;"
+        .field
+          = f.text_field :friend_id, :value => @user.id, style: "display: none;"
+        .actions
+          = f.submit "Accept friendship request!", class: 'button green tiny'
+    - else
+      %strong You are not friends 😟
+      %br
+      = form_for(:friendship, url: friends_path) do |f|
+        .field
+          = f.text_field :user_id, :value => current_user.id, style: "display: none;"
+        .field
+          = f.text_field :friend_id, :value => @user.id, style: "display: none;"
+        .actions
+          = f.submit "Become friends", class: 'button green tiny'
 
 
 = link_to 'Edit', edit_user_path(@user)

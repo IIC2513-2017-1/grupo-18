@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+  xmlns:x="urn:schemas-microsoft-com:office:excel"
+  xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Worksheet ss:Name="apuestas">
+    <Table>
+      <Row>
+        <Cell><Data ss:Type="String">Id</Data></Cell>
+        <Cell><Data ss:Type="String">Nombre de la apuesta</Data></Cell>
+        <Cell><Data ss:Type="String">Autor o entidad relacionada a la apuesta</Data></Cell>
+        <Cell><Data ss:Type="String">Fecha de inicio</Data></Cell>
+        <Cell><Data ss:Type="String">Fecha de termino</Data></Cell>
+        <Cell><Data ss:Type="String">Suma total apostada por los apostantes</Data></Cell>
+        <Cell><Data ss:Type="String">Opcion/nes ganadora/s de la apuesta</Data></Cell>
+      </Row>
+    <% @bets.each do |bet| %>
+      <Row>
+        <Cell><Data ss:Type="Number"><%= bet.id %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= bet.name %></Data></Cell>
+        <%- if bet.user.present? %>
+          <Cell><Data ss:Type="Number"><%= bet.user.id %></Data></Cell>
+          <%- else %>
+          <Cell><Data ss:Type="String">Usuario no registrado</Data></Cell>
+        <% end %>
+        <Cell><Data ss:Type="String"><%= bet.created_at.to_s %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= bet.execution_date %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= bet.get_total %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= bet.winners %></Data></Cell>
+      </Row>
+    <% end %>
+    </Table>
+  </Worksheet>
+  <Worksheet ss:Name="Opciones de apuesta">
+    <Table>
+      <Row>
+        <Cell><Data ss:Type="String">Apuesta_id</Data></Cell>
+        <Cell><Data ss:Type="String">Opcion_id</Data></Cell>
+        <Cell><Data ss:Type="String">Descripcion</Data></Cell>
+        <Cell><Data ss:Type="String">Porcentaje</Data></Cell>
+      </Row>
+    <% @bets.each do |bet| %>
+      <% bet.bet_options.each do |option| %>
+        <Row>
+          <Cell><Data ss:Type="Number"><%= bet.id %></Data></Cell>
+          <Cell><Data ss:Type="Number"><%= option.id %></Data></Cell>
+          <Cell><Data ss:Type="String"><%= option.description %></Data></Cell>
+          <Cell><Data ss:Type="Number"><%= option.percentage %></Data></Cell>
+        </Row>
+      <% end %>
+    <% end %>
+    </Table>
+  </Worksheet>
+</Workbook>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170515013511) do
+ActiveRecord::Schema.define(version: 20170528204124) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20170515013511) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.boolean  "win"
+    t.integer  "user_bet_id"
     t.index ["bet_id"], name: "index_bet_options_on_bet_id", using: :btree
   end
 
@@ -32,6 +33,8 @@ ActiveRecord::Schema.define(version: 20170515013511) do
     t.datetime "updated_at",                    null: false
     t.integer  "user_id"
     t.boolean  "visible",        default: true
+    t.string   "name"
+    t.string   "avatar"
     t.index ["user_id"], name: "index_bets_on_user_id", using: :btree
   end
 
@@ -43,6 +46,21 @@ ActiveRecord::Schema.define(version: 20170515013511) do
     t.integer  "user_id"
     t.index ["bet_id"], name: "index_comments_on_bet_id", using: :btree
     t.index ["user_id"], name: "index_comments_on_user_id", using: :btree
+  end
+
+  create_table "delayed_jobs", force: :cascade do |t|
+    t.integer  "priority",   default: 0, null: false
+    t.integer  "attempts",   default: 0, null: false
+    t.text     "handler",                null: false
+    t.text     "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string   "locked_by"
+    t.string   "queue"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
   end
 
   create_table "friends", force: :cascade do |t|
@@ -77,12 +95,16 @@ ActiveRecord::Schema.define(version: 20170515013511) do
     t.string   "email"
     t.string   "confirmation_token"
     t.string   "confirmed_at"
-    t.integer  "user_type"
-    t.datetime "created_at",                                  null: false
-    t.datetime "updated_at",                                  null: false
+    t.integer  "user_type",                     default: 0
+    t.datetime "created_at",                                    null: false
+    t.datetime "updated_at",                                    null: false
     t.float    "balance",                       default: 0.0
     t.string   "name"
     t.string   "password_digest"
+    t.string   "image"
+    t.string   "activation_digest"
+    t.boolean  "activated",                     default: false
+    t.datetime "activated_at"
   end
 
   add_foreign_key "bet_options", "bets"
