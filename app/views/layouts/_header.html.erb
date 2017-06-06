@@ -1,0 +1,17 @@
+<ul id="header">
+  <% if logged_in? %>
+    <li id="log_status">
+      <strong> <%= user_type_string %> </strong>
+      <span></span>
+      <i> <%= user_name %> </i>
+    </li>
+    <li><%= link_to "Home", root_path, class: cp(root_path) %></li>
+    <li><%= link_to "Users", users_path, class: cp(users_path) %></li>
+    <li><%= link_to "Payments", payments_path, class: cp(payments_path) %></li>
+    <li><%= link_to "Bets", bets_path, class: cp(bets_path) %></li>
+    <li><%= link_to "New bet", new_bet_path, class: cp(new_bet_path) %></li>
+    <li><%= link_to "Log out (GOTTA FIX THE ROUTES)", logout_path, method: :delete %></li>
+  <% else %>
+    <li><%= link_to "Log in", login_path %></li>
+  <% end %>
+</ul>

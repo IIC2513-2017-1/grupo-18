@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%= yield :head %>
+    <link href='https://fonts.googleapis.com/css?family=Merienda' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Clicker Script' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Vollkorn' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Josefin Slab' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Lora' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Poly' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet'>
+    <title>The Bet~ter App!</title>
+    <meta author="Grupo 18" />
+    <%= stylesheet_link_tag 'application', media: 'all' %>
+  </head>
+  <body>
+    <div id="container">
+      <div id="upper">
+        <div id="banner">
+          <%= render 'layouts/banner' %>
+          <%= render 'layouts/quote' %>
+        </div>
+        <%= render 'layouts/header' %>
+      </div>
+
+      <div id="content">
+        <%= yield :content %>
+      </div>
+
+      <%= render 'layouts/footer' %>
+
+    
+    </div>
+  </body>
+</html>

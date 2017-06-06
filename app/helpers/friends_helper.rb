@@ -1,4 +1,5 @@
 module FriendsHelper
+
   def different_user?
   	current_user.id != @user.id 
   end

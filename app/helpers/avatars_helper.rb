@@ -6,9 +6,13 @@ include SessionsHelper
   end
 
   def this_user_thumb
-  	@user.image.thumb.url || default_thumb
-    #abort
+    @user.image.thumb.url || default_thumb
   end
+  
+  def this_user_medium
+    @user.image.medium.url || default_thumb
+  end
+
   def bet_medium bet
     bet.avatar.medium.url || default_bet
   end

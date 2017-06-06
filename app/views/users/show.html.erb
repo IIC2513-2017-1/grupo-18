@@ -1,0 +1,95 @@
+<html>
+  <head>
+    <!-- Nothing here yet -->
+  </head>
+  <body>
+    <% content_for :content do %>
+      <div class="UI_column">
+        <h1><%= @user.name %></h1>
+        <br>
+        <%= image_tag this_user_medium %>
+        <br>
+        <br>
+        <div id="profile_box">
+          <ul id="user_qualities">
+            <li>
+              <strong>Type: </strong> <%= see_this_userS_type %>
+            </li>
+            <li>
+              <strong>Username: </strong> <%= @user.name %>
+            </li>
+            <li>
+              <strong>Email: </strong> <%= @user.email %>
+            </li>
+            <li>
+              <strong>Balance: </strong> <%= @user.balance %>
+            </li>
+          </ul>
+          <ul class="UI_link_column">
+            <li><%= link_to 'Edit', edit_user_path(@user) %></li>
+            <li><%= link_to 'Back to Users', users_path %></li>
+          </ul>
+        </div>
+      </div>
+      <div class="UI_column">
+        <h1>List of friends</h1>
+        <ul>
+          <% for friend in @user.friends %>
+            <li><%= link_to friend.friend.name, user_path(friend.friend) %> </li>
+          <% end %>
+        </ul>
+        <br>
+        <h1>Public bets</h1>
+        <ul>
+          <% for bet in @user.bets %>
+            <li><%= link_to bet.name, bet_path(bet) %> </li>
+          <% end %>
+        </ul>
+      </div>
+      <% if different_user? %>
+        <div class="UI_column">
+          <h1>Friendship status</h1>
+          <i>Gotta fix the routes, because the button doesn't work</i>
+          <br>
+          <% if are_we_both_friends?(current_user, @user) %>
+            <strong>You are friends 😃</strong>
+            <br>
+            <br>
+            <%= link_to "Delete friendship", friend_path(friends?), class: "button red tiny", method: :delete %>        
+          <% elsif only_I_am_friend?(current_user, @user) %>
+            <strong>They haven't accepted your friendship yet 😟</strong>
+            <br>
+            <br>
+            <%= link_to "Remove friendship request", friend_path(friends?) , class: "button red tiny", method: :delete %>        
+          <% elsif only_he_is_friend?(current_user, @user) %>
+            <strong>They have added you as friend 😃</strong>
+            <br>
+            <br>
+            <%= form_for(:friendship, url: friends_path) do |f| %>
+              <%= f.text_field :user_id, :value => current_user.id, style: "display: none;"%>
+              <%= f.text_field :friend_id, :value => @user.id, style: "display: none;"%>
+              <%= f.submit "Accept friendship request!", class: 'button green tiny'%>
+            <% end %>  
+          <% else %>
+            <strong>You are not friends 😟</strong>
+            <br>
+            <br>
+            <%= form_for(:friendship, url: friends_path) do |f| %>
+              <%= f.text_field :user_id, :value => current_user.id, style: "display: none;"%>
+              <%= f.text_field :friend_id, :value => @user.id, style: "display: none;"%>
+              <%= f.submit "Become friends", class: 'button green tiny'%>
+            <% end %>          
+          <% end %>
+          <br>
+          <br>
+          <h1>Private bets</h1>
+          <% if are_we_both_friends?(current_user, @user) %>
+            <p>HERE SHOULD GO HIS PRIVATE BETS</p>
+          <% else %>
+            <p>You don't have access to their private bets, because you are not friends</p>
+          <% end %>
+        </div>
+      <% end %>
+    <% end %>
+  </body>
+</html>
