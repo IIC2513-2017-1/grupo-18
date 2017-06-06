@@ -8,7 +8,7 @@
         <h1><%= @bet.name %></h1>
         <%= image_tag bet_medium @bet %>
         <br>
-        <p class="text_with_linebreaks"><%= @bet.description %></p>
+        <i class="text_with_linebreaks"><%= @bet.description %></i>
         <h2>
           <% tleft = @bet.execution_date - Time.zone.now %>
           <%= tleft > 0 && "Bet is due in #{tleft}" || "Bet is over!" %>

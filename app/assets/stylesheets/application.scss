@@ -232,7 +232,8 @@ ul {
 #content {	
 	display: flex;
 	justify-content: center;
-	align-items: flex-start;
+	/*padding: 0 1em;*/
+	/*align-items: flex-start;*/
 
 	font-family: $c-font-text;
 	color: #AAA;
@@ -256,7 +257,7 @@ ul {
 
 .UI_column {
 	padding: 1em 1em;
-	/*margin: auto;*/
+	flex-basis: 30%;
 
 	overflow: auto;
 }
