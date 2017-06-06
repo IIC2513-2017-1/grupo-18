@@ -1,0 +1,52 @@
+<html>
+  <head>
+    <!-- Nothing here yet -->
+  </head>
+  <body>
+    <% content_for :content do %>
+      <div class="UI_column">
+        <%= form_for(:user) do |f| %>
+          <% if user.errors.any? %>
+            <div id="error_explanation">
+              <h2> <%= pluralize(user.errors.count, "error") %>
+          prohibited this user from being saved:</h2>
+              <% user.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </div>
+          <% end %>
+
+          <h1>
+            <% if user.username? %>
+              <%= "Editing profile of #{user.name}" %>
+            <% else %>
+              <%= "Create new account" %>
+            <% end %>
+          </h1>
+
+          <ul class="UI_form_column">
+
+            <li><%= f.label :username  %> <%= f.text_field :username %></li>            
+            <br>
+            <li><%= f.label :email  %> <%= f.text_field :email %>
+            </li>
+            <br>
+            <li><%= f.label :password  %> <%= f.text_field :password %>
+            </li>
+            <br>
+            <li><%= f.label :image  %> <%= f.file_field :image %>
+            </li>
+            <br>
+            <li>
+              <% if user.image? %>
+                <%= f.label :remove_image %> <%= f.check_box :remove_image %>
+                <%= image_tag user.image.thumb.url %>
+              <% end %>
+            </li>
+            <%= f.submit "Accept", class: "UI_button" %>
+          </ul>          
+        <% end %>
+      </div>
+    <% end %>
+  </body>
+</html>

@@ -5,10 +5,19 @@ include SessionsHelper
   	current_user.image.thumb.url || default_thumb
   end
 
+  def user_medium user
+    user.image.medium.url || default_thumb
+  end
+
+  def user_thumb user
+    user.image.thumb.url || default_thumb
+  end
+
+
   def this_user_thumb
     @user.image.thumb.url || default_thumb
   end
-  
+
   def this_user_medium
     @user.image.medium.url || default_thumb
   end

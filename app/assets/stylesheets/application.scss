@@ -346,3 +346,22 @@ ul {
 
 .up_to_a_third {
 }
+
+
+/*FORMS in columns*/
+.UI_form_column {
+
+}
+
+.UI_form_column li {
+	display: flex;
+}
+
+/*.UI_form_column li label {
+	border: 1px dotted $color-primary-0;
+	flex:1;
+}*/
+
+.UI_form_column * {
+	flex:1;
+}
