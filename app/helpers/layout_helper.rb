@@ -3,6 +3,10 @@ module LayoutHelper
 	def cp(path)
 		"current" if current_page?(path)
 	end
+
+	def cc(c)
+		"current" if controller_name == c
+	end
 	
 	def random_quote
 		[
