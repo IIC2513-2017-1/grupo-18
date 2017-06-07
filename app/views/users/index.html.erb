@@ -1,0 +1,27 @@
+<html>
+  <head>
+    <!-- Nothing here yet -->
+  </head>
+  <body>
+    <% content_for :content do %>
+      <div class="UI_column">
+        <h1><%= "Your friends" %></h1>
+        <ul>
+          <% for friend in current_user.friends %>
+            <li><%= link_to friend.friend.name, user_path(friend.friend) %> </li>
+          <% end %>
+        </ul>
+      </div>
+      <div class="UI_column">
+        <h1> Other users </h1>
+        <ul>
+          <% friends_ids = current_user.friends.select(:friend_id) %>
+          <% non_friends = User.where.not(id: friends_ids) - [current_user] %>
+          <% for other in non_friends %>
+            <li><%= link_to other.name, user_path(other) %> </li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+  </body>
+</html>
