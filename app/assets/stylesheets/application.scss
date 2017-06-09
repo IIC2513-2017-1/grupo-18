@@ -232,7 +232,7 @@ ul {
 #content {	
 	display: flex;
 	justify-content: center;
-	flex-wrap: wrap;
+	flex-wrap: nowrap;
 	/*padding: 0 1em;*/
 	/*align-items: flex-start;*/
 
@@ -240,6 +240,16 @@ ul {
 	color: #AAA;
 
 	background-color: #111;
+
+	counter-reset: UI_col_total;
+}
+
+.UI_column::before {
+	counter-increment: UI_col_total;
+}
+
+.UI_column::after {
+	flex-basis: 100% / counter(UI_col_total);
 }
 
 #content h1,
@@ -258,7 +268,6 @@ ul {
 
 .UI_column {
 	padding: 1em 1em;
-	flex-basis: 30%;
 
 	overflow: auto;
 }
@@ -268,6 +277,8 @@ ul {
 	padding: 0.1em 1em;
 	margin: 0.3em 0;
 	border-radius: 0.3em;
+
+	font-size: 0.9em;
 
 	background-color: $color-complement-2;
 	border-color: $color-complement-2;
@@ -378,4 +389,29 @@ input[type="text"]:focus {
 
 .UI_form_column * {
 	flex:1;
+}
+
+
+
+/* MULTI COLUMN FORMS */
+.content_like {	
+	display: flex;
+	justify-content: center;
+	flex-wrap: nowrap;
+	border: none;
+	/*padding: 0 1em;*/
+	/*align-items: flex-start;*/
+
+	font-family: $c-font-text;
+	color: #AAA;
+
+	counter-reset: UI_col_total;
+}
+
+.content_like .UI_column {
+	border: none;
+}
+
+.content_like .UI_column:not(:last-child) {
+	border-right: 1px dotted $color-primary-0;
 }

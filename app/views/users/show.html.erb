@@ -49,18 +49,25 @@
       <% if different_user? %>
         <div class="UI_column">
           <h1>Friendship status</h1>
-          <i>Gotta fix the routes, because the button doesn't work</i>
           <br>
           <% if are_we_both_friends?(current_user, @user) %>
             <strong>You are friends 😃</strong>
             <br>
             <br>
-            <%= link_to "Delete friendship", friend_path(friends?), class: "button red tiny", method: :delete %>        
+            <%= form_for our_friendship, method: :delete do |f| %>
+              <%= f.text_field :user_id, :value => current_user.id, style: "display: none;"%>
+              <%= f.text_field :friend_id, :value => @user.id, style: "display: none;"%>
+              <%= f.submit "Delete friendship", class: 'UI_button'%>
+            <% end %>        
           <% elsif only_I_am_friend?(current_user, @user) %>
             <strong>They haven't accepted your friendship yet 😟</strong>
             <br>
             <br>
-            <%= link_to "Remove friendship request", friend_path(friends?) , class: "button red tiny", method: :delete %>        
+            <%= form_for our_friendship, method: :delete do |f| %>
+              <%= f.text_field :user_id, :value => current_user.id, style: "display: none;"%>
+              <%= f.text_field :friend_id, :value => @user.id, style: "display: none;"%>
+              <%= f.submit "Remove friendship request", class: 'UI_button'%>
+            <% end %>        
           <% elsif only_he_is_friend?(current_user, @user) %>
             <strong>They have added you as friend 😃</strong>
             <br>
@@ -68,7 +75,7 @@
             <%= form_for(:friendship, url: friends_path) do |f| %>
               <%= f.text_field :user_id, :value => current_user.id, style: "display: none;"%>
               <%= f.text_field :friend_id, :value => @user.id, style: "display: none;"%>
-              <%= f.submit "Accept friendship request!", class: 'button green tiny'%>
+              <%= f.submit "Accept friendship request!", class: 'UI_button'%>
             <% end %>  
           <% else %>
             <strong>You are not friends 😟</strong>
@@ -77,7 +84,7 @@
             <%= form_for(:friendship, url: friends_path) do |f| %>
               <%= f.text_field :user_id, :value => current_user.id, style: "display: none;"%>
               <%= f.text_field :friend_id, :value => @user.id, style: "display: none;"%>
-              <%= f.submit "Become friends", class: 'button green tiny'%>
+              <%= f.submit "Become friends", class: 'UI_button'%>
             <% end %>          
           <% end %>
           <br>
