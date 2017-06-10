@@ -12,6 +12,7 @@ class ApplicationController < ActionController::Base
 
 	  def check_logged_in
     	unless logged_in?
+        puts("Not logged in!")
 	  		flash[:error] = "You must be logged in to access this page"
       		redirect_to login_url
 	  	end
