@@ -283,7 +283,6 @@ ul {
 	justify-content: center;
 	flex-wrap: nowrap;
 	/*padding: 0 1em;*/
-	/*align-items: flex-start;*/
 
 	font-family: $c-font-text;
 	color: #AAA;
@@ -436,7 +435,13 @@ input[type="text"]:focus {
 }
 
 .UI_form_column li {
+	justify-content: space-between;
 	display: flex;
+	flex: 1;
+}
+
+.UI_form_column li * {
+	margin: 0.5em 0.8em;
 }
 
 /*.UI_form_column li label {
@@ -445,7 +450,7 @@ input[type="text"]:focus {
 }*/
 
 .UI_form_column * {
-	flex:1;
+	/*flex:1;*/
 }
 
 

@@ -43,7 +43,9 @@
                 <%= image_tag user.image.thumb.url %>
               <% end %>
             </li>
-            <%= f.submit "Accept", class: "UI_button" %>
+            
+            <li><%= f.submit "Accept", class: "UI_button" %> <%= link_to "Have an account?", login_path %></li>
+
           </ul>          
         <% end %>
       </div>
