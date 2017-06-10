@@ -1,15 +1,16 @@
-- provide(:title, "Log in")
 - content_for :content do
   .UI_column
     %h1 Log in
-    .row
-      .jojoj
-        = form_for(:session, url: login_path) do |f|
+    = form_for(:session, url: login_path) do |f|
+      %ul.UI_form_column
+        %li
           = f.label :email
-          = f.email_field :email, class: 'form-control'
+          = f.text_field :email
+        %br/
+        %li
           = f.label :password
-          = f.password_field :password, class: 'form-control'
-          %br/
-          .row{style:"margin-top: 5px;"}
-            = f.submit "Log in" , class: "button blue", style: "padding: 5px;"
-            = link_to "Sign up", new_user_path, class: "button gray", style: "padding: 5px;"
+          = f.password_field :password
+        %br/
+        %li
+          = f.submit "Accept", class: "UI_button"
+          = link_to "Or sign up", new_user_path
