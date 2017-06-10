@@ -3,6 +3,7 @@ class SessionsController < ApplicationController
 
 
   def new
+    redirect_to home_path, notice: 'Ud ya esta logueado :D.' if current_user.present?
   end
 
   def create
