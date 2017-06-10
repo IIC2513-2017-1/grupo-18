@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 include UsersHelper
+include FriendsHelper
+include BetsHelper
 # include SessionsHelper
 
   before_action :set_user, only: [:show, :edit, :update, :destroy]
@@ -17,6 +19,11 @@ include UsersHelper
   # GET /users/1
   # GET /users/1.json
   def show
+    if different_user? && only_he_is_friend?(current_user, @user) || are_we_both_friends?(current_user, @user)
+      @private_bets = Bet.where(user: @user, visible: false)
+    else
+      @private_bets = []
+    end
   end
 
   # GET /users/new
