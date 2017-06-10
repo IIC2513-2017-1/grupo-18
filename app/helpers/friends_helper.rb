@@ -4,6 +4,10 @@ module FriendsHelper
   	current_user.id != @user.id 
   end
 
+  def who_added_me
+    User.where(id: Friend.where(friend_id:current_user.id).pluck(:user_id))
+  end
+
   def friends?
   	Friend.find_by(user_id: current_user.id, friend_id: @user.id)
   	#Friend.find_by(user_id: current_user.id) && Friend.find_by(user_id: current_user.id, friend_id: @user.id).friend_id==@user.id
