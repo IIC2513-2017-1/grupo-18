@@ -1,17 +1,20 @@
-= form_for(payment) do |f|
-  - if payment.errors.any?
-    #error_explanation
-      %h2
-        = pluralize(payment.errors.count, "error")
-        prohibited this payment from being saved:
-      %ul
-        - payment.errors.full_messages.each do |message|
-          %li= message
-  .field
-    = f.label :amount
-    = f.text_field :amount
-  .field
-    = f.label :user_id
-    = f.number_field :user_id
-  .actions
-    = f.submit
+- content_for :content do
+  .div.UI_column
+    = form_for :payment do |f|
+      %ul.UI_form_column
+        - if payment.errors.any?
+          #error_explanation
+            %h2
+              = pluralize(payment.errors.count, "error")
+              prohibited this payment from being saved:
+            %ul
+              - payment.errors.full_messages.each do |message|
+                %li= message
+        %li
+          = f.label :amount
+          = f.text_field :amount
+        %li
+          = f.label :user_id
+          = f.number_field :user_id
+        %li
+          = f.submit "Accept payment", class: "UI_button"
