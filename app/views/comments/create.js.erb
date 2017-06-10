@@ -1,0 +1,6 @@
+<% if @comment.errors.present? %>
+console.log("hola");
+<% else %>
+$('#comment_form')[0].reset();
+$('#comments_container').append('<%= j render(@comment) %>');
+<% end %>

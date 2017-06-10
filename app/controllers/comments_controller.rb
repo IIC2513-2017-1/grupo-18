@@ -12,11 +12,14 @@ class CommentsController < ApplicationController
 
   def create
     @comment = Comment.new(comment_params)
-
-    if @comment.save
-      redirect_to bet_path(@comment.bet)
-    else
-      redirect_to :back
+    respond_to do |format|
+      if @comment.save
+        format.html { redirect_to bet_path(@comment.bet)}
+        format.js
+      else
+        format.html { redirect_to :back }
+        format.js
+      end
     end
   end
 

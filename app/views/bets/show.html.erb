@@ -1,56 +1,45 @@
-<html>
-  <head>
-    <!-- Nothing here yet -->
-  </head>
-  <body>
-    <% content_for :content do %>
-      <div class="UI_column">
-        <h1><%= @bet.name %></h1>
-        <%= image_tag bet_medium @bet %>
-        <br>
-        <div class="desc_textbox">
-          <i class="text_with_linebreaks"><%= @bet.description %></i>
-        </div>
-        <br>
-        <br>
+<% content_for :content do %>
+  <div class="UI_column">
+    <h1><%= @bet.name %></h1>
+    <%= image_tag bet_medium @bet %>
+    <br>
+    <div class="desc_textbox">
+      <i class="text_with_linebreaks"><%= @bet.description %></i>
+    </div>
+    <br>
+    <br>
 
-        <h2>
-          <% tleft = @bet.execution_date - Time.zone.now %>
-          <%= tleft > 0 && "Bet is due in #{tleft}" || "Bet is over!" %>
-        </h2>
+    <h2>
+      <% tleft = @bet.execution_date - Time.zone.now %>
+      <%= tleft > 0 && "Bet is due in #{tleft}" || "Bet is over!" %>
+    </h2>
 
-        <% if @bet.user == current_user %>
-          <strong>This bet was placed by you. Go [ADD LINK TO EDIT] to edit it.</strong>
-        <% else %>
-          <strong>This bet was placed by <%= @bet.user.name %></strong>
-        <% end %>
-      </div>
-
-      <div class="UI_column">
-        <h1>Options</h1>
-        <%= render @bet.bet_options %>
-      </div>
-
-      <div class="UI_column">
-        <h1>Users comments</h1>
-        <br>
-        <% @bet.comments.each do |comment| %>
-          <div>
-            <h4><%="#{comment.user.name}:"%></h4>
-            <p class="text_with_linebreaks"><%=comment.content%></p>
-            <br>
-          </div>
-        <% end %>
-        <%= form_for(:comment, url: comments_path) do |f| %>
-          <strong> Comment: </strong> 
-          <br>
-          <%= f.text_area :content, required: true %>
-          <%= f.text_field :bet_id, :value => @bet.id, style: "display: none;" %>
-          <%= f.text_field :user_id, :value => current_user.id, style: "display: none;" %>
-          <br/>
-          <%= f.submit "Post", class: "UI_button" %>
-        <% end %>
-      </div> 
+    <% if @bet.user == current_user %>
+      <strong>This bet was placed by you. Go [ADD LINK TO EDIT] to edit it.</strong>
+    <% else %>
+      <strong>This bet was placed by <%= @bet.user.name %></strong>
     <% end %>
-  </body>
-</html>
+  </div>
+
+  <div class="UI_column">
+    <h1>Options</h1>
+    <%= render @bet.bet_options %>
+  </div>
+
+  <div class="UI_column">
+    <h1>Users comments</h1>
+    <br>
+    <div id="comments_container">
+      <%= render@bet.comments %>
+    </div>
+    <%= form_for(:comment, url: comments_path, remote: true, html:{id: 'comment_form'}) do |f| %>
+      <strong> Comment: </strong>
+      <br>
+      <%= f.text_area :content, required: true %>
+      <%= f.text_field :bet_id, :value => @bet.id, style: "display: none;" %>
+      <%= f.text_field :user_id, :value => current_user.id, style: "display: none;" %>
+      <br/>
+      <%= f.submit "Post", class: "UI_button" %>
+    <% end %>
+  </div>
+<% end %>
