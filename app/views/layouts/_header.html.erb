@@ -1,7 +1,10 @@
 <ul id="header">
   <% if logged_in? %>
     <li id="log_status">
-      <strong> <%= user_type_string %> </strong>
+      <strong class="tooltip_bearer"> 
+        <%= user_type_string %> 
+        <span class="tooltip">Tooltip text</span>
+      </strong>
       <span></span>
       <i> <%= user_name %> </i>
     </li>

@@ -244,30 +244,38 @@ ul {
 	/*transition-delay: 0s, 0s, 0.3s;*/
 }
 
-/*Usar herencia para DRYificar esto*/
-/*.tooltip {
-	visibility: hidden;
-    width: 120px;
-    background-color: black;
-    color: #fff;
-    text-align: center;
-    border-radius: 6px;
-    padding: 5px 0;
-    position: absolute;
-    z-index: 1;
-    bottom: 100%;
-    left: 50%;
-    margin-left: -60px;
-    
-    /* Fade in tooltip - takes 1 second to go from 0% to 100% opac: */
-/*    opacity: 0;
-    transition: opacity 1s;
+.tooltip_bearer {
+	position: relative;
+	display: inline-block;
 }
-*/
-/*.usernameDisplay:hover .tooltip {
+
+.tooltip_bearer .tooltip {
+	visibility: hidden;
+	width: 100em;
+	background-color: #111;
+	color: #DDD;
+	text-align: center;
+	/*border-radius: 6px;*/
+	padding: 1em;
+	position: absolute;
+	z-index: 1;
+	bottom: 100%;
+	left: 50%;
+	/*margin-left: -60px;*/
+
+	opacity: 0;
+	transition: opacity 1s;
+}
+
+.tooltip * {
+	display: block;
+}
+
+/*.tooltip_bearer:hover .tooltip {
 	visibility: visible;
 	opacity: 1;
 }*/
+
 
 /* Current page content's styling */
 #content {	
@@ -348,8 +356,12 @@ input[type="text"]:focus {
 
 #content a {
 	color: $color-primary-1;
+	text-decoration: none;
+	border-bottom: 1.5px dotted $color-primary-1;
 
-	/*font-weight: bold;*/
+	&:hover {
+		border-bottom: none;
+	}
 }
 
 /* Footer Styling */
@@ -459,4 +471,13 @@ input[type="text"]:focus {
 
 .content_like .UI_column:not(:last-child) {
 	border-right: 1px dotted $color-primary-0;
+}
+
+/* COMMENTS */
+.comment_container {
+	white-space: pre-wrap;
+}
+.comment_content_box {
+	/*resize: both;*/
+	/*overflow: auto;*/
 }
