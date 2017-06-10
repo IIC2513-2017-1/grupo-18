@@ -8,7 +8,12 @@
         <h1><%= @bet.name %></h1>
         <%= image_tag bet_medium @bet %>
         <br>
-        <i class="text_with_linebreaks"><%= @bet.description %></i>
+        <div class="desc_textbox">
+          <i class="text_with_linebreaks"><%= @bet.description %></i>
+        </div>
+        <br>
+        <br>
+
         <h2>
           <% tleft = @bet.execution_date - Time.zone.now %>
           <%= tleft > 0 && "Bet is due in #{tleft}" || "Bet is over!" %>
@@ -37,10 +42,10 @@
           </div>
         <% end %>
         <%= form_for(:comment, url: comments_path) do |f| %>
-          Comment: <%= f.text_field :content, required: true %>
+          <strong> Comment: </strong> <%= f.text_field :content, required: true %>
           <%= f.text_field :bet_id, :value => @bet.id, style: "display: none;" %>
           <%= f.text_field :user_id, :value => current_user.id, style: "display: none;" %>
-          <br>
+          <br/>
           <%= f.submit "Post", class: "UI_button" %>
         <% end %>
       </div> 

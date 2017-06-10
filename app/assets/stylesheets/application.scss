@@ -316,7 +316,7 @@ ul {
 /*4 < 3 < 0 < 2 < 1*/
 .UI_button {
 	padding: 0.1em 1em;
-	margin: 0.3em 0;
+	margin: 0.5em 0;
 	border-radius: 0.3em;
 
 	font-size: 0.9em;
@@ -405,9 +405,13 @@ input[type="text"]:focus {
 
 
 /*BETS*/
+.desc_textbox { 	
+	max-width: 90%;
+}
+
 .text_with_linebreaks {
-	white-space: pre;
-	word-wrap: break-word;
+	white-space: pre-wrap;
+	word-wrap: break-all;
 }
 
 .up_to_a_third {
