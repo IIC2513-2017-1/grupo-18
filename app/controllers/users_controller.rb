@@ -19,6 +19,8 @@ include BetsHelper
   # GET /users/1
   # GET /users/1.json
   def show
+    @friends = real_friends(@user)
+
     if different_user? && only_he_is_friend?(current_user, @user) || are_we_both_friends?(current_user, @user)
       @private_bets = Bet.where(user: @user, visible: false)
     else

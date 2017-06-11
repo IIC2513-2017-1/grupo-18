@@ -6,8 +6,6 @@ class BetsController < ApplicationController
   # GET /bets
   # GET /bets.json
   def index
-    @who_added_user = who_added_me
-
     @bets_friends = bets_owned_by_friends_of(current_user)
     @bets_public = bets_public_and_not_owned_by_friends_or_user(current_user)
     @bets = Bet.all unless current_user.user_type.zero?
