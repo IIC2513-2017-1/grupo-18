@@ -49,44 +49,46 @@
       <% if different_user? %>
         <div class="UI_column">
           <h1>Friendship status</h1>
-          <br>
-          <% if are_we_both_friends?(current_user, @user) %>
-            <strong>You are friends 😃</strong>
+          <div id="friendship_status">
             <br>
-            <br>
-            <%= form_for our_friendship, method: :delete do |f| %>
-              <%= f.text_field :user_id, :value => current_user.id, style: "display: none;"%>
-              <%= f.text_field :friend_id, :value => @user.id, style: "display: none;"%>
-              <%= f.submit "Delete friendship", class: 'UI_button'%>
-            <% end %>        
-          <% elsif only_I_am_friend?(current_user, @user) %>
-            <strong>They haven't accepted your friendship yet 😟</strong>
-            <br>
-            <br>
-            <%= form_for our_friendship, method: :delete do |f| %>
-              <%= f.text_field :user_id, :value => current_user.id, style: "display: none;"%>
-              <%= f.text_field :friend_id, :value => @user.id, style: "display: none;"%>
-              <%= f.submit "Remove friendship request", class: 'UI_button'%>
-            <% end %>        
-          <% elsif only_he_is_friend?(current_user, @user) %>
-            <strong>They have added you as friend 😃</strong>
-            <br>
-            <br>
-            <%= form_for(:friendship, url: friends_path) do |f| %>
-              <%= f.text_field :user_id, :value => current_user.id, style: "display: none;"%>
-              <%= f.text_field :friend_id, :value => @user.id, style: "display: none;"%>
-              <%= f.submit "Accept friendship request!", class: 'UI_button'%>
-            <% end %>  
-          <% else %>
-            <strong>You are not friends 😟</strong>
-            <br>
-            <br>
-            <%= form_for(:friendship, url: friends_path) do |f| %>
-              <%= f.text_field :user_id, :value => current_user.id, style: "display: none;"%>
-              <%= f.text_field :friend_id, :value => @user.id, style: "display: none;"%>
-              <%= f.submit "Become friends", class: 'UI_button'%>
-            <% end %>          
-          <% end %>
+            <% if are_we_both_friends?(current_user, @user) %>
+              <strong>You are friends 😃</strong>
+              <br>
+              <br>
+              <%= form_for our_friendship, method: :delete, remote: true do |f| %>
+                <%= f.text_field :user_id, :value => current_user.id, style: "display: none;"%>
+                <%= f.text_field :friend_id, :value => @user.id, style: "display: none;"%>
+                <%= f.submit "Delete friendship", class: 'UI_button'%>
+              <% end %>
+            <% elsif only_I_am_friend?(current_user, @user) %>
+              <strong>They haven't accepted your friendship yet 😟</strong>
+              <br>
+              <br>
+              <%= form_for our_friendship, method: :delete, remote: true do |f| %>
+                <%= f.text_field :user_id, :value => current_user.id, style: "display: none;"%>
+                <%= f.text_field :friend_id, :value => @user.id, style: "display: none;"%>
+                <%= f.submit "Remove friendship request", class: 'UI_button'%>
+              <% end %>
+            <% elsif only_he_is_friend?(current_user, @user) %>
+              <strong>They have added you as friend 😃</strong>
+              <br>
+              <br>
+              <%= form_for(:friendship, url: friends_path, remote: true) do |f| %>
+                <%= f.text_field :user_id, :value => current_user.id, style: "display: none;"%>
+                <%= f.text_field :friend_id, :value => @user.id, style: "display: none;"%>
+                <%= f.submit "Accept friendship request!", class: 'UI_button'%>
+              <% end %>
+            <% else %>
+              <strong>You are not friends 😟</strong>
+              <br>
+              <br>
+              <%= form_for(:friendship, url: friends_path, remote: true) do |f| %>
+                <%= f.text_field :user_id, :value => current_user.id, style: "display: none;"%>
+                <%= f.text_field :friend_id, :value => @user.id, style: "display: none;"%>
+                <%= f.submit "Become friends", class: 'UI_button'%>
+              <% end %>
+            <% end %>
+          </div>
           <br>
           <br>
           <h1>Private bets</h1>
@@ -95,6 +97,7 @@
           <% else %>
             <p>You don't have access to their private bets, because you are not friends</p>
           <% end %>
+
         </div>
       <% end %>
     <% end %>

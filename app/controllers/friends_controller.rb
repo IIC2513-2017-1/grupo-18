@@ -13,18 +13,22 @@ class FriendsController < ApplicationController
 
   def create
     @friendship = Friend.new(friendship_params)
-
-    if @friendship.save
-      redirect_to user_path(@friendship.friend)
-    else
-      redirect_to :back
+    @user = @friendship.friend
+    respond_to do |format|
+      if @friendship.save
+        format.html { redirect_to user_path(@friendship.friend) }
+        format.js
+      else
+        format.html { redirect_to :back }
+        format.js
+      end
     end
   end
 
   # PATCH/PUT /comments/1
   def update
     if @friendship.update(friendship_params)
-	  redirect_to user_path(@friendship.friend)
+      redirect_to user_path(@friendship.friend)
     else
       redirect_to :back
     end
@@ -33,10 +37,17 @@ class FriendsController < ApplicationController
   # DELETE /comments/1
   def destroy
   	this_friend = @friendship.friend
+    @user = @friendship.friend
+    respond_to do |format|
+      if @friendship.destroy
+        format.html { redirect_to user_path(this_friend) }
+        format.js
+      else
+        format.html { redirect_to :back }
+        format.js
+      end
+    end
 
-    @friendship.destroy
-
-    redirect_to user_path(this_friend)
   end
 
   private

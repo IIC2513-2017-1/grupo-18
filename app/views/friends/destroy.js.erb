@@ -1,0 +1,2 @@
+$("#friendship_status").empty();
+$('#friendship_status').append("<%= escape_javascript render(:partial => 'friends/form', :locals => { :user => @user }) %>");
