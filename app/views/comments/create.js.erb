@@ -1,5 +1,10 @@
 <% if @comment.errors.present? %>
 console.log("hola");
+$("#content").before('<div class="alert"> <span class="closebtn" id="closebtn">&times;</span>  <%= @comment.errors.full_messages.join(",") %> </div>');
+$('#closebtn').click(function(){
+   $('#closebtn').parent().remove();
+});
+
 <% else %>
 $('#comment_form')[0].reset();
 $('#comments_container').append('<%= j render(@comment) %>');

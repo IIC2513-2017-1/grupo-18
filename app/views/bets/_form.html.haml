@@ -1,99 +1,116 @@
-= form_for(bet) do |f|
-  - if bet.errors.any?
-    #error_explanation
-      %h2
-        = pluralize(bet.errors.count, "error")
-        prohibited this bet from being saved:
-      %ul
-        - bet.errors.full_messages.each do |message|
-          %li= message
-  .field
-    = f.label :execution_date
-    = f.datetime_select :execution_date
-  .field{style: "display:inline-block"}
-    = f.label :name , {style: "display:inline-block"}
-    = f.text_field :name , {style: "display:inline-block"}
-  .field{style: "display:inline-block"}
-    = f.label :description , {style: "display:inline-block"}
-    = f.text_field :description , {style: "display:inline-block"}
-  .field
-    = f.label :avatar
-    = f.file_field :avatar
-    - if f.object.avatar?
-      = image_tag f.object.avatar.medium.url
-      = f.label :remove_avatar
-      = f.check_box :remove_avatar
-  %h4 Opciones de apuesta
-  .row.additional_info
-    .meh
-      .doh{style: "display:inline-block"}
-        %h4
-          ="Descripción"
-        = text_field_tag "bet_options[{index}][description]",nil, class: 'form-control', placeholder: "Ej; Gana la cato"
-      .doh{style: "display:inline-block"}
-        %h4
-          ="Porcentaje"
-        = text_field_tag "bet_options[{index}][percentage]",nil, class: 'form-control',data:currency_field
-      .doh{style: "display:inline-block"}
-        %h4
-          ="Opción Ganadora"
-        %h4
-        = check_box "bet_options[{index}][win]",nil, class: 'form-control'
-      .doh{style: "display:inline-block"}
-        .field
-          .button.addAdditionalInfo.tiny{start_at: 0, target: ".additional_infos"} Agregar
-          .button.red.deleteAdditionalInfo.tiny{style:"display:none"} Eliminar
-  -begin
-    .additional_infos
-      - @bonos.each_with_index do |b,index|
+- content_for :content do
+  = form_for @bet, html: {class:"content_like"} do |f|
+    %fieldset.UI_column
+      %h1
+        - if @bet.name?
+          Editing
+        - else
+          Creating a
+      %h2 Bet parameters
+      %br/
+      %ul.UI_form_column
+        %li
+          = f.label :execution_date
+          = f.datetime_select :execution_date
+        %br/
+        %li
+          = f.label :name
+          = f.text_field :name
+        %br/
+        %li
+          = f.label :description
+          = f.text_field :description
+        %br/
+        %li
+          = f.label :avatar
+          = f.file_field :avatar, class: "UI_button"
+        %br/
+        %li
+          - if @bet.avatar?
+            = f.label :remove_avatar
+            = f.check_box :remove_avatar
+            = image_tag @bet.avatar.thumb.url
+    %fieldset.UI_column
+      %ul.UI_form_column
+        %h1
+          \-
+          - if @bet.name?
+            bet ##{@bet.id}
+          - else
+            new bet
+        %h2 Bet options
+        %br/
         .row.additional_info
-          .field{style: "display:nonne"}
-            = text_field_tag "bet_options[#{index}][id]", b.id, class: 'form-control',style: "display:none"
-          .field{style: "display:inline-block"}
-            = text_field_tag "bet_options[#{index}][description]", b.description, class: 'form-control'
-          .field{style: "display:inline-block"}
-            = text_field_tag "bet_options[#{index}][percentage]", b.percentage, class: 'form-control',data:currency_field
-          %h4{style: "display:inline-block"}
-            = check_box "bet_options[{index}][win]",b.win, class: 'form-control'
-          .field{style: "display:inline-block"}
-            .button.red.deleteAdditionalInfo.tiny Eliminar
-  -rescue
+          .meh
+            .doh{style: "display:inline-block"}
+              %h4
+                ="Descripción"
+              = text_field_tag "bet_options[{index}][description]",nil, class: 'form-control', placeholder: "Ej; Gana la cato"
+            .doh{style: "display:inline-block"}
+              %h4
+                ="Porcentaje"
+              = text_field_tag "bet_options[{index}][percentage]",nil, class: 'form-control',data:currency_field
+            .doh{style: "display:inline-block"}
+              %h4
+                ="Opción Ganadora"
+              %h4
+              = check_box "bet_options[{index}][win]",nil, class: 'form-control'
+            .doh{style: "display:inline-block"}
+              .field
+                .button.addAdditionalInfo.tiny{start_at: 0, target: ".additional_infos"} Agregar
+                .button.red.deleteAdditionalInfo.tiny{style:"display:none"} Eliminar
+        :javascript
+          $(function() {
+            var delete_additional_info;
+            delete_additional_info = function() {
+              return $(".deleteAdditionalInfo").click(function() {
+                var row;
+                row = $(this).parents(".additional_info");
+                return row.remove();
+              });
+            };
+            delete_additional_info();
+            return $(".addAdditionalInfo").click(function() {
+              var index, new_row, row;
+              index = $(this).attr("start_at");
+              row = $(this).parents(".additional_info");
+              new_row = row.clone().prependTo($(this).attr("target"));
+              new_row.find("input").each(function() {
+                return $(this).attr("name", $(this).attr("name").replace("{index}", index));
+              });
+              new_row.find(".deleteAdditionalInfo").show();
+              new_row.find(".addAdditionalInfo").hide();
+              new_row.find("h4").css('visibility', 'hidden');
+              new_row.find("h4").css('height', '0px');
+              delete_additional_info();
+              $(this).attr("start_at", parseInt(index) + 1);
+              return row.find("input").val("");
+            });
+          });
+        -begin
+          .additional_infos
+            - @bonos.each_with_index do |b,index|
+              .row.additional_info
+                .field{style: "display:none"}
+                  = text_field_tag "bet_options[#{index}][id]", b.id, class: 'form-control',style: "display:none"
+                .field{style: "display:inline-block"}
+                  = text_field_tag "bet_options[#{index}][description]", b.description, class: 'form-control'
+                .field{style: "display:inline-block"}
+                  = text_field_tag "bet_options[#{index}][percentage]", b.percentage, class: 'form-control',data:currency_field
+                .doh{style: "display:inline-block"}
+                  %h4{style:"visibility:hidden; height: 0px;"}
+                    ="Opción Ganadora"
+                  = check_box "bet_options[{index}][win]",b.win, class: 'form-control'
+                .field{style: "display:inline-block"}
 
-  - bet.bet_options do |b|
+                  .button.red.deleteAdditionalInfo.tiny Eliminar
+        -rescue
 
-    .field
-      = text_field_tag "bet_options[#{index}][description]", b.name, class: 'form-control'
-    .field
-      = text_field_tag "bet_options[#{index}][percentage]", b.value, class: 'form-control',data:currency_field
-    .check_box
-      ='Eliminar'
-  .actions
-    = f.submit
-
-:javascript
-  $(function() {
-    var delete_additional_info;
-    delete_additional_info = function() {
-      return $(".deleteAdditionalInfo").click(function() {
-        var row;
-        row = $(this).parents(".additional_info");
-        return row.remove();
-      });
-    };
-    delete_additional_info();
-    return $(".addAdditionalInfo").click(function() {
-      var index, new_row, row;
-      index = $(this).attr("start_at");
-      row = $(this).parents(".additional_info");
-      new_row = row.clone().prependTo($(this).attr("target"));
-      new_row.find("input").each(function() {
-        return $(this).attr("name", $(this).attr("name").replace("{index}", index));
-      });
-      new_row.find(".deleteAdditionalInfo").show();
-      new_row.find(".addAdditionalInfo").hide();
-      new_row.find("h4").remove();
-      delete_additional_info();
-      $(this).attr("start_at", parseInt(index) + 1);
-      return row.find("input").val("");
-    });
-  });
+        - bet.bet_options do |b|
+          .field
+            = text_field_tag "bet_options[#{index}][description]", b.name, class: 'form-control'
+          .field
+            = text_field_tag "bet_options[#{index}][percentage]", b.value, class: 'form-control',data:currency_field
+          .check_box
+            ='Eliminar'
+        = f.submit "Accept", class: "UI_button"
