@@ -11,7 +11,11 @@
       %ul.UI_form_column
         %li
           = f.label :execution_date
-          = f.datetime_select :execution_date
+          %input#datetimepicker4{:type => "text", :value => "2017/06/11 10:00", name: 'bet[execution_date]'}/
+          -#%input#open{:type => "button", :value => "open"}/
+          -#%input#close{:type => "button", :value => "close"}/
+          -#%input#reset{:type => "button", :value => "reset"}/
+          -#= f.datetime_select :execution_date
         %br/
         %li
           = f.label :name
@@ -59,34 +63,7 @@
               .field
                 .button.addAdditionalInfo.tiny{start_at: 0, target: ".additional_infos"} Agregar
                 .button.red.deleteAdditionalInfo.tiny{style:"display:none"} Eliminar
-        :javascript
-          $(function() {
-            var delete_additional_info;
-            delete_additional_info = function() {
-              return $(".deleteAdditionalInfo").click(function() {
-                var row;
-                row = $(this).parents(".additional_info");
-                return row.remove();
-              });
-            };
-            delete_additional_info();
-            return $(".addAdditionalInfo").click(function() {
-              var index, new_row, row;
-              index = $(this).attr("start_at");
-              row = $(this).parents(".additional_info");
-              new_row = row.clone().prependTo($(this).attr("target"));
-              new_row.find("input").each(function() {
-                return $(this).attr("name", $(this).attr("name").replace("{index}", index));
-              });
-              new_row.find(".deleteAdditionalInfo").show();
-              new_row.find(".addAdditionalInfo").hide();
-              new_row.find("h4").css('visibility', 'hidden');
-              new_row.find("h4").css('height', '0px');
-              delete_additional_info();
-              $(this).attr("start_at", parseInt(index) + 1);
-              return row.find("input").val("");
-            });
-          });
+
         -begin
           .additional_infos
             - @bonos.each_with_index do |b,index|
@@ -114,3 +91,57 @@
           .check_box
             ='Eliminar'
         = f.submit "Accept", class: "UI_button"
+  :javascript
+    $(function() {
+      var delete_additional_info;
+      delete_additional_info = function() {
+        return $(".deleteAdditionalInfo").click(function() {
+          var row;
+          row = $(this).parents(".additional_info");
+          return row.remove();
+        });
+      };
+      delete_additional_info();
+      return $(".addAdditionalInfo").click(function() {
+        var index, new_row, row;
+        index = $(this).attr("start_at");
+        row = $(this).parents(".additional_info");
+        new_row = row.clone().prependTo($(this).attr("target"));
+        new_row.find("input").each(function() {
+          return $(this).attr("name", $(this).attr("name").replace("{index}", index));
+        });
+        new_row.find(".deleteAdditionalInfo").show();
+        new_row.find(".addAdditionalInfo").hide();
+        new_row.find("h4").css('visibility', 'hidden');
+        new_row.find("h4").css('height', '0px');
+        delete_additional_info();
+        $(this).attr("start_at", parseInt(index) + 1);
+        return row.find("input").val("");
+      });
+    });
+  :javascript
+    /*
+      window.onerror = function(errorMsg) {
+      $('#console').html($('#console').html()+'<br>'+errorMsg)
+      }*/
+      $.datetimepicker.setLocale('es');
+
+
+      $('#datetimepicker4').datetimepicker({
+        //allowTimes:['12:00','13:00','15:00','17:00','17:05','17:20','19:00','20:00'],
+        //formatDate:'d.m.Y',
+        step:1
+      });
+      $('#open').click(function(){
+      $('#datetimepicker4').datetimepicker('show');
+     });
+      $('#close').click(function(){
+      $('#datetimepicker4').datetimepicker('hide');
+      });
+      $('#reset').click(function(){
+      $('#datetimepicker4').datetimepicker('reset');
+      });
+
+
+
+      $('#datetimepicker_dark').datetimepicker({theme:'dark'})
