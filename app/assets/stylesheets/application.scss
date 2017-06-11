@@ -338,6 +338,19 @@ ul {
 	color: $color-complement-0;
 }
 
+.UI_button_negative {
+	@extend .UI_button;
+
+	background-color: $color-primary-2;
+	border-color: $color-primary-2;
+	color: $color-primary-4;
+
+	&:hover {
+		background-color: $color-primary-4;
+		color: $color-primary-0;
+	}
+}
+
 input[type="text"] {
 	padding: 0.2em 0.3em;
 	border-style: none;
