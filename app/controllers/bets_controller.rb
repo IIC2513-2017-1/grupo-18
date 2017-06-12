@@ -53,15 +53,15 @@ class BetsController < ApplicationController
     aux[:bet][:bet_options_attributes] = params[:bet_options]
     aux[:bet][:bet_options_attributes].delete("{index}")
     aux.delete("bet_options")
-    aux = aux.require(:bet).permit(:execution_date, :description, bet_options_attributes: [:description, :percentage, :win, :id])
+    aux = aux.require(:bet).permit(:name , :execution_date, :description, bet_options_attributes: [:description, :percentage, :win, :id])
     @bet = Bet.new(aux)
     @bet.user = current_user
     respond_to do |format|
       if @bet.save
-
         format.html { redirect_to @bet, notice: 'Bet was successfully created.' }
         format.json { render :show, status: :created, location: @bet }
       else
+        #byebug
         format.html { render :new }
         format.json { render json: @bet.errors, status: :unprocessable_entity }
       end
@@ -75,13 +75,13 @@ class BetsController < ApplicationController
     aux[:bet][:bet_options_attributes] = params[:bet_options]
     aux[:bet][:bet_options_attributes].delete("{index}")
     aux.delete("bet_options")
-    aux = aux.require(:bet).permit(:execution_date, :description, bet_options_attributes: [:description, :percentage, :win, :id])
+    aux = aux.require(:bet).permit(:name , :execution_date, :description, bet_options_attributes: [:description, :percentage, :win, :id])
     respond_to do |format|
       if @bet.update(aux)
-
         format.html { redirect_to @bet, notice: 'Bet was successfully updated.' }
         format.json { render :show, status: :ok, location: @bet }
       else
+        puts @bet.errors
         format.html { render :edit }
         format.json { render json: @bet.errors, status: :unprocessable_entity }
       end
@@ -112,6 +112,6 @@ class BetsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def bet_params
-      params.require(:bet).permit(:execution_date, :description, :avatar,bets_options_attributes: [:description, :percentage, :win])
+      params.require(:bet).permit(:name, :execution_date, :description, :avatar,bets_options_attributes: [:description, :percentage, :win])
     end
 end
