@@ -1,0 +1,5 @@
+<% for friend in real_friends(@user) %>
+<li>
+  <%= link_to friend.name, user_path(friend) %>
+</li>
+<% end %>

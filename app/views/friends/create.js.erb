@@ -1,2 +1,4 @@
 $("#friendship_status").empty();
 $('#friendship_status').append("<%= escape_javascript render(:partial => 'friends/form', :locals => { :user => @user }) %>");
+$('#real_friends').empty();
+$('#real_friends').append("<%= escape_javascript render(:partial => 'friends/real_friends', :locals => { :user => @user }) %>");

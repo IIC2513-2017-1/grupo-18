@@ -33,7 +33,7 @@
       </div>
       <div class="UI_column">
         <h1>List of friends</h1>
-        <ul>
+        <ul id="real_friends">
           <% for friend in real_friends(@user) %>
             <li><%= link_to friend.name, user_path(friend) %> </li>
           <% end %>
@@ -93,13 +93,13 @@
           <br>
           <h1>Private bets</h1>
           <% if are_we_both_friends?(current_user, @user) %>
-            <ul>    
+            <ul>
             <% if @private_bets != [] %>
               <% for bet in @private_bets %>
                 <li>
                   <%= link_to "#{bet.name}", bet_path(bet) %>
                 </li>
-              <% end %> 
+              <% end %>
             <% else %>
               <p>This user has no private bets</p>
             <% end %>
