@@ -1,5 +1,7 @@
 class PaymentsController < ApplicationController
+  include UsersHelper
   before_action :set_payment, only: [:show, :edit, :update, :destroy]
+  before_action :filter_admin
 
   # GET /payments
   # GET /payments.json
@@ -62,6 +64,11 @@ class PaymentsController < ApplicationController
   end
 
   private
+
+    def filter_admin
+      redirect_to home_url unless admin_access?
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_payment
       @payment = Payment.find(params[:id])

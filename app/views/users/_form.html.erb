@@ -44,7 +44,7 @@
               <% end %>
             </li>
             
-            <li><%= f.submit "Accept", class: "UI_button" %> <%= link_to "Have an account?", login_path %></li>
+            <li><%= f.submit "Accept", class: "UI_button" %> <%= link_to "Have an account?", login_path unless @user.name %></li>
 
           </ul>          
         <% end %>
