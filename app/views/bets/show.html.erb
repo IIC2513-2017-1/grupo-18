@@ -15,9 +15,9 @@
     </h2>
 
     <% if @bet.user == current_user %>
-      <strong>This bet was placed by you. Go [ADD LINK TO EDIT] to edit it.</strong>
+      <p>This bet was placed by you. You can edit it <%= link_to "here", edit_bet_url(@bet) %></p>
     <% else %>
-      <strong>This bet was placed by <%= @bet.user.name %></strong>
+      <p>This bet was placed by <%= link_to @bet.user.name, user_url(@bet.user) %></p>
     <% end %>
   </div>
 

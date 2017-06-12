@@ -58,7 +58,51 @@ class Bet < ApplicationRecord
 
   private
     def automanage_execution
-      self.delay(run_at: execution_date).finish_bet
+      self.delay(run_at: execution_date).finish_bet_second_ver
+    end
+
+    def finish_bet_second_ver
+      winner_bet_opts = self.bet_options.find_by(win: true).first
+
+      winner_user_bets = winner_bet_opts.user_bets
+
+      winner_bets_per_user = Hash.new(0)
+
+      total_in_winner_bets = 0
+
+      winner_user_bets.each do |w_ub|
+        winner_bets_per_user[w_ub.user] += w_ub.amount 
+        total_in_winner_bets += w_ub.amount
+      end
+
+      # Rates to multiply the winner's pool later.
+      winner_rate_per_user = Hash.new(0)
+
+      winner_bets_per_user.each do |user, bet|
+        winner_rate_per_user[user] = bet / total_in_winner_bets
+        puts(bet / total_in_winner_bets)
+      end
+
+      total_money_waged_on_bet = 0
+
+      self.user_bets.each do |u_bet|
+        total_money_waged_on_bet += u_bet.amount
+      end
+
+      commision = 0.05 # 5% commision
+
+      puts("The house gets #{commision * total_money_waged_on_bet}")
+
+      total_money_to_give_out = total_money_waged_on_bet * (1 - commision)
+
+      puts("A total of #{total_money_to_give_out} will be given out to winners")
+
+      winner_rate_per_user.each do |user, rate|
+        user.balance += total_money_to_give_out * rate
+        user.save
+
+        puts("#{total_money_to_give_out * rate} was given to #{user.name}")
+      end
     end
 
     # To be run after a bet's execution date has been reached.
