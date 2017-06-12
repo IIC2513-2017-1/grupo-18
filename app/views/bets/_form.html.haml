@@ -3,9 +3,9 @@
     %fieldset.UI_column
       %h1
         - if @bet.name?
-          Editing
+          Editing...
         - else
-          Creating a
+          Creating a...
       %h2 Bet parameters
       %br/
       %ul.UI_form_column
@@ -37,11 +37,10 @@
     %fieldset.UI_column
       %ul.UI_form_column
         %h1
-          \-
           - if @bet.name?
             bet ##{@bet.id}
           - else
-            new bet
+            new bet.
         %h2 Bet options
         %br/
         .row.additional_info
