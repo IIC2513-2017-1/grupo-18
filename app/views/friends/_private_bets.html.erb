@@ -1,0 +1,15 @@
+<% if are_we_both_friends?(current_user, @user) %>
+  <ul>
+    <% if @private_bets != [] %>
+      <% for bet in @private_bets %>
+        <li>
+          <%= link_to "#{bet.name}", bet_path(bet) %>
+        </li>
+      <% end %>
+    <% else %>
+      <p>This user has no private bets</p>
+    <% end %>
+  </ul>
+<% else %>
+  <p>You don't have access to their private bets, because they haven't added you as friend</p>
+<% end %>

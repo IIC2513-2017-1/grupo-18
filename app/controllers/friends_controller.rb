@@ -14,6 +14,11 @@ class FriendsController < ApplicationController
   def create
     @friendship = Friend.new(friendship_params)
     @user = @friendship.friend
+
+    @private_bets = []
+    @private_bets = Bet.where(user: @user, visible: false) if @user.friends.find_by(user: current_user).present?
+
+
     respond_to do |format|
       if @friendship.save
         format.html { redirect_to user_path(@friendship.friend) }
@@ -37,6 +42,7 @@ class FriendsController < ApplicationController
   # DELETE /comments/1
   def destroy
   	this_friend = @friendship.friend
+    @private_bets = []
     @user = @friendship.friend
     respond_to do |format|
       if @friendship.destroy
