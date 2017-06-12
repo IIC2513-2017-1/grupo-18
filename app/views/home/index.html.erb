@@ -24,9 +24,12 @@
       <div class="UI_column">
         <h1>Bets you're participating on</h1>
         <ul>    
-          
+          <% for bet in @bets_wagered_on %>
+            <li>
+              <%= link_to "#{bet.name}", bet_path(bet) %>
+            </li>
+          <% end %> 
 
-          <li>AQUI VAN LAS BETS EN QUE PARTICIPA EL USUARIO. SCROLL HACIA ABAJO, SI QUEDA BIEN.</li>  
         </ul>
       </div>
 

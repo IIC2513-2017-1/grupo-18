@@ -1,9 +1,13 @@
 class BetsController < ApplicationController
+  include BetsHelper
+  include FriendsHelper
   before_action :set_bet, only: [:show, :edit, :update, :destroy]
 
   # GET /bets
   # GET /bets.json
   def index
+    @bets_friends = bets_owned_by_friends_of(current_user)
+    @bets_public = bets_public_and_not_owned_by_friends_or_user(current_user)
     @bets = Bet.all unless current_user.user_type.zero?
     @bets = Bet.where(visible: true).or(Bet.where(user_id: Friend.where(friend_id:current_user.id).pluck(:user_id))) if current_user.user_type.zero?
   end

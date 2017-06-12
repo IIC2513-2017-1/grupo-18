@@ -4,6 +4,16 @@ module FriendsHelper
   	current_user.id != @user.id 
   end
 
+  def who_added_me(user)
+    User.where(id: Friend.where(friend:user).pluck(:user_id))
+  end
+
+  # Amistad biyectiva
+  def real_friends(user)
+    User.where(id: Friend.where(user_id: Friend.where(user_id: user.id).pluck(:friend_id), friend_id: user.id).pluck(:user_id))
+  end
+
+
   def friends?
   	Friend.find_by(user_id: current_user.id, friend_id: @user.id)
   	#Friend.find_by(user_id: current_user.id) && Friend.find_by(user_id: current_user.id, friend_id: @user.id).friend_id==@user.id

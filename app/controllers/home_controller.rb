@@ -1,11 +1,11 @@
 class HomeController < ApplicationController
+  include BetsHelper
   def index
     
+
     if logged_in?
-      @bets = Bet.all unless current_user.user_type.zero?
-      @bets = Bet.where(visible: true).or(Bet.where(user_id: Friend.where(friend_id:current_user.id).pluck(:user_id))) if current_user.user_type.zero?
+      @bets_wagered_on = bets_where_user_participates(current_user)
     else
-      @bets = []
     end
   end
 end
