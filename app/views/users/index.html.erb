@@ -17,14 +17,14 @@
         <h1><%= "Not yet friends" %></h1>
         <h2><%= "You've added as friend" %></h2>
         <ul>
-          <% for friend in current_user.friends %>
-            <li><%= link_to friend.friend.name, user_path(friend.friend) %> </li>
+          <% for friend in who_ive_added(current_user) - real_friends(current_user) %>
+            <li><%= link_to friend.name, user_path(friend) %> </li>
           <% end %>
         </ul>
         <br>
         <h2><%= "Have added you" %></h2>
         <ul>
-          <% for friend in who_added_me(current_user) %>
+          <% for friend in who_added_me(current_user) - real_friends(current_user) %>
             <li><%= link_to friend.name, user_path(friend) %> </li>
           <% end %>
         </ul>

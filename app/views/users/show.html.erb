@@ -58,7 +58,7 @@
               <%= form_for our_friendship, method: :delete, remote: true do |f| %>
                 <%= f.text_field :user_id, :value => current_user.id, style: "display: none;"%>
                 <%= f.text_field :friend_id, :value => @user.id, style: "display: none;"%>
-                <%= f.submit "Delete friendship", class: 'UI_button'%>
+                <%= f.submit "Delete friendship", class: 'UI_button_negative'%>
               <% end %>
             <% elsif only_I_am_friend?(current_user, @user) %>
               <strong>They haven't accepted your friendship yet 😟</strong>
@@ -67,7 +67,7 @@
               <%= form_for our_friendship, method: :delete, remote: true do |f| %>
                 <%= f.text_field :user_id, :value => current_user.id, style: "display: none;"%>
                 <%= f.text_field :friend_id, :value => @user.id, style: "display: none;"%>
-                <%= f.submit "Remove friendship request", class: 'UI_button'%>
+                <%= f.submit "Remove friendship request", class: 'UI_button_negative'%>
               <% end %>
             <% elsif only_he_is_friend?(current_user, @user) %>
               <strong>They have added you as friend 😃</strong>
