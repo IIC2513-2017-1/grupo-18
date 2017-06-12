@@ -11,7 +11,10 @@
       %ul.UI_form_column
         %li
           = f.label :execution_date
-          %input#datetimepicker4{:type => "text", :value => "2017/06/11 10:00", name: 'bet[execution_date]'}/
+          -if bet.execution_date.present?
+            %input#datetimepicker4{:type => "text", :value => @bet.execution_date, name: 'bet[execution_date]'}
+          -else
+            %input#datetimepicker4{:type => "text", :value => "2017/06/11 10:00", name: 'bet[execution_date]'}
           -#%input#open{:type => "button", :value => "open"}/
           -#%input#close{:type => "button", :value => "close"}/
           -#%input#reset{:type => "button", :value => "reset"}/

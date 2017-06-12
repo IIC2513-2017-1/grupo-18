@@ -53,7 +53,7 @@ class BetsController < ApplicationController
     aux[:bet][:bet_options_attributes] = params[:bet_options]
     aux[:bet][:bet_options_attributes].delete("{index}")
     aux.delete("bet_options")
-    aux = aux.require(:bet).permit(:name , :execution_date, :description, bet_options_attributes: [:description, :percentage, :win, :id])
+    aux = aux.require(:bet).permit(:name , :execution_date,:avatar ,:description, :remove_avatar,bet_options_attributes: [:description, :percentage, :win, :id])
     @bet = Bet.new(aux)
     @bet.user = current_user
     respond_to do |format|
@@ -75,13 +75,13 @@ class BetsController < ApplicationController
     aux[:bet][:bet_options_attributes] = params[:bet_options]
     aux[:bet][:bet_options_attributes].delete("{index}")
     aux.delete("bet_options")
-    aux = aux.require(:bet).permit(:name , :execution_date, :description, bet_options_attributes: [:description, :percentage, :win, :id])
+    aux = aux.require(:bet).permit(:name , :execution_date,:avatar ,:description, bet_options_attributes: [:description, :percentage, :win, :id])
     respond_to do |format|
       if @bet.update(aux)
         format.html { redirect_to @bet, notice: 'Bet was successfully updated.' }
         format.json { render :show, status: :ok, location: @bet }
       else
-        puts @bet.errors
+        puts @bet.errors.full_messages
         format.html { render :edit }
         format.json { render json: @bet.errors, status: :unprocessable_entity }
       end
