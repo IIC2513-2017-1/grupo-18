@@ -17,6 +17,7 @@
 #  activation_digest  :string
 #  activated          :boolean          default("false")
 #  activated_at       :datetime
+#  gravatar_usage     :boolean          default("false")
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

@@ -1,25 +1,24 @@
 module AvatarsHelper
 include SessionsHelper
 
-  def current_user_thumb
-  	current_user.image.thumb.url || default_thumb
-  end
+  ### Main Functions
 
+  # 200x200
   def user_medium user
-    user.image.medium.url || default_thumb
+    if(user.gravatar_usage)
+      "#{user.gravatar_url}&s=200"
+    else
+      user.image.medium.url || default_thumb
+    end
   end
 
+  # 150x150
   def user_thumb user
-    user.image.thumb.url || default_thumb
-  end
-
-
-  def this_user_thumb
-    @user.image.thumb.url || default_thumb
-  end
-
-  def this_user_medium
-    @user.image.medium.url || default_thumb
+    if(user.gravatar_usage)
+      "#{user.gravatar_url}&s=150"
+    else
+      user.image.thumb.url || default_thumb
+    end
   end
 
   def bet_medium bet
@@ -27,13 +26,27 @@ include SessionsHelper
   end
 
   def default_thumb
-  	# image = MiniMagick::Image.open("https://cdn.pixabay.com/photo/2017/04/15/04/36/incognito-2231825_960_720.png")
-  	# image.resize "150x150"
-	# image.format "png"
-	# image.write "public/default_thumb.png"
 	  "/default_thumb.png"
   end
+
   def default_bet
     "/default_bet.png"
+  end
+
+  ### Auxiliary Functions
+
+  def current_user_thumb
+    user_thumb current_user
+    # current_user.image.thumb.url || default_thumb
+  end
+
+  def this_user_thumb
+    user_thumb @user
+    # @user.image.thumb.url || default_thumb
+  end
+
+  def this_user_medium
+    user_medium @user
+    # @user.image.medium.url || default_thumb
   end
 end

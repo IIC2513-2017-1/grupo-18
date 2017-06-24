@@ -17,7 +17,11 @@
 #  activation_digest  :string
 #  activated          :boolean          default("false")
 #  activated_at       :datetime
+#  gravatar_usage     :boolean          default("false")
 #
+
+# For use with the Gravatar API
+require 'digest/md5'
 
 class User < ApplicationRecord
   attr_accessor :activation_token
@@ -76,6 +80,15 @@ class User < ApplicationRecord
   # Returns a random token.
   def self.new_token
     SecureRandom.urlsafe_base64
+  end
+
+  # Generates the gravatar URL for this user
+  def gravatar_url
+    hash = Digest::MD5.hexdigest(self.email)
+
+    image_src = "//www.gravatar.com/avatar/#{hash}?d=identicon"
+
+    image_src
   end
 
   # private
