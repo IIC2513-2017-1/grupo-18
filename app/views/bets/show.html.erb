@@ -4,7 +4,7 @@
     <%= image_tag bet_medium @bet %>
     <br>
     <div class="desc_textbox">
-      <i class="text_with_linebreaks"><%= @bet.description %></i>
+      <i class="text_with_linebreaks"><%= @bet.description.html_safe %></i>
     </div>
     <br>
     <br>
