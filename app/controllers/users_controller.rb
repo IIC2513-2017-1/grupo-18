@@ -99,9 +99,9 @@ include BetsHelper
 
     ## Helpers for user_params
     def normal_user_filter
-      params.require(:user).permit(:username, :email, :password, :image, :remove_image, :gravatar_usage)
+      params.require(:user).permit(:username, :name, :email, :password, :image, :remove_image, :gravatar_usage)
     end
     def admin_user_filter
-      params.require(:user).permit(:username, :email, :password, :image, :remove_image, :gravatar_usage, :user_type)
+      params.require(:user).permit(:username, :name, :email, :password, :image, :remove_image, :gravatar_usage, :user_type)
     end
 end

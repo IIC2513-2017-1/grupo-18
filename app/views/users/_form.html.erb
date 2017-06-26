@@ -25,13 +25,11 @@
           </h1>
 
           <ul class="UI_form_column">
-
-            <!-- TODO: add NAME (not username) parameter -->
-
             <li><%= f.label :username  %> <%= f.text_field :username %></li>            
             <br>
-            <li><%= f.label :email  %> <%= f.text_field :email, id: "cur_email", oninput:"makeCurrentGravatar()"%>
-            
+            <li><%= f.label :name  %> <%= f.text_field :name %></li>            
+            <br>
+            <li><%= f.label :email  %> <%= f.text_field :email, id: "cur_email", oninput:"makeCurrentGravatar()"%>            
             </li>
             <br>
             <li><%= f.label :password  %> <%= f.password_field :password %>
