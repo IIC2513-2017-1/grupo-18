@@ -28,10 +28,11 @@
 
             <li><%= f.label :username  %> <%= f.text_field :username %></li>            
             <br>
-            <li><%= f.label :email  %> <%= f.text_field :email %>
+            <li><%= f.label :email  %> <%= f.text_field :email, id: "cur_email", oninput:"makeCurrentGravatar()"%>
+            
             </li>
             <br>
-            <li><%= f.label :password  %> <%= f.text_field :password %>
+            <li><%= f.label :password  %> <%= f.password_field :password %>
             </li>
             <br>
             <li><%= f.label :image  %> <%= f.file_field :image, class: "UI_button" %>
@@ -42,6 +43,23 @@
                 <%= f.label :remove_image %> <%= f.check_box :remove_image %>
                 <%= image_tag user.image.thumb.url %>
               <% end %>
+            </li>
+            
+            <br>
+            <%= javascript_include_tag "javascripts/md5.min" %>
+            <script type="text/javascript">
+              function makeCurrentGravatar () {
+                var mail = document.getElementById("cur_email").value;
+
+                var hash = md5(mail);
+
+                document.getElementById("cur_gravatar").src = "//www.gravatar.com/avatar/" + hash + "?d=identicon"
+              }
+            </script>
+ 
+            <li>
+              <%= f.label :gravatar_usage, "Use gravatar instead" %> <%= f.check_box :gravatar_usage %>
+              <%= image_tag User::gravatar_url(@cur_email || ""), id:"cur_gravatar", onload:"makeCurrentGravatar()" %>
             </li>
             
             <li><%= f.submit "Accept", class: "UI_button" %> <%= link_to "Have an account?", login_path unless @user.name %></li>

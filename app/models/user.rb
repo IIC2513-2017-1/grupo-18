@@ -91,6 +91,13 @@ class User < ApplicationRecord
     image_src
   end
 
+  def self.gravatar_url email
+    hash = Digest::MD5.hexdigest(email)
+
+    image_src = "//www.gravatar.com/avatar/#{hash}?d=identicon"
+  end
+
+
   # private
     # To be able to use it and compare it easily
     def downcase_email
