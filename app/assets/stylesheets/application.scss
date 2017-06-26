@@ -388,7 +388,7 @@ input[type="text"]:focus {
   margin: 0px !important;
 }
 
-#content a {
+.pinkLinks {
 	color: $color-primary-1;
 	text-decoration: none;
 	border-bottom: 1.5px dotted $color-primary-1;
@@ -396,6 +396,10 @@ input[type="text"]:focus {
 	&:hover {
 		border-bottom: none;
 	}
+}
+
+#content a {
+	@extend .pinkLinks;
 }
 .cke a{
   border-bottom: none !important;
@@ -471,7 +475,6 @@ input[type="text"]:focus {
 	    text-decoration: none;
 	    cursor: pointer;
     }
-
 }
 
 /* Modal Content */
@@ -480,16 +483,21 @@ input[type="text"]:focus {
     margin: auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 80%;
+    width: 60%;
 
     font-family: $c-font-text;
 }
 
 .modal-content h1, .modal-content h2 {
 	font-family: $c-font-titles;
+	color: $color-secondary-1-0;
 }
 
-
+.modal-content a {
+	@extend .pinkLinks;
+	color: $color-complement-0;
+	border-color: $color-complement-0; 
+}
 /*USERS*/
 
 #profile_box {
