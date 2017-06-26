@@ -388,7 +388,7 @@ input[type="text"]:focus {
   margin: 0px !important;
 }
 
-#content a {
+.pinkLinks {
 	color: $color-primary-1;
 	text-decoration: none;
 	border-bottom: 1.5px dotted $color-primary-1;
@@ -396,6 +396,10 @@ input[type="text"]:focus {
 	&:hover {
 		border-bottom: none;
 	}
+}
+
+#content a {
+	@extend .pinkLinks;
 }
 .cke a{
   border-bottom: none !important;
@@ -419,7 +423,7 @@ input[type="text"]:focus {
 	white-space: pre;
 }
 
-#footer a {
+#footer a, #footer button {
 	font-weight: bold;
 	text-decoration: none;
 }
@@ -432,9 +436,68 @@ input[type="text"]:focus {
 	padding: 0.2em 1em;
 }
 
+/* FOOTER::ABOUT MODAL */
 
+.button_dressed_like_link {
+	background:none;
+    color:inherit;
+    border:none; 
+    padding:0;
+    font: inherit;
+    /*border is optional*/
+    cursor: pointer;
+}
 
+/* Modal background */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
 
+/* The Close Button */
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+
+    &:hover, &:focus {
+		color: #000;
+	    text-decoration: none;
+	    cursor: pointer;
+    }
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 60%;
+
+    font-family: $c-font-text;
+}
+
+.modal-content h1, .modal-content h2 {
+	font-family: $c-font-titles;
+	color: $color-secondary-1-0;
+}
+
+.modal-content a {
+	@extend .pinkLinks;
+	color: $color-complement-0;
+	border-color: $color-complement-0; 
+}
 /*USERS*/
 
 #profile_box {
