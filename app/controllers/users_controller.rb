@@ -41,14 +41,16 @@ include BetsHelper
   # POST /users.json
   def create
     @user = User.new(user_params)
-
-    if @user.save
-      flash[:info] = "Please check your email to activate your account."
-      redirect_to root_url
-    else
-      render :new
+    @user.gravatar_usage = true if request.format.json?
+    respond_to do |format|
+      if @user.save
+        format.html { redirect_to root_url }
+        format.json { render json:{message: 'Creacion exitosa', activate: edit_account_activation_url(@user.activation_token, email: @user.email)}, status: :ok, location: @user}
+      else
+        format.html { render :new }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
     end
-
   end
 
   # PATCH/PUT /users/1
@@ -89,7 +91,7 @@ include BetsHelper
     # Use callbacks to share common setup or constraints between actions.
     def set_user
       @user = User.find(params[:id])
-      
+
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

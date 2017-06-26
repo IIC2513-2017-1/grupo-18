@@ -103,7 +103,6 @@ class User < ApplicationRecord
     return 0 if self.access_token == '0'
     temporal = Time.now.to_s + email
     self.access_token = Digest::SHA256.hexdigest temporal
-    puts self.access_token
     self.save
     self.access_token
   end
