@@ -4,10 +4,52 @@
     <%= link_to "The bet-ter App!", home_path %> by <a href="https://github.com/IIC2513-2017-1/grupo-18">Grupo 18</a> (Félix Fischer and Felipe Rojos)</li>
 
   <li id="footer_nav">
-    <%= link_to "About",   '#' %>
+    
+    <button class="button_dressed_like_link" id="aboutLink">About</button>
     <span> </span>
     <%= mail_to "sppt.grupo.18.web@gmail.com", 
     	"Contact"  %>
   </li>
   <!-- <li><%= link_to "News", '#' %></li> -->
 </ul>
+
+<div id="aboutModal" class="modal">
+	<div class="modal-content">
+		<span class="close">&times;</span>
+		<h1>About Bet~ter App!</h1>
+
+		<h2>Founders</h2>
+
+		<h2>Our vision</h2>
+
+		<h2>Technologies we use</h2>
+	</div>
+</div>
+
+<script type="text/javascript">
+	var modal = document.getElementById("aboutModal");
+
+	var btn = document.getElementById("aboutLink");
+
+	// var X = document.getElementsByClassName("close")[0];
+
+	btn.onclick = function() {
+		modal.style.display = "block";
+	}
+
+	var clsBtn = document.getElementsByClassName("close")[0];
+
+	clsBtn.onclick = function() {
+		modal.style.display = "none";
+	}
+	// X.onclick = function() {
+	// 	modal.style.display = "none";
+	// }
+
+	window.onclick = function(event) {
+		if(event.target == modal)
+		{
+			modal.style.display = "none";
+		}
+	}
+</script>
