@@ -25,7 +25,7 @@ require 'digest/md5'
 
 class User < ApplicationRecord
   attr_accessor :activation_token
-
+  require 'digest'
   # Bcrypt imports
   has_secure_password
 
@@ -82,6 +82,7 @@ class User < ApplicationRecord
     SecureRandom.urlsafe_base64
   end
 
+
   # Generates the gravatar URL for this user
   def gravatar_url
     hash = Digest::MD5.hexdigest(self.email)
@@ -93,6 +94,18 @@ class User < ApplicationRecord
     hash = Digest::MD5.hexdigest(email)
 
     image_src = "//www.gravatar.com/avatar/#{hash}?d=identicon"
+  end
+
+
+
+  def generate_access_token
+    return 1 if self.access_token == '1'
+    return 0 if self.access_token == '0'
+    temporal = Time.now.to_s + email
+    self.access_token = Digest::SHA256.hexdigest temporal
+    puts self.access_token
+    self.save
+    self.access_token
   end
 
 
