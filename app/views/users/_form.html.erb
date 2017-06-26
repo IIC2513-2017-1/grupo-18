@@ -5,7 +5,7 @@
   <body>
     <% content_for :content do %>
       <div class="UI_column">
-        <%= form_for(:user) do |f| %>
+        <%= form_for(@user) do |f| %>
           <% if user.errors.any? %>
             <div id="error_explanation">
               <h2> <%= pluralize(user.errors.count, "error") %>
@@ -25,6 +25,8 @@
           </h1>
 
           <ul class="UI_form_column">
+
+            <!-- TODO: add NAME (not username) parameter -->
 
             <li><%= f.label :username  %> <%= f.text_field :username %></li>            
             <br>
@@ -53,7 +55,7 @@
 
                 var hash = md5(mail);
 
-                document.getElementById("cur_gravatar").src = "//www.gravatar.com/avatar/" + hash + "?d=identicon"
+                document.getElementById("cur_gravatar").src = "//www.gravatar.com/avatar/" + hash + "?d=identicon";
               }
             </script>
  

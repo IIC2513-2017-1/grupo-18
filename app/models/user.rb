@@ -87,8 +87,6 @@ class User < ApplicationRecord
     hash = Digest::MD5.hexdigest(self.email)
 
     image_src = "//www.gravatar.com/avatar/#{hash}?d=identicon"
-
-    image_src
   end
 
   def self.gravatar_url email

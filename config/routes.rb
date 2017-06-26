@@ -9,7 +9,10 @@ Rails.application.routes.draw do
       get 'export', as: 'export'
     end
   end
+
   resources :users
+  # post 'users/new' => 'users#new'
+
   get '/', to: 'home#index', as: 'home'
 
   # Sessions

@@ -16,14 +16,16 @@
               <strong>Type: </strong> <%= see_this_userS_type %>
             </li>
             <li>
-              <strong>Username: </strong> <%= @user.name %>
+              <strong>Username: </strong> <%= @user.username %>
             </li>
-            <li>
-              <strong>Email: </strong> <%= @user.email %>
-            </li>
-            <li>
-              <strong>Balance: </strong> <%= @user.balance %>
-            </li>
+            <% if !different_user? || are_we_both_friends?(@user, current_user) %>
+              <li>
+                <strong>Email: </strong> <%= @user.email %>
+              </li>
+              <li>
+                <strong>Balance: </strong> <%= @user.balance %>
+              </li>
+            <% end %>
           </ul>
           <ul class="UI_link_column">
             <li><%= link_to 'Edit', edit_user_path(@user) %></li>
