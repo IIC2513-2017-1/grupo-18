@@ -3,6 +3,33 @@
     <h1><%= @bet.name %></h1>
     <%= image_tag bet_medium @bet %>
     <br>
+
+    <% if(!@bet.visible) %>
+
+      <i>This bet is private.</i>
+
+      <% if(!admin_access?) %>
+
+        <% if(@bet.user == current_user) %>
+
+          <i>That means that only you and your friends can view it and participate in it.</i>
+
+        <% else %>
+
+          <i>As friend of its owner, you can see it and participate in it.</i>
+
+        <% end %>
+
+      <% else %>
+
+        <i>As admin, you can view it and participate in it regardless.</i>
+
+      <% end %>
+
+      <br>
+
+    <% end %>
+
     <div class="desc_textbox">
       <i class="text_with_linebreaks"><%= @bet.description.html_safe %></i>
     </div>

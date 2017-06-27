@@ -60,7 +60,7 @@ class BetsController < ApplicationController
     aux[:bet][:bet_options_attributes] = params[:bet_options]
     aux[:bet][:bet_options_attributes].delete("{index}")
     aux.delete("bet_options")
-    aux = aux.require(:bet).permit(:name , :execution_date,:avatar ,:description, :remove_avatar,bet_options_attributes: [:description, :percentage, :win, :id])
+    aux = aux.require(:bet).permit(:name , :execution_date,:avatar, :description, :remove_avatar, :visible, bet_options_attributes: [:description, :percentage, :win, :id])
     @bet = Bet.new(aux)
     @bet.user = current_user
     respond_to do |format|
@@ -126,6 +126,6 @@ class BetsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def bet_params
-      params.require(:bet).permit(:name, :execution_date, :description, :avatar, :visibility, bets_options_attributes: [:description, :percentage, :win])
+      params.require(:bet).permit(:name, :execution_date, :description, :avatar, :visible, bets_options_attributes: [:description, :percentage, :win])
     end
 end

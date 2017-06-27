@@ -40,6 +40,10 @@
             = f.label :remove_avatar
             = f.check_box :remove_avatar
             = image_tag @bet.avatar.thumb.url
+        %li
+          = f.label :visible, "Make it public?"
+          = f.check_box :visible
+        %br/
     %fieldset.UI_column
       %ul.UI_form_column
         %h1
