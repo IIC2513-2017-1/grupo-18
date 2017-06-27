@@ -33,7 +33,7 @@ module MoneyHelper
 		end
 
 		def format_currency(value)
-			number_to_currency(value, unit: "CLP", precision: 0)
+			number_to_currency(value, unit: "", precision: 0)
 		end
 
 end

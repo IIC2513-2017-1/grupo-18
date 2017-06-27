@@ -17,8 +17,8 @@ include FriendsHelper
 		Bet.where(visible: true) - bets_of(user) - bets_owned_by_friends_of(user)
 	end
 
-	def do_I_have_access?(me)
-		are_we_both_friends?(me, @bet.user) ||
+	def do_I_have_access?(me, owner)
+		are_we_both_friends?(me, owner) ||
 		me == @bet.user 
 	end
 end

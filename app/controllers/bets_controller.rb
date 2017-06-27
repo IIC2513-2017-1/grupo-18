@@ -4,9 +4,10 @@ class BetsController < ApplicationController
   include SessionsHelper
   include UsersHelper
 
-  before_action :set_bet, only: [:show, :edit, :update, :destroy]
+  before_action :setup_bet_displays, only: [:show, :edit, :update, :destroy]
+  # before_action :set_bet, only: [:show, :edit, :update, :destroy]
 
-  before_action :check_privacy, only: [:show, :edit, :update, :destroy]
+  # before_action :check_privacy, only: [:show, :edit, :update, :destroy]
 
   # GET /bets
   # GET /bets.json
@@ -119,8 +120,13 @@ class BetsController < ApplicationController
 
   private
 
+    def setup_bet_displays
+      set_bet
+      check_privacy
+    end
+
     def check_privacy
-      if(!admin_access? && !do_I_have_access?(current_user))
+      if(!admin_access? && !do_I_have_access?(current_user, @bet.user))
           redirect_to bets_url
       end
     end
@@ -128,9 +134,7 @@ class BetsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_bet
       if current_user.present?
-        bets = Bet.all unless current_user.user_type.zero?
-        bets = Bet.where(visible: true).or(Bet.where(user_id: Friend.where(friend_id:current_user.id).pluck(:user_id))) if current_user.user_type.zero?
-        @bet = bets.find_by(id: params[:id])
+        @bet = Bet.find_by(id: params[:id])
       else
         @bet = nil
       end
