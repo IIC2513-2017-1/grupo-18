@@ -1,7 +1,12 @@
 class BetsController < ApplicationController
   include BetsHelper
   include FriendsHelper
+  include SessionsHelper
+  include UsersHelper
+
   before_action :set_bet, only: [:show, :edit, :update, :destroy]
+
+  before_action :check_privacy, only: [:show, :edit, :update, :destroy]
 
   # GET /bets
   # GET /bets.json
@@ -113,6 +118,13 @@ class BetsController < ApplicationController
   end
 
   private
+
+    def check_privacy
+      if(!admin_access? && !do_I_have_access?(current_user))
+          redirect_to bets_url
+      end
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_bet
       if current_user.present?
@@ -123,6 +135,8 @@ class BetsController < ApplicationController
         @bet = nil
       end
     end
+
+    def 
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def bet_params

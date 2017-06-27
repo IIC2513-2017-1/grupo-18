@@ -16,7 +16,7 @@ class FriendsController < ApplicationController
     @user = @friendship.friend
 
     @private_bets = []
-    @private_bets = Bet.where(user: @user, visible: false) if @user.friends.find_by(user: current_user).present?
+    @private_bets = Bet.where(user: @user, visible: false)
 
 
     respond_to do |format|

@@ -43,7 +43,7 @@
         <br>
         <h1>Public bets</h1>
         <ul>
-          <% for bet in @user.bets %>
+          <% for bet in @user.bets - @private_bets %>
             <li><%= link_to bet.name, bet_path(bet) %> </li>
           <% end %>
         </ul>
@@ -60,6 +60,7 @@
           <div id= "private_bets">
             <% if are_we_both_friends?(current_user, @user) %>
               <ul>
+              <!-- TODO: con AJAX ya no se muestran las bets privadas de tus amigos. -->
                 <% if @private_bets != [] %>
                   <% for bet in @private_bets %>
                     <li>
@@ -71,7 +72,7 @@
                 <% end %>
               </ul>
             <% else %>
-              <p>You don't have access to their private bets, because they haven't added you as friend</p>
+              <p>You don't have access to their private bets, because you are not friends</p>
             <% end %>
             </div>
         </div>
