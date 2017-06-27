@@ -25,7 +25,7 @@ class BetOptionsController < ApplicationController
   # POST /bet_options.json
   def create
     @bet_option = BetOption.new(bet_option_params)
-
+    @bet_option.user = current
     respond_to do |format|
       if @bet_option.save
         format.html { redirect_to @bet_option, notice: 'Bet option was successfully created.' }

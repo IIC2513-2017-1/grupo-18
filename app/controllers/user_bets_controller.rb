@@ -25,11 +25,11 @@ class UserBetsController < ApplicationController
   # POST /user_bets.json
   def create
     @user_bet = UserBet.new(user_bet_params)
-    
+    @user_bet.user = current_user
     respond_to do |format|
       if @user_bet.save
         format.html { redirect_to bet_path(@user_bet.bet), notice: 'User bet was successfully created.' }
-        format.json { render :show, status: :created, location: @user_bet }
+        format.json { render json: {message: 'Apuesta Realizada'}, status: :created}
         format.js
       else
         format.html { render :new }
