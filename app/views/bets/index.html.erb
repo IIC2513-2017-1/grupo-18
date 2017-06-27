@@ -53,7 +53,12 @@
           <% end %>
         </ul>
       </div> -->
-
+      <div class="UI_column">
+          <h1> Excel export </h1>
+          <ul>
+        <li><%= link_to "Excel", export_bets_path(format: "xls") %></li>
+        </ul>
+      </div>
     <% end %>
   </body>
 </html>
