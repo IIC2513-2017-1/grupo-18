@@ -14,7 +14,8 @@
           -if bet.execution_date.present?
             %input#datetimepicker4{:type => "text", :value => @bet.execution_date, name: 'bet[execution_date]'}
           -else
-            %input#datetimepicker4{:type => "text", :value => "2017/06/11 10:00", name: 'bet[execution_date]'}
+
+            %input#datetimepicker4{:type => "text", :value => Time.now, name: 'bet[execution_date]'}
           -#%input#open{:type => "button", :value => "open"}/
           -#%input#close{:type => "button", :value => "close"}/
           -#%input#reset{:type => "button", :value => "reset"}/
@@ -81,7 +82,7 @@
                 .doh{style: "display:inline-block"}
                   %h4{style:"visibility:hidden; height: 0px;"}
                     ="Opción Ganadora"
-                  = check_box "bet_options[{index}][win]",b.win, class: 'form-control'
+                  = check_box "bet_options[#{index}][win]",'',checked: b.win, class: 'form-control'
                 .field{style: "display:inline-block"}
 
                   .button.red.deleteAdditionalInfo.tiny Eliminar

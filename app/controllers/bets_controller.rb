@@ -50,6 +50,13 @@ class BetsController < ApplicationController
   # POST /bets.json
   def create
     aux = params
+    params[:bet_options].each do |meh|
+      if params[:bet_options]["#{meh}"]["win"].count == 2
+        params[:bet_options]["#{meh}"]["win"] = "true"
+      else
+        params[:bet_options]["#{meh}"]["win"] = "false"
+      end
+    end
     aux[:bet][:bet_options_attributes] = params[:bet_options]
     aux[:bet][:bet_options_attributes].delete("{index}")
     aux.delete("bet_options")
@@ -72,6 +79,13 @@ class BetsController < ApplicationController
   # PATCH/PUT /bets/1.json
   def update
     aux = params
+    params[:bet_options].each do |meh|
+      if params[:bet_options]["#{meh}"]["win"].count == 2
+        params[:bet_options]["#{meh}"]["win"] = "true"
+      else
+        params[:bet_options]["#{meh}"]["win"] = "false"
+      end
+    end
     aux[:bet][:bet_options_attributes] = params[:bet_options]
     aux[:bet][:bet_options_attributes].delete("{index}")
     aux.delete("bet_options")
