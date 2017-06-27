@@ -59,21 +59,20 @@
           .meh
             .doh{style: "display:inline-block"}
               %h4
-                ="Descripción"
-              = text_field_tag "bet_options[{index}][description]",nil, class: 'form-control', placeholder: "Ej; Gana la cato"
+                ="Description"
+              = text_field_tag "bet_options[{index}][description]",nil, class: 'form-control', placeholder: "Cato wins"
             .doh{style: "display:inline-block"}
               %h4
-                ="Porcentaje"
+                ="Percentage"
               = text_field_tag "bet_options[{index}][percentage]",nil, class: 'form-control',data:currency_field
             .doh{style: "display:inline-block"}
               %h4
-                ="Opción Ganadora"
-              %h4
+                ="Winner option?"
               = check_box "bet_options[{index}][win]",nil, class: 'form-control'
             .doh{style: "display:inline-block"}
               .field
-                %button.addAdditionalInfo.tiny.UI_button{start_at: 0, target: ".additional_infos", type:"button"} Agregar
-                %button.red.deleteAdditionalInfo.tiny.UI_button_negative{style:"display:none", type:"button"} Eliminar
+                %button.addAdditionalInfo.tiny.UI_button{start_at: 0, target: ".additional_infos", type:"button"} Add
+                %button.red.deleteAdditionalInfo.tiny.UI_button_negative{style:"display:none", type:"button"} Delete
 
         -begin
           .additional_infos
