@@ -41,4 +41,14 @@
     <li><%= link_to "Log in", login_path, class: cp("/login")  %></li>
     <li><%= link_to "Sign up", new_user_path, class: cp("/users/new") %></li>
   <% end %>
+
+  <li style="margin-left: auto; margin-right: 0.5%;">
+      <ul class="header_like">
+        <li><%= "UF: $#{get_uf}" %></li>
+        <li><%= "USD: $#{get_dolar}" %></li>
+        <li><%= "€: $#{get_euro}" %></li>
+        <li><%= "UTM: $#{get_utm}" %></li>
+      </ul>  
+  </li>
+
 </ul>

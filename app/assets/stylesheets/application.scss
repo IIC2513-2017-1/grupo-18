@@ -161,6 +161,22 @@ ul {
 	background-color: $color-secondary-2-0;
 }
 
+.header_like {
+	@extend #header;
+
+	& > li {
+		display: flex;
+		padding: 0.5em 0.5em;
+
+		// transition: font-weight .3s;
+
+		&:hover{
+			font-weight: bold;
+			cursor: pointer;
+		}
+	}
+}
+
 #header * {
 	color: $color-secondary-2-1;
 	text-decoration: none;
@@ -483,7 +499,7 @@ input[type="text"]:focus {
     margin: auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 60%;
+    width: 45%;
 
     font-family: $c-font-text;
 }
