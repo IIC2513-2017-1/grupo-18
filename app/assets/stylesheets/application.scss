@@ -334,10 +334,23 @@ ul {
 	overflow: auto;
 }
 
-/*4 < 3 < 0 < 2 < 1*/
-.UI_button {
+/*Brown: 4 < 3 < 0 < 2 < 1*/
+%UI_element {
 	padding: 0.1em 1em;
 	margin: 0.5em 0;
+	border-radius: 0.1em;
+
+	font-size: 0.9em;
+
+	background-color: $color-secondary-1-2;
+	border-color: $color-secondary-1-2;
+	color: $color-secondary-1-4;
+}
+
+/*4 < 3 < 0 < 2 < 1*/
+.UI_button {
+	@extend %UI_element;
+
 	border-radius: 0.3em;
 
 	font-size: 0.9em;
@@ -345,11 +358,11 @@ ul {
 	background-color: $color-complement-2;
 	border-color: $color-complement-2;
 	color: $color-complement-4;
-}
 
-.UI_button:hover{
-	background-color: $color-complement-4;
-	color: $color-complement-0;
+	&:hover {
+		background-color: $color-complement-4;
+		color: $color-complement-0;
+	}
 }
 
 .UI_button_negative {
@@ -363,6 +376,25 @@ ul {
 		background-color: $color-primary-4;
 		color: $color-primary-0;
 	}
+}
+
+.UI_form_control {
+	@extend %UI_element;
+
+	padding: 0.1em 0.5em;
+  	
+	&:focus {
+		background-color: $color-secondary-1-4;
+		color: $color-secondary-1-0;
+	}
+}
+
+select {
+
+  	border-style: outset;
+/*	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;	*/
 }
 
 textarea {

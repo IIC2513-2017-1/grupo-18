@@ -1,6 +1,6 @@
 - content_for :content do
   .div.UI_column
-    = form_for :payment do |f|
+    = form_for @payment do |f|
       %ul.UI_form_column
         - if payment.errors.any?
           #error_explanation
@@ -14,7 +14,7 @@
           = f.label :amount
           = f.text_field :amount
         %li
-          = f.label :user_id
-          = f.number_field :user_id
+          = f.label :user
+          = f.collection_select :user_id, User.all, :id, :username, { prompt: "Select a user" }, { class: "UI_form_control" }
         %li
           = f.submit "Accept payment", class: "UI_button"

@@ -9,12 +9,12 @@
 
         <% allUsers.each do |user| %>
           <div>
-            <h2><%="To #{user.name}:"%></h4>
+            <h2><%="To #{user.name || user.username}:"%></h4>
             <ul>
-              <% Payment.find_by(user: user) && Payment.find_by(user: user).each do |payment| %>
+              <% user.payments.each do |payment| %>
               <li class="UI_form_column">
-                <p> <strong>Amount:</strong><%= " #{@payment.amount}" %> </p>
-                <p><strong>Date:</strong> <%= " #{@payment.created_at}"%></p>
+                <p> <strong>Amount:</strong><%= " #{payment.amount}" %> </p>
+                <p><strong>Date:</strong> <%= " #{payment.created_at}"%></p>
               </li>
               <% end %>
             </ul>
