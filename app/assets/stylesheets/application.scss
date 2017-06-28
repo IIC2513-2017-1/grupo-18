@@ -527,9 +527,13 @@ input[type="text"]:focus {
 .modal-content {
     background-color: #fefefe;
     margin: auto;
-    padding: 20px;
+    padding: 2em;
     border: 1px solid #888;
     width: 45%;
+
+    /*max-height: calc(100vh - 210px);*/
+    max-height: 100%;
+    overflow-y: auto;
 
     font-family: $c-font-text;
 }
