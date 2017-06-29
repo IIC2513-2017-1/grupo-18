@@ -16,10 +16,6 @@
           -else
 
             %input#datetimepicker4{:type => "text", :value => Time.now, name: 'bet[execution_date]'}
-          -#%input#open{:type => "button", :value => "open"}/
-          -#%input#close{:type => "button", :value => "close"}/
-          -#%input#reset{:type => "button", :value => "reset"}/
-          -#= f.datetime_select :execution_date
         %br/
         %li
           = f.label :name
@@ -90,7 +86,7 @@
                   = check_box "bet_options[#{index}][win]",'',checked: b.win, class: 'form-control'
                 .field{style: "display:inline-block"}
 
-                  .button.red.deleteAdditionalInfo.tiny Eliminar
+                  %button.red.deleteAdditionalInfo.tiny.UI_button_negative{type:"button"} Delete
         -rescue
 
         - bet.bet_options do |b|

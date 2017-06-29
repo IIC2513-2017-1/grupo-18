@@ -6,7 +6,8 @@ For licensing, see LICENSE.md or http://ckeditor.com/license
 body
 {
 	/* Font */
-	font-family: sans-serif, Arial, Verdana, "Trebuchet MS";
+	font-family: "Lato";
+	/*sans-serif, Arial, Verdana, "Trebuchet MS";*/
 	font-size: 12px;
 
 	/* Text color */
