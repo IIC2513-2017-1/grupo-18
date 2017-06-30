@@ -383,15 +383,28 @@ ul {
 
 	padding: 0.1em 0.5em;
   	
+  	border-style: outset;
+  	border-width: 0.2em;
+  	border-radius: 0.3em;
+  	border-color: $color-secondary-1-1;
+
 	&:focus {
 		background-color: $color-secondary-1-4;
 		color: $color-secondary-1-0;
+		border-color: $color-secondary-1-0;
+	}
+
+	& * {
+		border: none;
+	
+		&:focus {
+			border: none;
+		}
 	}
 }
 
 select {
 
-  	border-style: outset;
 /*	-webkit-appearance: none;
 	-moz-appearance: none;
 	appearance: none;	*/
@@ -406,10 +419,7 @@ input[type="text"] {
 	border-style: none;
 	border-radius: 0.2em;
 	/*background-color: $color-secondary-1-4;*/
-
-
 	/*transition: ease-in, background-color .5s ease-out;*/
-
 }
 
 input[type="text"]:focus {
@@ -499,7 +509,11 @@ input[type="text"]:focus {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
-    padding-top: 100px; /* Location of the box */
+
+
+    padding: 5%;
+    // padding: 2em; /* Location of the box */
+	// align-content: center;    
     left: 0;
     top: 0;
     width: 100%; /* Full width */
@@ -531,9 +545,12 @@ $modal-background : #fefefe;
     margin: auto;
     padding: 2em;
     border: 1px solid #888;
-    width: 45%;
+    width: 50%;
 
-    max-height: calc(100vh - 210px);
+    vertical-align: middle;
+    max-height: 100%;
+
+    // max-height: calc(100vh - 210px);
     /*max-height: 100%;*/
     overflow-y: auto;
 
