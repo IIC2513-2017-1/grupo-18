@@ -71,10 +71,9 @@ class BetsController < ApplicationController
     @bet.user = current_user
     respond_to do |format|
       if @bet.save
-        format.html { redirect_to @bet, notice: 'Bet was successfully created.' }
+        format.html { redirect_to @bet, flash: { success: 'Bet was successfully created.' } }
         format.json { render :show, status: :created, location: @bet }
       else
-        #byebug
         format.html { render :new }
         format.json { render json: @bet.errors, status: :unprocessable_entity }
       end
@@ -140,7 +139,7 @@ class BetsController < ApplicationController
       end
     end
 
-    def 
+    def
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def bet_params

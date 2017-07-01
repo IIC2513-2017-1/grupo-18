@@ -24,6 +24,18 @@
         </div>
         <%= render 'layouts/header' %>
       </div>
+      <div id="errors">
+        <%- #byebug %>
+        <%- if flash.any? %>
+          <%- flash.each do |name, msg| %>
+            <div class= "<%= name %>">
+              <span class='closebtn'>×</span>
+              <b><%=msg%></b>
+            </div>
+          <%- end %>
+        <%- end %>
+        <%= yield :errors %>
+      </div>
 
       <div id="content">
         <%= yield :content %>
