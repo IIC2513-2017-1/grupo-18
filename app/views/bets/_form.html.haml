@@ -99,6 +99,8 @@
         = f.submit "Accept", class: "UI_button"
 
         .success
+          %span.closebtn ×
+
           %b Wololo
   :javascript
     $(function() {
@@ -133,6 +135,7 @@
       window.onerror = function(errorMsg) {
       $('#console').html($('#console').html()+'<br>'+errorMsg)
       }*/
+
       $.datetimepicker.setLocale('es');
 
 

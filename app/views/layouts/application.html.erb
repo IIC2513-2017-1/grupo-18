@@ -29,7 +29,10 @@
         <%= yield :content %>
       </div>
 
-      <%= render 'layouts/footer' %>    
+      <%= render 'layouts/footer' %>
+      <script>
+      $(".closebtn").click(function(){this.parentElement.style.display='none';});
+      </script>
     </div>
   </body>
 </html>

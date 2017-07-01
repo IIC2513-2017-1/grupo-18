@@ -492,6 +492,14 @@ input[type="text"]:focus {
 	padding: 0.2em 1em;
 }
 
+%black_X {
+  cursor: pointer;
+  transition: 0.3s;
+  &:hover {
+    color: black;
+  }
+}
+
 /* FOOTER::ABOUT MODAL */
 
 .button_dressed_like_link {
@@ -689,20 +697,19 @@ $modal-background : #fefefe;
 }
 
 .closebtn {
+  @extend %black_X;
   margin-left: 15px;
   color: inherit;
   font-weight: bold;
   float: right;
   font-size: 22px;
   line-height: 20px;
-  cursor: pointer;
-  transition: 0.3s;
 }
 .success{
   padding: 15px;
   border-radius: 5px;
  	color: #3c763d;
-  background-color: #dff0d8;
+  background-color: #8ec378;
   border-color: #d6e9c6;
 }
 .warning{
@@ -721,15 +728,8 @@ $modal-background : #fefefe;
   border-color: #bce8f1;
 
 }
+/*alerts aca estan :D */
 
 .closebtn:hover {
     color: black;
-}
-
-.doh > * {
-	padding: 0.5em 0;
-}
-
-.doh > h4 {
-	padding: 0.8em 0;
 }
