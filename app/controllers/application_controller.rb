@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   before_action :set_locale, :check_logged_in
 
   def set_locale
-    I18n.locale = 'es'
+    I18n.locale = 'en'
   end
 
   private
