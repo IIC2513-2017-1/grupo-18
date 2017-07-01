@@ -12,10 +12,10 @@
         %li
           = f.label :execution_date
           -if bet.execution_date.present?
-            %input#datetimepicker4{:type => "text", :value => @bet.execution_date, name: 'bet[execution_date]'}
+            %input#datetimepicker4{:type => "text", :value => @bet.execution_date.in_time_zone("Santiago").strftime('%Y/%m/%d %H:%M'), name: 'bet[execution_date]'}
           -else
 
-            %input#datetimepicker4{:type => "text", :value => Time.now, name: 'bet[execution_date]'}
+            %input#datetimepicker4{:type => "text", :value => Time.now.in_time_zone("Santiago").strftime('%Y/%m/%d %H:%M'), name: 'bet[execution_date]'}
         %br/
         %li
           = f.label :name
@@ -24,7 +24,7 @@
         %li
 
           = f.label :description
-          = f.cktext_area :description
+        = f.cktext_area :description
 
         %br/
         %li
@@ -38,7 +38,7 @@
             = image_tag @bet.avatar.thumb.url
         %li
           = f.label :visible, "Make it private?"
-          = f.check_box :visible, {:checked => !@bet.visible}, 
+          = f.check_box :visible, {:checked => !@bet.visible},
                    0,
                    1
         %br/
@@ -97,6 +97,9 @@
           .check_box
             ='Eliminar'
         = f.submit "Accept", class: "UI_button"
+
+        .success
+          %b Wololo
   :javascript
     $(function() {
       var delete_additional_info;
