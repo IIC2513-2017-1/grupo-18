@@ -71,10 +71,6 @@
               = text_field_tag "bet_options[{index}][description]",nil, class: 'form-control', placeholder: "Cato wins"
             .doh{style: "display:inline-block"}
               %h4
-                ="Percentage"
-              = text_field_tag "bet_options[{index}][percentage]",nil, class: 'form-control',data:currency_field
-            .doh{style: "display:inline-block"}
-              %h4
                 ="Winner option?"
               = check_box "bet_options[{index}][win]",nil, class: 'form-control'
             .doh{style: "display:inline-block"}
@@ -90,8 +86,6 @@
                   = text_field_tag "bet_options[#{index}][id]", b.id, class: 'form-control',style: "display:none"
                 .field{style: "display:inline-block"}
                   = text_field_tag "bet_options[#{index}][description]", b.description, class: 'form-control'
-                .field{style: "display:inline-block"}
-                  = text_field_tag "bet_options[#{index}][percentage]", b.percentage, class: 'form-control',data:currency_field
                 .doh{style: "display:inline-block"}
                   %h4{style:"visibility:hidden; height: 0px;"}
                     ="Opción Ganadora"
@@ -104,12 +98,9 @@
         - bet.bet_options do |b|
           .field
             = text_field_tag "bet_options[#{index}][description]", b.name, class: 'form-control'
-          .field
-            = text_field_tag "bet_options[#{index}][percentage]", b.value, class: 'form-control',data:currency_field
           .check_box
             ='Eliminar'
         = f.submit "Accept", class: "UI_button"
-
 
   :javascript
     $(function() {

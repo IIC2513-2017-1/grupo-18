@@ -18,6 +18,7 @@
 #  activated          :boolean          default("false")
 #  activated_at       :datetime
 #  gravatar_usage     :boolean          default("false")
+#  access_token       :string
 #
 
 # For use with the Gravatar API

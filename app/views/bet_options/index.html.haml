@@ -4,14 +4,12 @@
   %thead
     %tr
       %th Description
-      %th Percentage
       %th Bet
       %th{:colspan => "3"}
   %tbody
     - @bet_options.each do |bet_option|
       %tr
         %td= bet_option.description
-        %td= bet_option.percentage
         %td= bet_option.bet
         %td= link_to 'Show', bet_option
         %td= link_to 'Edit', edit_bet_option_path(bet_option)
