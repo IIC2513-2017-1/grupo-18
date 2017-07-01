@@ -9,9 +9,8 @@ es:
         bet:
           attributes:
             execution_date:
-              on_or_after: La fecha de termino debe ser mayor a la fecha actual
+              on_or_after: La fecha de término debe ser mayor a la fecha actual
       messages:
-
         record_invalid: "La validación falló: %{errors}"
         restrict_dependent_destroy:
           has_one: No se puede eliminar el registro porque existe un %{record} dependiente

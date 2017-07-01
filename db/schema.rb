@@ -104,8 +104,8 @@ ActiveRecord::Schema.define(version: 20170701210954) do
     t.string   "activation_digest"
     t.boolean  "activated",                     default: false
     t.datetime "activated_at"
-    t.boolean  "gravatar_usage",                default: false
     t.string   "access_token"
+    t.boolean  "gravatar_usage",                default: false
   end
 
   add_foreign_key "bet_options", "bets"

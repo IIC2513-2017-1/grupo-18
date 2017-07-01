@@ -1,5 +1,17 @@
+-content_for :errors do
+  - if @bet.errors.any?
+    #error_explanation
+      .alert.alert-danger.fade.in
+        %span.closebtn{"data-dismiss" => "alert"} ×
+        %h2
+          =#t('errors.template.header', :count => supplier.errors.count, :model => Supplier.model_name.human)
+        %ul
+          - @bet.errors.full_messages.each do |message|
+            %li= message
 - content_for :content do
   = form_for @bet, html: {class:"content_like"} do |f|
+
+
     %fieldset.UI_column
       %h1
         - if @bet.name?
