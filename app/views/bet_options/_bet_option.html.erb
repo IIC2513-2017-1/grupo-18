@@ -2,8 +2,6 @@
 
 <strong> Description: </strong> <%= bet_option.description %>
 <br>
-<strong> Odds: </strong>  <%= bet_option.percentage %>
-<br>
 
 <%= form_for(:user_bet, url: user_bets_path, remote: true) do |f| %>
 	<strong>Amount:</strong> <%= f.text_field :amount, required: true %>

@@ -2,9 +2,6 @@
   %p{style: "display:inline-block; margin: 15px"}
     %strong Description:
     = bet_option.description
-  %p{style: "display:inline-block; margin: 15px"}
-    %strong Percentage:
-    = bet_option.percentage
   .doh{style: "display:inline-block"}
     = form_for(:user_bet, url: user_bets_path) do |f|
       .doh{style: "display:inline-block"}

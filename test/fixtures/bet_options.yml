@@ -4,7 +4,6 @@
 #
 #  id          :integer          not null, primary key
 #  description :string
-#  percentage  :float
 #  bet_id      :integer
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null

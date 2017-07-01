@@ -457,6 +457,11 @@ input[type="text"]:focus {
 #content a {
 	@extend .pinkLinks;
 }
+
+#content p {
+	margin: 0.3em 0;
+}
+
 .cke a{
   border-bottom: none !important;
 }

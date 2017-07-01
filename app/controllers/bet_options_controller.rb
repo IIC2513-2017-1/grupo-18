@@ -69,6 +69,6 @@ class BetOptionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def bet_option_params
-      params.require(:bet_option).permit(:description, :percentage, :bet_id)
+      params.require(:bet_option).permit(:description, :bet_id)
     end
 end
