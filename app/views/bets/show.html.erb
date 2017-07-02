@@ -40,9 +40,8 @@
 
     <h2>
       <% tleft = @bet.execution_date - Time.zone.now %>
-      <% I18n.locale = :en %>
       <% tWords = distance_of_time_in_words(Time.zone.now, @bet.execution_date)%>
-      <%= tleft > 0 && "Bet is due in #{tWords}" || "Bet is over!" %>
+      <%= tleft > 0 && t('title.bet_is_due_in_WORDS', tWords: tWords) || t('title.bet_is_over') %>
     </h2>
 
     <% if @bet.user == current_user %>
@@ -53,12 +52,12 @@
   </div>
 
   <div class="UI_column">
-    <h1>Options</h1>
+    <h1><%= t('title.options') %> </h1>
     <%= render @bet.bet_options %>
   </div>
 
   <div class="UI_column">
-    <h1>Users' comments</h1>
+    <h1> <%= t('title.users_comments') %> </h1>
     <br>
     <div id="comments_container">
       <%= render@bet.comments %>
@@ -75,7 +74,7 @@
   </div>
 
   <div class="UI_column">
-    <h1>Users' bets</h1>
+    <h1><%= t('title.users_bets') %> </h1>
     <br>
     <div id="bets_container">
       <%= render @bet.user_bets %>

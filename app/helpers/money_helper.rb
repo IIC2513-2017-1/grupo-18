@@ -1,5 +1,6 @@
 module MoneyHelper
 
+	# TODO: cache these values in the Session dictionary
 	def get_uf
 		a = HTTParty.get('http://www.mindicador.cl/api/uf', :headers => hash1)
 		uf = a.parsed_response['serie'].first["valor"]

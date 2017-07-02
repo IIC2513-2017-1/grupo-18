@@ -1,6 +1,7 @@
 - content_for :content do
   .div.UI_column
-    %h1 Creating a new Payment
+    %h1 
+      = t('title.creating_a_new_payment')
     = form_for @payment do |f|
       %ul.UI_form_column
         - if payment.errors.any?

@@ -211,7 +211,74 @@ en:
       default: "%a, %d %b %Y %H:%M:%S %z"
       long: "%B %d, %Y %H:%M"
       short: "%d %b %H:%M"
-<<<<<<< HEAD
-pm: pm
-=======
     pm: pm
+
+  header:
+    admin_user: Admin
+    normal_user: Wager
+    home: Home
+    users: Users
+    payments: Payments
+    bets: Bets
+    log_out: Log Out
+
+    log_in: Log In
+    sign_up: Sign Up
+
+    all_m: All
+    all_f: All
+    me: Me
+    new_m: New
+    new_f: New
+
+  title:
+    # Home
+    home_of_USER: ! 'Home of %{user}'
+    bets_youre_on: Bets you're on
+    bets_owned_by_you: Bets owned by you
+
+    # Users.all
+    your_friends: Your friends
+    not_yet_friends: Not yet friends
+    you_ve_added_as_friend: "You've added as friend"
+    have_added_you: Have added you
+    other_users: Other users
+    # Users.show
+    list_of_friends: Friends
+    public_bets: Public bets
+    friendship_status: Friendship status
+    private_bets: Private bets
+    # User.form
+    editing_profile_of_USER: ! "Editing %{user}'s profile" 
+    create_new_account: Create new account
+
+    # Payments.all
+    payments_by_user: Payments by user
+    to_USER: ! 'To %{user}'
+    # Payments.form
+    creating_a_new_payment: Creating a new Payment
+    
+    # Bets.all
+    your_bets: Your Bets
+    friends_bets: Friends' Bets
+    USER_s: ! "%{user}'s"
+    other_public_bets: Other (Public) Bets
+    excel_export: Excel Export
+    # Bets.form
+    editing: Editing
+    bet_no: ! 'Bet #%{bet_id}'
+    creating_a: Creating a
+    new_bet: New Bet
+    bet_parameters: Bet Parameters
+    bet_options: Bet Options
+    description: Description
+    winner_option: Winner Option
+    # Bets.show
+    bet_is_due_in_WORDS: 'Bet is Due in %{tWords}'
+    bet_is_over: Bet is Over!
+    options: Options
+    users_comments: Users' Comments
+    users_bets: Users' Bets
+
+    # Session.new
+    log_in: Log In

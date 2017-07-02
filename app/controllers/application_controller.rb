@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   before_action :set_locale, :check_logged_in
 
   def set_locale
-    I18n.locale = 'en'
+    I18n.locale = 'es'
   end
 
   private
@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
 	  def check_logged_in
     	unless logged_in?
         puts("Not logged in!")
-	  		flash[:error] = "You must be logged in to access this page"
+	  		flash[:alert] = "You must be logged in to access this page"
     		redirect_to login_url
 	  	end
 	  end

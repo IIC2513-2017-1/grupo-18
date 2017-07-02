@@ -18,9 +18,9 @@
 
           <h1>
             <% if user.username? %>
-              <%= "Editing profile of #{user.name}" %>
+              <%= t('title.editing_profile_of_USER', user: user.name) %>
             <% else %>
-              <%= "Create new account" %>
+              <%= t('title.create_new_account') %>
             <% end %>
           </h1>
 

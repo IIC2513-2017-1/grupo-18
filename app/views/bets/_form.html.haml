@@ -11,14 +11,14 @@
 - content_for :content do
   = form_for @bet, html: {class:"content_like"} do |f|
 
-
     %fieldset.UI_column
       %h1
         - if @bet.name?
-          Editing...
+          = t('title.Editando') + '...'
         - else
-          Creating a...
-      %h2 Bet parameters
+          = t('title.creating_a') + '...'
+      %h2 
+        = t('title.bet_parameters')
       %br/
       %ul.UI_form_column
         %li
@@ -58,20 +58,21 @@
       %ul.UI_form_column
         %h1
           - if @bet.name?
-            bet ##{@bet.id}
+            = t('title.bet_no', bet_id: @bet.id)
           - else
-            new bet.
-        %h2 Bet options
+            = t('title.new_bet') + '.'
+        %h2 
+          = t('title.bet_options')
         %br/
         .row.additional_info
           .meh
             .doh{style: "display:inline-block"}
               %h4
-                ="Description"
+                = t('title.description')
               = text_field_tag "bet_options[{index}][description]",nil, class: 'form-control', placeholder: "Cato wins"
             .doh{style: "display:inline-block"}
               %h4
-                ="Winner option?"
+                = t('title.winner_option')
               = check_box "bet_options[{index}][win]",nil, class: 'form-control'
             .doh{style: "display:inline-block"}
               .field
@@ -88,7 +89,7 @@
                   = text_field_tag "bet_options[#{index}][description]", b.description, class: 'form-control'
                 .doh{style: "display:inline-block"}
                   %h4{style:"visibility:hidden; height: 0px;"}
-                    ="Opción Ganadora"
+                    = t('title.winner_option')
                   = check_box "bet_options[#{index}][win]",'',checked: b.win, class: 'form-control'
                 .field{style: "display:inline-block"}
 

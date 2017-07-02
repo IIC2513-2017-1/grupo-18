@@ -34,14 +34,14 @@
         </div>
       </div>
       <div class="UI_column">
-        <h1>List of friends</h1>
+        <h1><%= t('title.list_of_friends') %></h1>
         <ul id="real_friends">
           <% for friend in real_friends(@user) %>
             <li><%= link_to friend.name, user_path(friend) %> </li>
           <% end %>
         </ul>
         <br>
-        <h1>Public bets</h1>
+        <h1><%= t('title.public_bets') %></h1>
         <ul>
           <% for bet in @user.bets - @private_bets %>
             <li><%= link_to bet.name, bet_path(bet) %> </li>
@@ -50,13 +50,13 @@
       </div>
       <% if different_user? %>
         <div class="UI_column">
-          <h1>Friendship status</h1>
+          <h1><%= t('title.friendship_status') %></h1>
           <div id="friendship_status">
             <%= render(:partial => 'friends/form', :locals => { :user => @user }) %>
           </div>
           <br>
           <br>
-          <h1>Private bets</h1>
+          <h1><%= t('title.private_bets') %></h1>
           <div id= "private_bets">
             <% if are_we_both_friends?(current_user, @user) %>
               <ul>

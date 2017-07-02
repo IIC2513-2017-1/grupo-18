@@ -6,11 +6,11 @@ include SessionsHelper
   end
 
   def user_type_string
-  	admin_access? && 'Admin user' || 'Normal user'
+  	admin_access? && t('header.admin_user') || t('header.normal_user')
   end
 
   def see_this_userS_type
-    @user.user_type != 0 && 'Admin user' || 'Normal user'
+    @user.user_type != 0 && t('header.admin_user') || t('header.normal_user')
   end
 
   def user_name

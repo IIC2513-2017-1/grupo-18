@@ -5,7 +5,7 @@
   <body>
     <% content_for :content do %>
       <div class="UI_column">
-        <h1> Your bets </h1>
+        <h1> <%= t('title.your_bets') %> </h1>
         <br>
         <ul>
           <% for bet in current_user.bets %>
@@ -15,14 +15,14 @@
       </div>
 
       <div class="UI_column">
-        <h1><%= "Friends' bets" %></h1>
+        <h1><%= t('title.friends_bets') %></h1>
         <i>And of people who've added you as friend</i>
         <br>
         <br>
         <ul>
           <% for friend in who_added_me(current_user) %>
             <li>
-              <h2><%= friend.name + "'s"%></h2>
+              <h2><%= t('title.USER_s', user: friend.name ) %></h2>
               <ul>
                 <% for bet in friend.bets %>
                   <li><%= link_to bet.name, bet_path(bet) %> </li>
@@ -35,7 +35,7 @@
       </div>
 
       <div class="UI_column">
-        <h1> Other (public) bets </h1>
+        <h1> <%= t('title.other_public_bets') %> </h1>
         <br>
         <ul>
           <% for bet in @bets_public  %>
@@ -43,18 +43,8 @@
           <% end %>
         </ul>
       </div>
-
-<!--       <div class="UI_column">
-        <h1> Bets where you were tagged </h1>
-        <br>
-        <ul>
-          <% for bet in @bets_public  %>
-            <li>FALTA TAGS EN BETS. QUIZÁS NO LO HACEMOS?</li>
-          <% end %>
-        </ul>
-      </div> -->
       <div class="UI_column">
-          <h1> Excel export </h1>
+          <h1> <%= t('title.excel_export') %> </h1>
           <ul>
         <li><%= link_to "Excel", export_bets_path(format: "xls") %></li>
         </ul>

@@ -9,37 +9,37 @@
       <i> <%= user_name %> </i>
     </li>
     <li>
-      <%= link_to "Home", root_path, class: cc("home") %>
+      <%= link_to t('header.home'), root_path, class: cc("home") %>
     </li>
     <li class="dropdown">
-      <%= link_to "Users", users_path, class: cc("users") %>
+      <%= link_to t('header.users'), users_path, class: cc("users") %>
           
       <ul class="dropdown-content">
-        <li><%= link_to "All", users_path, class: cp("/users") %></li>
-        <li><%= link_to "Me", user_url(current_user), class: cp(user_url(current_user)) %></li>
+        <li><%= link_to t('header.all_m'), users_path, class: cp("/users") %></li>
+        <li><%= link_to t('header.me'), user_url(current_user), class: cp(user_url(current_user)) %></li>
       </ul>
     </li>
     <% if admin_access? %>
       <li class="dropdown">
-        <%= link_to "Payments", payments_path, class: cc("payments") %>
+        <%= link_to t('header.payments'), payments_path, class: cc("payments") %>
         
         <ul class="dropdown-content">
-          <li><%= link_to "All", payments_path, class: cp("/payments") %></li>
-          <li><%= link_to "New", new_payment_path, class: cp("/payments/new") %></li>
+          <li><%= link_to t('header.all_m'), payments_path, class: cp("/payments") %></li>
+          <li><%= link_to t('header.new_m'), new_payment_path, class: cp("/payments/new") %></li>
         </ul>     
       </li>
     <% end %>
     <li class="dropdown">
-      <%= link_to "Bets", bets_path, class: cc("bets") %>
+      <%= link_to t('header.bets'), bets_path, class: cc("bets") %>
       <ul class="dropdown-content">
-        <li><%= link_to "All", bets_path, class: cp("/bets") %></li>
-        <li><%= link_to "New", new_bet_path, class: cp("/bets/new") %></li>
+        <li><%= link_to t('header.all_f'), bets_path, class: cp("/bets") %></li>
+        <li><%= link_to t('header.new_f'), new_bet_path, class: cp("/bets/new") %></li>
       </ul>    
     </li>
-    <li><%= link_to "Log out", logout_path, method: :delete %></li>
+    <li><%= link_to t('header.log_out'), logout_path, method: :delete %></li>
   <% else %>
-    <li><%= link_to "Log in", login_path, class: cp("/login")  %></li>
-    <li><%= link_to "Sign up", new_user_path, class: cp("/users/new") %></li>
+    <li><%= link_to t('header.log_in'), login_path, class: cp("/login")  %></li>
+    <li><%= link_to t('header.sign_up'), new_user_path, class: cp("/users/new") %></li>
   <% end %>
 
   <li style="margin-left: auto; margin-right: 0.5%;">

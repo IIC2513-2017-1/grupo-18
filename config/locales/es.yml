@@ -223,3 +223,75 @@ es:
       long: "%d de %B de %Y %H:%M"
       short: "%d de %b %H:%M"
     pm: pm
+  
+  header:
+    admin_user: Admin
+    normal_user: Apostador
+    home: Inicio
+    users: Usuarios
+    payments: Pagos
+    bets: Apuestas
+    log_out: Cerrar sesión
+
+    log_in: Iniciar sesión
+    sign_up: Cuenta nueva
+
+    all_m: Todos
+    all_f: Todas
+    me: Yo
+    new_m: Nuevo
+    new_f: Nueva
+
+  title:
+    # Home
+    home_of_USER: ! 'Inicio de %{user}'
+    bets_youre_on: Apuestas en las que participas
+    bets_owned_by_you: Tus apuestas
+    
+    # Users.all
+    your_friends: Tus amigos
+    not_yet_friends: Todavía no amigos
+    you_ve_added_as_friend: Has agregado
+    have_added_you: Te han agregado
+    other_users: Otros usuarios
+    # Users.show
+    list_of_friends: Amigos
+    public_bets: Apuestas públicas
+    friendship_status: Amistad
+    private_bets: Apuestas privadas
+    # User.form
+    editing_profile_of_USER: ! 'Editando perfil de %{user}'
+    create_new_account: Crear una cuenta nueva
+
+    # Payments.all
+    payments_by_user: Pagos por usuario
+    to_USER: ! 'A %{user}'
+    # Payments.form
+    creating_a_new_payment: Creando un nuevo Pago
+    
+    # Bets.all
+    your_bets: Tus apuestas
+    friends_bets: Apuestas de amigos
+    USER_s: ! "De %{user}"
+    other_public_bets: Otras apuestas (públicas)
+    excel_export: Exportar a Excel
+    # Bets.form
+    editing: Editando
+    bet_no: ! 'Apuesta #%{bet_id}'
+    creating_a: Creando una
+    new_bet: nueva apuesta
+    bet_parameters: Parámetros de la apuesta
+    bet_options: Opciones de apuesta
+    description: Descripción
+    winner_option: Opción ganadora
+    # Bets.show
+    bet_is_due_in_WORDS: 'La apuesta termina en %{tWords}'
+    bet_is_over: La apuesta terminó
+    options: Opciones
+    users_comments: Comentarios de usuarios
+    users_bets: Apuestas realizadas
+
+    # Session.new
+    log_in: Iniciar sesión
+
+

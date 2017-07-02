@@ -1,6 +1,7 @@
 - content_for :content do
   .UI_column
-    %h1 Log in
+    %h1 
+      = t('title.log_in')
     = form_for(:session, url: login_path) do |f|
       %ul.UI_form_column
         %li
