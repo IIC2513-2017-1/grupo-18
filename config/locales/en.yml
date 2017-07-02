@@ -307,6 +307,11 @@ en:
     accept: Accept
     post: Post
 
+    delete_friendship: "Delete friendship"
+    remove_fship_request: "Remove friendship request"
+    accept_fship_request: "Accept friendship request!"
+    become_friends: "Become friends"
+
   subtitle:
     and_of_peeps_whove_added_u_as_friend: And of people who've added you as friend
     this_bet_is_private: This bet is private.
@@ -318,8 +323,15 @@ en:
     here: here
     this_bet_was_placed_by_other: This bet was placed by
 
+    user_has_no_private_bets: This user has no private bets
+    u_dont_have_access_to_private: You don't have access to their private bets, because you are not friends
 
-  
+  friends:
+    youre_friends: You are friends 😃
+    they_havent_accepted: They haven't accepted your friendship yet 😟
+    theyve_added_you: They have added you as friend 😃
+    youre_not_friends: You are not friends 😟
+
 
 
 

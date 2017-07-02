@@ -7,9 +7,9 @@
         </li>
       <% end %>
     <% else %>
-      <p>This user has no private bets</p>
+      <p><%= t('subtitle.user_has_no_private_bets') %></p>
     <% end %>
   </ul>
 <% else %>
-  <p>You don't have access to their private bets, because you are not friends</p>
+  <p><%= t('subtitle.u_dont_have_access_to_private') %></p>
 <% end %>
