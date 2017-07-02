@@ -1,14 +1,18 @@
-%strong Bet #{@bet.id} was finished
-%p Hi, #{@user.name},
-%p A bet you've been following has just ended its active period.
+%strong 
+  = t('mailer.bet_ID_was_finished', bet_id: @bet.id)
+%p 
+  = t('mailer.hi_USER', user: @user.name) + ','
+%p 
+  = t('mailer.bet_ended_phrase')
 %p
-  %strong Bet description
+  %strong 
+  	= t('mailer.bet_desc')
 %p #{@bet.description}
 %p
-  %strong Result
+  %strong 
+  	= t('mailer.result')
 %p The winning option was: RESULT
+/ TODO: WRITE THE RESULT
 %p
-  %strong Check it out!
-%p Link: 
-= link_to "Go check on this bet!", @bet
-%p Sayonara!
+  %strong 
+	= link_to t('mailer.check_this_bet'), @bet

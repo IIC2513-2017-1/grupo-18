@@ -13,23 +13,23 @@
         <div id="profile_box">
           <ul id="user_qualities">
             <li>
-              <strong>Type: </strong> <%= see_this_userS_type %>
+              <strong><%= t('smalltitle.type') %>: </strong> <%= see_this_userS_type %>
             </li>
             <li>
-              <strong>Username: </strong> <%= @user.username %>
+              <strong><%= t('smalltitle.username') %>: </strong> <%= @user.username %>
             </li>
             <% if !different_user? || are_we_both_friends?(@user, current_user) %>
               <li>
-                <strong>Email: </strong> <%= @user.email %>
+                <strong><%= t('smalltitle.email') %>: </strong> <%= @user.email %>
               </li>
               <li>
-                <strong>Balance: </strong> <%= @user.balance %>
+                <strong><%= t('smalltitle.balance') %>: </strong> <%= @user.balance %>
               </li>
             <% end %>
           </ul>
           <ul class="UI_link_column">
-            <li><%= link_to 'Edit', edit_user_path(@user) %></li>
-            <li><%= link_to 'Back to Users', users_path %></li>
+            <li><%= link_to t('link.edit'), edit_user_path(@user) %></li>
+            <li><%= link_to t('link.back_to_users'), users_path %></li>
           </ul>
         </div>
       </div>
@@ -68,11 +68,11 @@
                     </li>
                   <% end %>
                 <% else %>
-                  <p>This user has no private bets</p>
+                  <p><%= t('subtitle.user_has_no_private_bets') %></p>
                 <% end %>
               </ul>
             <% else %>
-              <p>You don't have access to their private bets, because you are not friends</p>
+              <p><%= t('subtitle.u_dont_have_access_to_private') %></p>
             <% end %>
             </div>
         </div>

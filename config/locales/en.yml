@@ -287,13 +287,23 @@ en:
     edit: Edit
     back: Back
     show: Show
+
     view_ur_profile: View your profile
+    
     or_sign_up: Or sign up
+    have_an_account: Have an account?
+
+    back_to_users: Back to Users
 
 
   smalltitle:
     bet: Bet
     comment: Comment
+
+    type: Type
+    username: Username
+    email: Email
+    balance: Balance
 
 
 
@@ -302,6 +312,8 @@ en:
     select_an_user: Select an user
     amount: Amount
     date: Date
+
+    use_gravatar_instead: Use Gravatar instead
 
   placeholder:
     bet_option_description: Cato wins
@@ -339,9 +351,18 @@ en:
     theyve_added_you: They have added you as friend 😃
     youre_not_friends: You are not friends 😟
 
+  mailer:
+    activation: Activation
+    hi_USER: ! 'Hi %{user}'
+    welcome_phrase: Welcome to the Bet~ter App! Click on the link below to activate your account
+    activate: Activate
 
+    bet_ID_was_finished: ! 'Bet %{bet_id} was finished'
+    bet_ended_phrase: A bet you've been following has just ended its active period.
+    bet_desc: Bet Description
+    result: Result
 
-
+    check_this_bet: Go check on this bet!
 
 
 

@@ -1,7 +1,8 @@
-%h1 Activation
+%h1 
+  = t('mailer.activation')
 %p
-  Hi #{@user.name},
+  = t('mailer.hi_USER', user: @user.name) + ','
 %p
-  Welcome to the Bet~ter App! Click on the link below to activate your account:
-= link_to "Activate", edit_account_activation_url(@user.activation_token, |
+  = t('mailer.welcome_phrase')
+= link_to t('mailer.activate'), edit_account_activation_url(@user.activation_token, |
   email: @user.email)                                                     |

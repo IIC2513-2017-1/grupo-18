@@ -58,11 +58,11 @@
             </script>
  
             <li>
-              <%= f.label :gravatar_usage, "Use gravatar instead" %> <%= f.check_box :gravatar_usage %>
+              <%= f.label :gravatar_usage, t('label.use_gravatar_instead') %> <%= f.check_box :gravatar_usage %>
               <%= image_tag User::gravatar_url(@cur_email || ""), id:"cur_gravatar", onload:"makeCurrentGravatar()" %>
             </li>
             
-            <li><%= f.submit "Accept", class: "UI_button" %> <%= link_to "Have an account?", login_path unless @user.name %></li>
+            <li><%= f.submit t('button.accept'), class: "UI_button" %> <%= link_to t('link.have_an_account'), login_path unless @user.name %></li>
 
           </ul>          
         <% end %>
