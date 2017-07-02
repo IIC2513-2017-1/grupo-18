@@ -8,23 +8,23 @@
 
     <!-- TODO: make this distinct from the Bet's description -->
 
-      <i>This bet is private.</i>
+      <i> <%= t('subtitle.this_bet_is_private') %> </i>
 
       <% if(!admin_access?) %>
 
         <% if(@bet.user == current_user) %>
 
-          <i>That means that only you and your friends can view it and participate in it.</i>
+          <i> <%= t('subtitle.that_means_that_yadayada') %> </i>
 
         <% else %>
 
-          <i>As friend of its owner, you can see it and participate in it.</i>
+          <i> <%= t('subtitle.as_friend_of_yadayada') %> </i>
 
         <% end %>
 
       <% else %>
 
-        <i>As admin, you can view it and participate in it regardless.</i>
+        <i> <%= t('subtitle.as_admin_yadayada') %> </i>
 
       <% end %>
 
@@ -45,9 +45,9 @@
     </h2>
 
     <% if @bet.user == current_user %>
-      <p>This bet was placed by you. You can edit it <%= link_to "here", edit_bet_url(@bet) %></p>
+      <p> <%= t('subtitle.this_bet_was_placed_by_u') %> <%= link_to t('subtitle.here'), edit_bet_url(@bet) %></p>
     <% else %>
-      <p>This bet was placed by <%= link_to @bet.user.name, user_url(@bet.user) %></p>
+      <p><%= t('subtitle.this_bet_was_placed_by_other') %>  <%= link_to @bet.user.name, user_url(@bet.user) %></p>
     <% end %>
   </div>
 
@@ -60,16 +60,16 @@
     <h1> <%= t('title.users_comments') %> </h1>
     <br>
     <div id="comments_container">
-      <%= render@bet.comments %>
+      <%= render @bet.comments %>
     </div>
     <%= form_for(:comment, url: comments_path, remote: true, html:{id: 'comment_form'}) do |f| %>
-      <strong> Comment: </strong>
+      <strong> <%= t('smalltitle.comment') %>: </strong>
       <br>
       <%= f.text_area :content, required: true %>
       <%= f.text_field :bet_id, :value => @bet.id, style: "display: none;" %>
       <%= f.text_field :user_id, :value => current_user.id, style: "display: none;" %>
       <br/>
-      <%= f.submit "Post", class: "UI_button" %>
+      <%= f.submit t('button.post'), class: "UI_button" %>
     <% end %>
   </div>
 

@@ -16,13 +16,13 @@
 
       <div class="UI_column">
         <h1><%= t('title.friends_bets') %></h1>
-        <i>And of people who've added you as friend</i>
+        <i><%= t('subtitle.and_of_peeps_whove_added_u_as_friend') %></i>
         <br>
         <br>
         <ul>
           <% for friend in who_added_me(current_user) %>
             <li>
-              <h2><%= t('title.USER_s', user: friend.name ) %></h2>
+              <h2><%= t('title.USER_s', user: friend.name) %></h2>
               <ul>
                 <% for bet in friend.bets %>
                   <li><%= link_to bet.name, bet_path(bet) %> </li>

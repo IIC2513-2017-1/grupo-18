@@ -1,10 +1,12 @@
 %p#notice= notice
 %p
-  %strong Description:
+  %strong 
+  	= t('title.description') + ":"
   = @bet_option.description
 %br/
 %p
-  %strong Bet:
+  %strong 
+  	= t('smalltitle.bet') + ":"
   = @bet_option.bet
 = link_to 'Edit', edit_bet_option_path(@bet_option)
 |

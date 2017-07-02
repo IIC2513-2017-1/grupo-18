@@ -4,16 +4,16 @@
   xmlns:x="urn:schemas-microsoft-com:office:excel"
   xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
   xmlns:html="http://www.w3.org/TR/REC-html40">
-  <Worksheet ss:Name="apuestas">
+  <Worksheet ss:Name=<%= t('excel.bets') %>>
     <Table>
       <Row>
-        <Cell><Data ss:Type="String">Id</Data></Cell>
-        <Cell><Data ss:Type="String">Nombre de la apuesta</Data></Cell>
-        <Cell><Data ss:Type="String">Autor o entidad relacionada a la apuesta</Data></Cell>
-        <Cell><Data ss:Type="String">Fecha de inicio</Data></Cell>
-        <Cell><Data ss:Type="String">Fecha de termino</Data></Cell>
-        <Cell><Data ss:Type="String">Suma total apostada por los apostantes</Data></Cell>
-        <Cell><Data ss:Type="String">Opcion/nes ganadora/s de la apuesta</Data></Cell>
+        <Cell><Data ss:Type="String">ID</Data></Cell>
+        <Cell><Data ss:Type="String"><%= t('excel.name_of_bet') %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= t('excel.owner') %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= t('excel.starting_date') %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= t('excel.closing_date') %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= t('excel.total_wagered') %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= t('excel.winner_options') %></Data></Cell>
       </Row>
     <% @bets.each do |bet| %>
       <Row>
@@ -22,7 +22,7 @@
         <%- if bet.user.present? %>
           <Cell><Data ss:Type="Number"><%= bet.user.id %></Data></Cell>
           <%- else %>
-          <Cell><Data ss:Type="String">Usuario no registrado</Data></Cell>
+          <Cell><Data ss:Type="String"><%= t('excel.unregistered_user') %></Data></Cell>
         <% end %>
         <Cell><Data ss:Type="String"><%= bet.created_at.to_s %></Data></Cell>
         <Cell><Data ss:Type="String"><%= bet.execution_date %></Data></Cell>
@@ -32,13 +32,13 @@
     <% end %>
     </Table>
   </Worksheet>
-  <Worksheet ss:Name="Opciones de apuesta">
+  <Worksheet ss:Name=<%= t('excel.bet_options') %>>
     <Table>
       <Row>
-        <Cell><Data ss:Type="String">Apuesta_id</Data></Cell>
-        <Cell><Data ss:Type="String">Opcion_id</Data></Cell>
-        <Cell><Data ss:Type="String">Descripcion</Data></Cell>
-        <Cell><Data ss:Type="String">Ganador</Data></Cell>
+        <Cell><Data ss:Type="String"><%= t('excel.bet_id') %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= t('excel.option_id') %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= t('excel.description') %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= t('excel.winner') %></Data></Cell>
       </Row>
     <% @bets.each do |bet| %>
       <% bet.bet_options.each do |option| %>
@@ -47,9 +47,9 @@
           <Cell><Data ss:Type="Number"><%= option.id %></Data></Cell>
           <Cell><Data ss:Type="String"><%= option.description %></Data></Cell>
           <%- if option.win %>
-          <Cell><Data ss:Type="String">Si</Data></Cell>
+          <Cell><Data ss:Type="String"><%= t('excel.yes') %></Data></Cell>
           <%- else %>
-          <Cell><Data ss:Type="String">No</Data></Cell>
+          <Cell><Data ss:Type="String"><%= t('excel.no') %></Data></Cell>
           <% end %>
         </Row>
       <% end %>

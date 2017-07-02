@@ -14,7 +14,7 @@
     %fieldset.UI_column
       %h1
         - if @bet.name?
-          = t('title.Editando') + '...'
+          = t('title.editing') + '...'
         - else
           = t('title.creating_a') + '...'
       %h2 
@@ -49,7 +49,7 @@
             = f.check_box :remove_avatar
             = image_tag @bet.avatar.thumb.url
         %li
-          = f.label :visible, "Make it private?"
+          = f.label :visible, t('label.make_it_private')
           = f.check_box :visible, {:checked => !@bet.visible},
                    0,
                    1
@@ -69,15 +69,17 @@
             .doh{style: "display:inline-block"}
               %h4
                 = t('title.description')
-              = text_field_tag "bet_options[{index}][description]",nil, class: 'form-control', placeholder: "Cato wins"
+              = text_field_tag "bet_options[{index}][description]",nil, class: 'form-control', placeholder: t('placeholder.bet_option_description')
             .doh{style: "display:inline-block"}
               %h4
                 = t('title.winner_option')
               = check_box "bet_options[{index}][win]",nil, class: 'form-control'
             .doh{style: "display:inline-block"}
               .field
-                %button.addAdditionalInfo.tiny.UI_button{start_at: 0, target: ".additional_infos", type:"button"} Add
-                %button.red.deleteAdditionalInfo.tiny.UI_button_negative{style:"display:none", type:"button"} Delete
+                %button.addAdditionalInfo.tiny.UI_button{start_at: 0, target: ".additional_infos", type:"button"}
+                  = t('button.add')
+                %button.red.deleteAdditionalInfo.tiny.UI_button_negative{style:"display:none", type:"button"} 
+                  = t('button.delete')
 
         -begin
           .additional_infos
@@ -93,15 +95,18 @@
                   = check_box "bet_options[#{index}][win]",'',checked: b.win, class: 'form-control'
                 .field{style: "display:inline-block"}
 
-                  %button.red.deleteAdditionalInfo.tiny.UI_button_negative{type:"button"} Delete
+                  %button.red.deleteAdditionalInfo.tiny.UI_button_negative{type:"button"} 
+                    = t('button.delete')
+
         -rescue
 
         - bet.bet_options do |b|
           .field
             = text_field_tag "bet_options[#{index}][description]", b.name, class: 'form-control'
           .check_box
-            ='Eliminar'
-        = f.submit "Accept", class: "UI_button"
+            = t('button.delete')
+            
+        = f.submit t('button.accept'), class: "UI_button"
 
   :javascript
     $(function() {

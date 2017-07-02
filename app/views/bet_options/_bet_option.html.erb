@@ -1,6 +1,6 @@
 <!-- <p class="notice"><%=notice%></p> -->
 
-<strong> Description: </strong> <%= bet_option.description %>
+<strong> <%= t('title.description') %>: </strong> <%= bet_option.description %>
 <br>
 
 <%= form_for(:user_bet, url: user_bets_path, remote: true) do |f| %>
@@ -8,7 +8,7 @@
     <%= f.text_field :user_id, :value => current_user.id, style: "display: none;" %>
     <%= f.text_field :bet_option_id, :value => bet_option.id, style: "display: none;" %>
     <br>
-    <%= f.submit "Bet", class: "UI_button" %>
+    <%= f.submit t('smalltitle.bet'), class: "UI_button" %>
 <% end %>
 
 <br>

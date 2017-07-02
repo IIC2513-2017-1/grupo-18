@@ -282,3 +282,69 @@ en:
 
     # Session.new
     log_in: Log In
+
+  link:
+    edit: Edit
+    back: Back
+    show: Show
+
+
+  smalltitle:
+    bet: Bet
+    comment: Comment
+
+
+
+  label:
+    make_it_private: Make it private?
+
+  placeholder:
+    bet_option_description: Cato wins
+
+  button:
+    add: Add
+    delete: Delete
+    accept: Accept
+    post: Post
+
+  subtitle:
+    and_of_peeps_whove_added_u_as_friend: And of people who've added you as friend
+    this_bet_is_private: This bet is private.
+    that_means_that_yadayada: That means that only you and your friends can view it and participate in it.
+    as_friend_of_yadayada: As friend of its owner, you can see it and participate in it.
+    as_admin_yadayada: As admin, you can view it and participate in it regardless.
+    
+    this_bet_was_placed_by_u: This bet was placed by you. You can edit it 
+    here: here
+    this_bet_was_placed_by_other: This bet was placed by
+
+
+  
+
+
+
+
+
+
+
+  excel:
+    bets: Bets
+    name_of_bet: Name of Bet
+    owner: Owner
+    starting_date: Starting Date
+    closing_date: Closing Date
+    total_wagered: Total Amount Wagered
+    winner_options: Winner Options of Bet
+
+    unregistered_user: Unregistered User
+
+    bet_options: Bet Options
+
+    bet_id: Bet ID 
+    option_id: Option ID 
+    description: Description
+    winner: Winner
+
+    yes: Yes
+    no: No
+
