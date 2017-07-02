@@ -17,6 +17,6 @@
           = f.text_field :amount
         %li
           = f.label :user
-          = f.collection_select :user_id, User.all, :id, :username, { prompt: "Select a user" }, { class: "UI_form_control" }
+          = f.collection_select :user_id, User.all, :id, :username, { prompt: t('label.select_an_user') }, { class: "UI_form_control" }
         %li
-          = f.submit "Accept payment", class: "UI_button"
+          = f.submit t('button.accept_payment'), class: "UI_button"

@@ -13,8 +13,8 @@
             <ul>
               <% user.payments.each do |payment| %>
               <li class="UI_form_column">
-                <p> <strong>Amount:</strong><%= " #{payment.amount}" %> </p>
-                <p><strong>Date:</strong> <%= " #{payment.created_at}"%></p>
+                <p> <strong><%= t('label.amount')%>:</strong><%= " #{payment.amount}" %> </p>
+                <p><strong><%= t('label.date')%>:</strong> <%= " #{payment.created_at}"%></p>
               </li>
               <% end %>
             </ul>

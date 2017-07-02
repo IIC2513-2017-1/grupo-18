@@ -287,6 +287,8 @@ en:
     edit: Edit
     back: Back
     show: Show
+    view_ur_profile: View your profile
+    or_sign_up: Or sign up
 
 
   smalltitle:
@@ -297,6 +299,9 @@ en:
 
   label:
     make_it_private: Make it private?
+    select_an_user: Select an user
+    amount: Amount
+    date: Date
 
   placeholder:
     bet_option_description: Cato wins
@@ -307,10 +312,12 @@ en:
     accept: Accept
     post: Post
 
-    delete_friendship: "Delete friendship"
-    remove_fship_request: "Remove friendship request"
-    accept_fship_request: "Accept friendship request!"
-    become_friends: "Become friends"
+    delete_friendship: Delete friendship
+    remove_fship_request: Remove friendship request
+    accept_fship_request: Accept friendship request!
+    become_friends: Become friends
+
+    accept_payment: Accept payment
 
   subtitle:
     and_of_peeps_whove_added_u_as_friend: And of people who've added you as friend
