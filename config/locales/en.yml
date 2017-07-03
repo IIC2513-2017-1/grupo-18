@@ -295,7 +295,6 @@ en:
 
     back_to_users: Back to Users
 
-
   smalltitle:
     bet: Bet
     comment: Comment
@@ -304,8 +303,6 @@ en:
     username: Username
     email: Email
     balance: Balance
-
-
 
   label:
     make_it_private: Make it private?

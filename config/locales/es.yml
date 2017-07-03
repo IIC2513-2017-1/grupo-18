@@ -336,7 +336,7 @@ es:
     comment: Comentar
 
     type: Tipo
-    username: Nombre de usuario
+    username: Nombre de cuenta
     email: Email #Maybe correo electrónico?
     balance: Balance
 

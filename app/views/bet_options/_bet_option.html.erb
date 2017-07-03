@@ -4,7 +4,7 @@
 <br>
 
 <%= form_for(:user_bet, url: user_bets_path, remote: true) do |f| %>
-	<strong>Amount:</strong> <%= f.text_field :amount, required: true %>
+	<strong><%= t('label.amount')%>:</strong> <%= f.text_field :amount, required: true %>
     <%= f.text_field :user_id, :value => current_user.id, style: "display: none;" %>
     <%= f.text_field :bet_option_id, :value => bet_option.id, style: "display: none;" %>
     <br>
