@@ -7,7 +7,11 @@ class ApplicationController < ActionController::Base
   before_action :set_locale, :check_logged_in
 
   def set_locale
-    I18n.locale = 'es'
+    I18n.locale = params[:locale] || 'en'
+  end
+
+  def default_url_options
+    { locale: I18n.locale }
   end
 
   private

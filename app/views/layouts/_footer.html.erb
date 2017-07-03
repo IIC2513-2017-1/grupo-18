@@ -7,10 +7,13 @@
   <li id="footer_nav">
 
     <button class="button_dressed_like_link" id="aboutLink", type="button"><%= t('footer.about')%></button>
-    <span> </span>
-    <span> </span>
+    <!-- <span>|</span> -->
     <%= mail_to "sppt.grupo.18.web@gmail.com",
     	t('footer.contact')  %>
+    <!-- <span>|</span> -->
+
+    <%= link_to t('footer.change_locale'), { :locale => t('footer.next_locale')}, id: "localeLink" %>
+
   </li>
 </ul>
 
