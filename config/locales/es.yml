@@ -301,7 +301,7 @@ es:
 
     view_ur_profile: Ver tu perfil
     
-    or_sign_up: O registrarse
+    or_sign_up: O regístrate
     have_an_account: ¿Tienes una cuenta?
 
     back_to_users: Volver a los usuarios
@@ -320,23 +320,23 @@ es:
 
   label:
     make_it_private: ¿Hacerla privada?
-    select_an_user: Seleccionar un usario
+    select_an_user: Seleccionar un usuario
     amount: Cantidad
     date: Fecha
 
     use_gravatar_instead: Usar Gravatar
 
   placeholder:
-    bet_option_description: Cato gana
+    bet_option_description: Gana Nadal
 
   button:
     add: Agregar
     delete: Eliminar
     accept: Aceptar
-    post: Post
+    post: Comentar
 
-    delete_friendship: Eliminar amistar
-    remove_fship_request: Candelar solicitud de amistad
+    delete_friendship: Eliminar amistad
+    remove_fship_request: Cancelar solicitud de amistad
     accept_fship_request: ¡Aceptar solicitud de amistad!
     become_friends: Volverse amigos
 
@@ -375,9 +375,6 @@ es:
 
     check_this_bet: ¡Ve a revisar esta apuesta!
 
-
-
-
   excel:
     bets: Apuestas
     name_of_bet: Nombre de la apuesta
@@ -399,4 +396,10 @@ es:
     yes: Sí
     no: No
 
+  footer:
+    by: del
+    and: y
+
+    about: Acerca de
+    contact: Contacto
 
