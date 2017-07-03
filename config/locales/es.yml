@@ -294,4 +294,109 @@ es:
     # Session.new
     log_in: Iniciar sesión
 
+  link:
+    edit: Editar
+    back: Volver
+    show: Mostrar
+
+    view_ur_profile: Ver tu perfil
+    
+    or_sign_up: O registrarse
+    have_an_account: ¿Tienes una cuenta?
+
+    back_to_users: Volver a los usuarios
+
+
+  smalltitle:
+    bet: Apostar
+    comment: Comentar
+
+    type: Tipo
+    username: Nombre de usuario
+    email: Email #Maybe correo electrónico?
+    balance: Balance
+
+
+
+  label:
+    make_it_private: ¿Hacerla privada?
+    select_an_user: Seleccionar un usario
+    amount: Cantidad
+    date: Fecha
+
+    use_gravatar_instead: Usar Gravatar
+
+  placeholder:
+    bet_option_description: Cato gana
+
+  button:
+    add: Agregar
+    delete: Eliminar
+    accept: Aceptar
+    post: Post
+
+    delete_friendship: Eliminar amistar
+    remove_fship_request: Candelar solicitud de amistad
+    accept_fship_request: ¡Aceptar solicitud de amistad!
+    become_friends: Volverse amigos
+
+    accept_payment: Aceptar pago
+
+  subtitle:
+    and_of_peeps_whove_added_u_as_friend: Y de la gente que te ha agregado como amigo
+    this_bet_is_private: Esta apuesta es privada. 
+    that_means_that_yadayada: Eso significa que sólo tú y tus amigos pueden verla y participar. 
+    as_friend_of_yadayada: Como amigo de su propietario, puedes verla y y participar. 
+    as_admin_yadayada: Como administrador, puedes verla y participar de todos modos. 
+    
+    this_bet_was_placed_by_u: Esta apuesta la hiciste tú. Puedes editarla 
+    here: aquí 
+    this_bet_was_placed_by_other: Esta apuesta la hizo
+
+    user_has_no_private_bets: Este usuario no tiene apuestas privadas
+    u_dont_have_access_to_private: No tienes acceso a sus apuestas privadas, porque no son amigos
+
+  friends:
+    youre_friends: Son amigos 😃
+    they_havent_accepted: No han aceptado tu amistad aún 😟
+    theyve_added_you: Te han agregado como amigo 😃 
+    youre_not_friends: No son amigos 😟
+
+  mailer:
+    activation: Activación
+    hi_USER: ! 'Hola %{user}'
+    welcome_phrase: Bienvenido a the Bet~ter App! Haz click en el siguiente link para activar tu cuenta
+    activate: Activar
+
+    bet_ID_was_finished: ! 'La apuesta %{bet_id} terminó'
+    bet_ended_phrase: Una apuesta que has estado siguiendo acaba de terminar su periodo activo.
+    bet_desc: Descripción de la apuesta
+    result: Resultado
+
+    check_this_bet: ¡Ve a revisar esta apuesta!
+
+
+
+
+  excel:
+    bets: Apuestas
+    name_of_bet: Nombre de la apuesta
+    owner: Propietario
+    starting_date: Fecha de inicio
+    closing_date: Fecha de cierre
+    total_wagered: Cantidad total apostada
+    winner_options: Opciones ganadoras de la apuesta
+
+    unregistered_user: Usuario no registrado
+
+    bet_options: Opciones de la apuesta
+
+    bet_id: ID de la apuesta 
+    option_id: ID de la opción
+    description: Descripción
+    winner: Ganador
+
+    yes: Sí
+    no: No
+
 
