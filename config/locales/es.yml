@@ -3,7 +3,31 @@ es:
   activerecord:
     attributes:
       bet:
-        execution_date: Fecha de ejecución
+        execution_date: Fecha de cierre
+        description: Descripción
+        user: Dueño
+        name: Nombre
+      bet_option:
+        description: Descripción
+        win: Gana
+      comment:
+        content: Contenido
+        user: Usuario
+      payment:
+        amount: Cantidad
+        user: Usuario
+      user:
+        username: Nombre de cuenta
+        email: Correo electrónico
+        password: Contraseña
+        user_type: Tipo de usuario
+        balance: Balance
+        name: Nombre
+        image: Imagen
+        remove_image: Eliminar imagen actual
+
+      user_bet:
+        amount: Cantidad
     errors:
       models:
         bet:
@@ -324,7 +348,7 @@ es:
     amount: Cantidad
     date: Fecha
 
-    use_gravatar_instead: Usar Gravatar
+    use_gravatar_instead: Usar Gravatar en lugar de subir imagen
 
   placeholder:
     bet_option_description: Gana Nadal
