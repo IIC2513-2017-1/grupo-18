@@ -1,20 +1,22 @@
 <ul id="footer">
 
   <li id="authors_notice">
-    <%= link_to "The bet-ter App!", home_path %> by <a href="https://github.com/IIC2513-2017-1/grupo-18">Grupo 18</a> (Félix Fischer and Felipe Rojos)</li>
+
+    <%= link_to "The bet-ter App!", home_path %> <%= t('footer.by') %> <a href="https://github.com/IIC2513-2017-1/grupo-18">Grupo 18</a> (Félix Fischer <%= t('footer.and') %> Felipe Rojos)</li>
 
   <li id="footer_nav">
 
-    <button class="button_dressed_like_link" id="aboutLink", type="button">About</button>
+    <button class="button_dressed_like_link" id="aboutLink", type="button"><%= t('footer.about')%></button>
     <span> </span>
     <%= mail_to "sppt.grupo.18.web@gmail.com",
-    	"Contact"  %>
+    	t('footer.contact')  %>
   </li>
 </ul>
 
 <div id="aboutModal" class="modal">
 	<div class="modal-content">
 		<span class="close">&times;</span>
+	<% if I18n.locale == :en %>
 		<h1><a id="About_Better_App_0"></a>About Bet~ter App!</h1>
 		<h2><a id="Us_2"></a>Us</h2>
 		<p>Hi! We’re Félix Fischer and Felipe Rojos, otherwise known as <strong>Grupo 18</strong>.</p>
@@ -45,6 +47,38 @@
 		<li>We consume the <a href="https://en.gravatar.com/site/implement/">Gravatar API</a> to enhance our user’s customization experience, and</li>
 		<li>The <a href="http://mindicador.cl/">Mindicador API</a> to display real-time currency information to our international users.</li>
 		</ul>
+	<% elsif I18n.locale == :es %>
+		<h1><a id="Acerca_de_Better_App_0"></a>Acerca de Bet~ter App!</h1>
+		<h2><a id="Nosotros_2"></a>Nosotros</h2>
+		<p>Hola! Somos Félix Fischer y Felipe Rojos, también conocidos como <strong>Grupo 18</strong>.</p>
+		<h2><a id="Nuestra_visin_6"></a>Nuestra visión</h2>
+		<p>Nosotros creemos en una web limpia y segura, con servicios honestos y centrados en la experiencia de usuario. Nosotros no usamos software de rastreo y siempre hemos sido transparentes respecto al porcentaje de los pozos de apuestas que recojemos para pagar nuestras cuentas.</p>
+		<h2><a id="Tecnologas_que_usamos_10"></a>Tecnologías que usamos</h2>
+		<p>Construímos nuestro sitio sobre <strong><em>Ruby on Rails</em></strong>, <strong><em>HTML5</em></strong>, <strong><em>CSS3</em></strong> y <strong><em>JavaScript (ECMA v6)</em></strong>. Todas nuestras comunicaciones se realizan sobre <strong><em>HTTPS</em></strong>.</p>
+		<p>Puede encontrar más detalle sobre nuestro <em>web stack</em>, en el Apéndice al final del texto.</p>
+		<h2><a id="ltimas_palabras_16"></a>Últimas palabras</h2>
+		<p>Esperamos que disfrute de nuestro servicio. Páselo bien, y que la Dama de la Fortuna sea quien tire sus dados.</p>
+		<hr>
+		<h2><a id="Apndice_herramientas_que_usamos_22"></a>Apéndice: herramientas que usamos</h2>
+		<h3><a id="Libreras_y_gemas_importantes_24"></a>Librerías y gemas importantes</h3>
+		<p>Nosotros usamos la librería <code>bcrypt</code> para autenticar y proteger las contraseñas de las cuentas y <code>SASS</code> para facilitar el uso de CSS.</p>
+		<p>Usamos la gema <code>CarrierWave</code> para subida de fotos y <code>minimagick</code> para elegir su tamaño. Usamos <code>Ckeditor</code> para capturar texto enriquecido, <code>delayed_job</code> para programar acciones a futuro y <code>httparty</code> para interactuar con APIs REST.</p>
+		<p>Finalmente, usamos la gema <code>i18n</code> para implementar regionalización.</p>
+		<h3><a id="Herramientas_de_diseo_32"></a>Herramientas de diseño</h3>
+		<p>Usamos <em>Paletton</em> para elegir la paleta de colores del sitio. <a href="http://paletton.com/palette.php?uid=75x0u0kleqtbzEKgVuIpcmGtdhZ">Aquí</a> podéis ver nuestra paleta en detalle.</p>
+		<p>También usamos las siguientes tipografías de <em>Google Fonts</em>:</p>
+		<ul>
+		<li><a href="https://fonts.google.com/specimen/Merienda">Merienda</a> para el banner y <a href="https://fonts.google.com/specimen/Clicker+Script/">Clicker Script</a> para las citas de juerga,  por su inspiradora belleza.</li>
+		<li><a href="https://fonts.google.com/specimen/Poly">Poly</a> para elementos interactivos de la interfaz de usuario, por su excelente legibilidad y su elegante estilo serifado.</li>
+		<li><a href="https://fonts.google.com/specimen/Vollkorn">Vollkorn</a> para todas las cabeceras, y <a href="https://fonts.google.com/specimen/Lato">Lato</a> para el resto del contenido. Elegimos ambas por su calidez y porque se complementa muy bien la fuerza de <em>Vollkorn</em> con el estilo suave de <em>Lato</em>.</li>
+		</ul>
+		<h3><a id="Web_APIs_usadas_en_este_sitio_41"></a>Web APIs usadas en este sitio</h3>
+		<p>Actualmente, usamos dos APIs REST:</p>
+		<ul>
+		<li>La <a href="https://en.gravatar.com/site/implement/">API de Gravatar</a> para mejorar la experiencia de personalización de la app, y</li>
+		<li>La <a href="http://mindicador.cl/">API de Mindicador</a> para mostrar información monetaria en tiempo real a nuestros usuarios internacionales.</li>
+		</ul>
+	<% end %>
 		<br>
 	</div>
 </div>

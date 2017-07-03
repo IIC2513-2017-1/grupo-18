@@ -364,9 +364,6 @@ en:
 
     check_this_bet: Go check on this bet!
 
-
-
-
   excel:
     bets: Bets
     name_of_bet: Name of Bet
@@ -388,3 +385,9 @@ en:
     yes: Yes
     no: No
 
+  footer:
+    by: by
+    and: and
+
+    about: About
+    contact: Contact
