@@ -125,7 +125,7 @@ class BetsController < ApplicationController
 
     def setup_bet_displays
       set_bet
-      check_privacy
+      #check_privacy
     end
 
     def check_privacy

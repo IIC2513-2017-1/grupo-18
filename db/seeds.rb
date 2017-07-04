@@ -43,7 +43,7 @@ felipe = User.create!(
   	password: "jojooojo",
   	remote_image_url: "http://vignette4.wikia.nocookie.net/alejoyvalentina/images/9/91/El_viejo_del_viejo.png/revision/latest?cb=20120129130054&path-prefix=es",
 	gravatar_usage: true)
-	
+
 ### Nuevos user ###########################
 pablo = User.create!(
 	username: "pablo",
@@ -157,8 +157,7 @@ Li Shang v/s El Emperador),
 feelingBlue = Bet.create!(
 	user: felipe,
 	name: "What's the use of feeling blue?",
-	description:%q(
-Come on Pearl, sing for her. Make her feel better.),
+	description:%q(Come on Pearl, sing for her. Make her feel better.),
 	remote_avatar_url: "http://funnypictures3.fjcdn.com/pictures/Blue_50da62_6144448.jpg",
 	execution_date: Time.zone.now + 1.day)
 ###########################################
