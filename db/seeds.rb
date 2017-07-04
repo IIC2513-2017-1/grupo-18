@@ -71,6 +71,22 @@ matthew = User.create!(
 	name: "Matt Panzerino",
 	password: "1234567890")
 
+gruber = User.create!(
+	username: "gruber",
+	email: "jgruber.gmail@gmail.com",
+	user_type: 0,
+	balance: 13300,
+	name: "John Gruber",
+	password: "1234567890")
+
+siracusa = User.create!(
+	username: "siracusa",
+	email: "jsir.gmail@gmail.com",
+	user_type: 0,
+	balance: 9000,
+	name: "John Siracusa",
+	password: "1234567890")
+
 User.all.each do |usr|
 	usr.activate
 end
