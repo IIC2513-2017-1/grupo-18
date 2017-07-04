@@ -43,7 +43,7 @@ class User < ApplicationRecord
   has_many :comments
   has_many :friends
   has_many :bets
-
+  has_many :notifications
   # Triggers
   after_create  :send_activation_email
   before_create :create_activation_digest

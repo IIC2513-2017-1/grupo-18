@@ -17,7 +17,7 @@
           = t('title.editing') + '...'
         - else
           = t('title.creating_a') + '...'
-      %h2 
+      %h2
         = t('title.bet_parameters')
       %br/
       %ul.UI_form_column
@@ -61,7 +61,7 @@
             = t('title.bet_no', bet_id: @bet.id)
           - else
             = t('title.new_bet') + '.'
-        %h2 
+        %h2
           = t('title.bet_options')
         %br/
         .row.additional_info
@@ -78,7 +78,7 @@
               .field
                 %button.addAdditionalInfo.tiny.UI_button{start_at: 0, target: ".additional_infos", type:"button"}
                   = t('button.add')
-                %button.red.deleteAdditionalInfo.tiny.UI_button_negative{style:"display:none", type:"button"} 
+                %button.red.deleteAdditionalInfo.tiny.UI_button_negative{style:"display:none", type:"button"}
                   = t('button.delete')
 
         -begin
@@ -95,7 +95,7 @@
                   = check_box "bet_options[#{index}][win]",'',checked: b.win, class: 'form-control'
                 .field{style: "display:inline-block"}
 
-                  %button.red.deleteAdditionalInfo.tiny.UI_button_negative{type:"button"} 
+                  %button.red.deleteAdditionalInfo.tiny.UI_button_negative{type:"button"}
                     = t('button.delete')
 
         -rescue
@@ -105,7 +105,7 @@
             = text_field_tag "bet_options[#{index}][description]", b.name, class: 'form-control'
           .check_box
             = t('button.delete')
-            
+
         = f.submit t('button.accept'), class: "UI_button"
 
   :javascript

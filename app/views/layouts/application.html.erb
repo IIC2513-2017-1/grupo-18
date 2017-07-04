@@ -34,7 +34,18 @@
         <%- end %>
         <%= yield :errors %>
       </div>
-
+      <div id="notifications">
+        <%- #byebug %>
+        <%- if current_user.present? %>
+          <%- current_user.notifications.each do |n| %>
+            <div class= "notice">
+              <span class='closebtn'>×</span>
+              <b><%=n.message%></b>
+              <%-n.destroy%>
+            </div>
+          <%- end %>
+        <%- end %>
+      </div>
       <div id="content">
         <%= yield :content %>
       </div>
