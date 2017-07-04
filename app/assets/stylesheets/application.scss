@@ -756,7 +756,26 @@ $modal-background : #fefefe;
   background-color: #8dc0da;
   border-color: #bce8f1;
 }
+#footer_nav {
 
+  & * {
+    padding: 0 0.45em;
+    border-left: 1px dotted $color-secondary-1-3;
+
+  }
+
+  & #aboutLink {
+    border-left: none;
+  }
+
+  & #localeLink {
+    padding-right: 0;
+  }
+}
+
+#footer li {
+  padding: 0.2em 1em;
+}
 
 
 // $color-primary-0 : #C74358;
