@@ -1,6 +1,18 @@
 ---
 es:
-  activerecord:
+  activerecord:   
+    errors:
+      models:
+        bet:
+          attributes:
+            execution_date:
+              on_or_after: La fecha de término debe ser mayor a la fecha actual
+      messages:
+        record_invalid: "La validación falló: %{errors}"
+        restrict_dependent_destroy:
+          has_one: No se puede eliminar el registro porque existe un %{record} dependiente
+          has_many: No se puede eliminar el registro porque existen %{record} dependientes
+    
     attributes:
       bet:
         execution_date: Fecha de cierre
@@ -25,20 +37,9 @@ es:
         name: Nombre
         image: Imagen
         remove_image: Eliminar imagen actual
-
       user_bet:
         amount: Cantidad
-    errors:
-      models:
-        bet:
-          attributes:
-            execution_date:
-              on_or_after: La fecha de término debe ser mayor a la fecha actual
-      messages:
-        record_invalid: "La validación falló: %{errors}"
-        restrict_dependent_destroy:
-          has_one: No se puede eliminar el registro porque existe un %{record} dependiente
-          has_many: No se puede eliminar el registro porque existen %{record} dependientes
+
   date:
     abbr_day_names:
     - dom
@@ -298,6 +299,9 @@ es:
     friends_bets: Apuestas de amigos
     USER_s: ! "De %{user}"
     other_public_bets: Otras apuestas (públicas)
+    other_bets: Otras apuestas
+    public_bets: Públicas
+    private_bets: Privadas
     excel_export: Exportar a Excel
     # Bets.form
     editing: Editando
