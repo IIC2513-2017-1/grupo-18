@@ -84,7 +84,7 @@ include BetsHelper
     ## It allows self-edit and self-destruct, though.
     def admin_barrier
       unless admin_access? || logged_in? && current_user == @user
-        flash[:error] = "You must have admin access to do that."
+        flash[:alert] = "You must have admin access to do that."
         redirect_to :back
       end
     end
