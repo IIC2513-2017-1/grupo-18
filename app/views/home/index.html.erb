@@ -5,7 +5,7 @@
   <body>
     <% content_for :content do %>
       <div class="UI_column">
-        <h1><%= "Home of " + current_user.name %></h1>
+        <h1><%= t('title.home_of_USER', user: current_user.name) %></h1>
         <br>
         <%= image_tag user_medium current_user %>
         <br>
@@ -13,16 +13,16 @@
         <div id="profile_box">
           <ul id="user_qualities">
             <li>
-              <strong>Balance: </strong> <%= current_user.balance %>
+              <strong><%= t('smalltitle.balance')%>:</strong> <%= current_user.balance %>
             </li>
           </ul>
           <ul class="UI_link_column">
-            <li><%= link_to 'View your profile', user_path(current_user) %></li>
+            <li><%= link_to t('link.view_ur_profile'), user_path(current_user) %></li>
           </ul>
         </div>
       </div>
       <div class="UI_column">
-        <h1>Bets you're participating on</h1>
+        <h1><%= t('title.bets_youre_on') %></h1>
         <ul>    
           <% for bet in @bets_wagered_on %>
             <li>
@@ -34,7 +34,7 @@
       </div>
 
       <div class="UI_column">
-        <h1>Bets owned by you</h1> 
+        <h1><%= t('title.bets_owned_by_you') %></h1> 
         <ul> 
           <% for bet in Bet.where(user: current_user) %>
             <li><%= link_to bet.name, bet_path(bet) %> </li>

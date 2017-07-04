@@ -1,21 +1,45 @@
 ---
 es:
-  activerecord:
-    attributes:
-      bet:
-        execution_date: Fecha de ejecución
+  activerecord:   
     errors:
       models:
         bet:
           attributes:
             execution_date:
-              on_or_after: La fecha de termino debe ser mayor a la fecha actual
+              on_or_after: La fecha de término debe ser mayor a la fecha actual
       messages:
-
         record_invalid: "La validación falló: %{errors}"
         restrict_dependent_destroy:
           has_one: No se puede eliminar el registro porque existe un %{record} dependiente
           has_many: No se puede eliminar el registro porque existen %{record} dependientes
+    
+    attributes:
+      bet:
+        execution_date: Fecha de cierre
+        description: Descripción
+        user: Dueño
+        name: Nombre
+      bet_option:
+        description: Descripción
+        win: Gana
+      comment:
+        content: Contenido
+        user: Usuario
+      payment:
+        amount: Cantidad
+        user: Usuario
+      user:
+        username: Nombre de cuenta
+        email: Correo electrónico
+        password: Contraseña
+        user_type: Tipo de usuario
+        balance: Balance
+        name: Nombre
+        image: Imagen
+        remove_image: Eliminar imagen actual
+      user_bet:
+        amount: Cantidad
+
   date:
     abbr_day_names:
     - dom
@@ -224,3 +248,187 @@ es:
       long: "%d de %B de %Y %H:%M"
       short: "%d de %b %H:%M"
     pm: pm
+  
+  header:
+    admin_user: Admin
+    normal_user: Apostador
+    home: Inicio
+    users: Usuarios
+    payments: Pagos
+    bets: Apuestas
+    log_out: Cerrar sesión
+
+    log_in: Iniciar sesión
+    sign_up: Cuenta nueva
+
+    all_m: Todos
+    all_f: Todas
+    me: Yo
+    new_m: Nuevo
+    new_f: Nueva
+
+  title:
+    # Home
+    home_of_USER: ! 'Inicio de %{user}'
+    bets_youre_on: Apuestas en las que participas
+    bets_owned_by_you: Tus apuestas
+    
+    # Users.all
+    your_friends: Tus amigos
+    not_yet_friends: Todavía no amigos
+    you_ve_added_as_friend: Has agregado
+    have_added_you: Te han agregado
+    other_users: Otros usuarios
+    # Users.show
+    list_of_friends: Amigos
+    public_bets: Apuestas públicas
+    friendship_status: Amistad
+    private_bets: Apuestas privadas
+    # User.form
+    editing_profile_of_USER: ! 'Editando perfil de %{user}'
+    create_new_account: Crear una cuenta nueva
+
+    # Payments.all
+    payments_by_user: Pagos por usuario
+    to_USER: ! 'A %{user}'
+    # Payments.form
+    creating_a_new_payment: Creando un nuevo Pago
+    
+    # Bets.all
+    your_bets: Tus apuestas
+    friends_bets: Apuestas de amigos
+    USER_s: ! "De %{user}"
+    other_public_bets: Otras apuestas (públicas)
+    other_bets: Otras apuestas
+    public_bets: Públicas
+    private_bets: Privadas
+    excel_export: Exportar a Excel
+    # Bets.form
+    editing: Editando
+    bet_no: ! 'Apuesta #%{bet_id}'
+    creating_a: Creando una
+    new_bet: nueva apuesta
+    bet_parameters: Parámetros de la apuesta
+    bet_options: Opciones de apuesta
+    description: Descripción
+    winner_option: Opción ganadora
+    # Bets.show
+    bet_is_due_in_WORDS: 'La apuesta termina en %{tWords}'
+    bet_is_over: La apuesta terminó
+    options: Opciones
+    users_comments: Comentarios de usuarios
+    users_bets: Apuestas realizadas
+
+    # Session.new
+    log_in: Iniciar sesión
+
+  link:
+    edit: Editar
+    back: Volver
+    show: Mostrar
+
+    view_ur_profile: Ver tu perfil
+    
+    or_sign_up: O regístrate
+    have_an_account: ¿Tienes una cuenta?
+
+    back_to_users: Volver a los usuarios
+
+
+  smalltitle:
+    bet: Apostar
+    comment: Comentar
+
+    type: Tipo
+    username: Nombre de cuenta
+    email: Email #Maybe correo electrónico?
+    balance: Balance
+
+
+
+  label:
+    make_it_private: ¿Hacerla privada?
+    select_an_user: Seleccionar un usuario
+    amount: Cantidad
+    date: Fecha
+
+    use_gravatar_instead: Usar Gravatar en lugar de subir imagen
+
+  placeholder:
+    bet_option_description: Gana Nadal
+
+  button:
+    add: Agregar
+    delete: Eliminar
+    accept: Aceptar
+    post: Comentar
+
+    delete_friendship: Eliminar amistad
+    remove_fship_request: Cancelar solicitud de amistad
+    accept_fship_request: ¡Aceptar solicitud de amistad!
+    become_friends: Volverse amigos
+
+    accept_payment: Aceptar pago
+
+  subtitle:
+    and_of_peeps_whove_added_u_as_friend: Y de la gente que te ha agregado como amigo
+    this_bet_is_private: Esta apuesta es privada. 
+    that_means_that_yadayada: Eso significa que sólo tú y tus amigos pueden verla y participar. 
+    as_friend_of_yadayada: Como amigo de su propietario, puedes verla y y participar. 
+    as_admin_yadayada: Como administrador, puedes verla y participar de todos modos. 
+    
+    this_bet_was_placed_by_u: Esta apuesta la hiciste tú. Puedes editarla 
+    here: aquí 
+    this_bet_was_placed_by_other: Esta apuesta la hizo
+
+    user_has_no_private_bets: Este usuario no tiene apuestas privadas
+    u_dont_have_access_to_private: No tienes acceso a sus apuestas privadas, porque no son amigos
+
+  friends:
+    youre_friends: Son amigos 😃
+    they_havent_accepted: No han aceptado tu amistad aún 😟
+    theyve_added_you: Te han agregado como amigo 😃 
+    youre_not_friends: No son amigos 😟
+
+  mailer:
+    activation: Activación
+    hi_USER: ! 'Hola %{user}'
+    welcome_phrase: Bienvenido a the Bet~ter App! Haz click en el siguiente link para activar tu cuenta
+    activate: Activar
+
+    bet_ID_was_finished: ! 'La apuesta %{bet_id} terminó'
+    bet_ended_phrase: Una apuesta que has estado siguiendo acaba de terminar su periodo activo.
+    bet_desc: Descripción de la apuesta
+    result: Resultado
+
+    check_this_bet: ¡Ve a revisar esta apuesta!
+
+  excel:
+    bets: Apuestas
+    name_of_bet: Nombre de la apuesta
+    owner: Propietario
+    starting_date: Fecha de inicio
+    closing_date: Fecha de cierre
+    total_wagered: Cantidad total apostada
+    winner_options: Opciones ganadoras de la apuesta
+
+    unregistered_user: Usuario no registrado
+
+    bet_options: Opciones de la apuesta
+
+    bet_id: ID de la apuesta 
+    option_id: ID de la opción
+    description: Descripción
+    winner: Ganador
+
+    yes: Sí
+    no: No
+
+  footer:
+    by: del
+    and: y
+
+    about: Acerca de
+    contact: Contacto
+    change_locale: In English
+    next_locale: en

@@ -1,21 +1,33 @@
+-content_for :errors do
+  - if @bet.errors.any?
+    #error_explanation
+      .alert.alert-danger.fade.in
+        %span.closebtn{"data-dismiss" => "alert"} ×
+        %h2
+          =#t('errors.template.header', :count => supplier.errors.count, :model => Supplier.model_name.human)
+        %ul
+          - @bet.errors.full_messages.each do |message|
+            %li= message
 - content_for :content do
   = form_for @bet, html: {class:"content_like"} do |f|
+
     %fieldset.UI_column
       %h1
         - if @bet.name?
-          Editing...
+          = t('title.editing') + '...'
         - else
-          Creating a...
-      %h2 Bet parameters
+          = t('title.creating_a') + '...'
+      %h2
+        = t('title.bet_parameters')
       %br/
       %ul.UI_form_column
         %li
           = f.label :execution_date
           -if bet.execution_date.present?
-            %input#datetimepicker4{:type => "text", :value => @bet.execution_date, name: 'bet[execution_date]'}
+            %input#datetimepicker4{:type => "text", :value => @bet.execution_date.in_time_zone("Santiago").strftime('%Y/%m/%d %H:%M'), name: 'bet[execution_date]'}
           -else
 
-            %input#datetimepicker4{:type => "text", :value => Time.now, name: 'bet[execution_date]'}
+            %input#datetimepicker4{:type => "text", :value => Time.now.in_time_zone("Santiago").strftime('%Y/%m/%d %H:%M'), name: 'bet[execution_date]'}
         %br/
         %li
           = f.label :name
@@ -24,7 +36,7 @@
         %li
 
           = f.label :description
-          = f.cktext_area :description
+        = f.cktext_area :description
 
         %br/
         %li
@@ -37,8 +49,8 @@
             = f.check_box :remove_avatar
             = image_tag @bet.avatar.thumb.url
         %li
-          = f.label :visible, "Make it private?"
-          = f.check_box :visible, {:checked => !@bet.visible}, 
+          = f.label :visible, t('label.make_it_private')
+          = f.check_box :visible, {:checked => !@bet.visible},
                    0,
                    1
         %br/
@@ -46,29 +58,28 @@
       %ul.UI_form_column
         %h1
           - if @bet.name?
-            bet ##{@bet.id}
+            = t('title.bet_no', bet_id: @bet.id)
           - else
-            new bet.
-        %h2 Bet options
+            = t('title.new_bet') + '.'
+        %h2
+          = t('title.bet_options')
         %br/
         .row.additional_info
           .meh
             .doh{style: "display:inline-block"}
               %h4
-                ="Description"
-              = text_field_tag "bet_options[{index}][description]",nil, class: 'form-control', placeholder: "Cato wins"
+                = t('title.description')
+              = text_field_tag "bet_options[{index}][description]",nil, class: 'form-control', placeholder: t('placeholder.bet_option_description')
             .doh{style: "display:inline-block"}
               %h4
-                ="Percentage"
-              = text_field_tag "bet_options[{index}][percentage]",nil, class: 'form-control',data:currency_field
-            .doh{style: "display:inline-block"}
-              %h4
-                ="Winner option?"
+                = t('title.winner_option')
               = check_box "bet_options[{index}][win]",nil, class: 'form-control'
             .doh{style: "display:inline-block"}
               .field
-                %button.addAdditionalInfo.tiny.UI_button{start_at: 0, target: ".additional_infos", type:"button"} Add
-                %button.red.deleteAdditionalInfo.tiny.UI_button_negative{style:"display:none", type:"button"} Delete
+                %button.addAdditionalInfo.tiny.UI_button{start_at: 0, target: ".additional_infos", type:"button"}
+                  = t('button.add')
+                %button.red.deleteAdditionalInfo.tiny.UI_button_negative{style:"display:none", type:"button"}
+                  = t('button.delete')
 
         -begin
           .additional_infos
@@ -78,25 +89,25 @@
                   = text_field_tag "bet_options[#{index}][id]", b.id, class: 'form-control',style: "display:none"
                 .field{style: "display:inline-block"}
                   = text_field_tag "bet_options[#{index}][description]", b.description, class: 'form-control'
-                .field{style: "display:inline-block"}
-                  = text_field_tag "bet_options[#{index}][percentage]", b.percentage, class: 'form-control',data:currency_field
                 .doh{style: "display:inline-block"}
                   %h4{style:"visibility:hidden; height: 0px;"}
-                    ="Opción Ganadora"
+                    = t('title.winner_option')
                   = check_box "bet_options[#{index}][win]",'',checked: b.win, class: 'form-control'
                 .field{style: "display:inline-block"}
 
-                  %button.red.deleteAdditionalInfo.tiny.UI_button_negative{type:"button"} Delete
+                  %button.red.deleteAdditionalInfo.tiny.UI_button_negative{type:"button"}
+                    = t('button.delete')
+
         -rescue
 
         - bet.bet_options do |b|
           .field
             = text_field_tag "bet_options[#{index}][description]", b.name, class: 'form-control'
-          .field
-            = text_field_tag "bet_options[#{index}][percentage]", b.value, class: 'form-control',data:currency_field
           .check_box
-            ='Eliminar'
-        = f.submit "Accept", class: "UI_button"
+            = t('button.delete')
+
+        = f.submit t('button.accept'), class: "UI_button"
+
   :javascript
     $(function() {
       var delete_additional_info;
@@ -130,6 +141,7 @@
       window.onerror = function(errorMsg) {
       $('#console').html($('#console').html()+'<br>'+errorMsg)
       }*/
+
       $.datetimepicker.setLocale('es');
 
 

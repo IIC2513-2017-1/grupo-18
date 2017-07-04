@@ -5,8 +5,6 @@
     <link href='https://fonts.googleapis.com/css?family=Merienda' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/css?family=Clicker Script' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/css?family=Vollkorn' rel='stylesheet'>
-    <link href='https://fonts.googleapis.com/css?family=Josefin Slab' rel='stylesheet'>
-    <link href='https://fonts.googleapis.com/css?family=Lora' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/css?family=Poly' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet'>
     <title>The Bet~ter App!</title>
@@ -24,12 +22,38 @@
         </div>
         <%= render 'layouts/header' %>
       </div>
-
+      <div id="errors">
+        <%- #byebug %>
+        <%- if flash.any? %>
+          <%- flash.each do |name, msg| %>
+            <div class= "<%= name %>">
+              <span class='closebtn'>×</span>
+              <b><%=msg%></b>
+            </div>
+          <%- end %>
+        <%- end %>
+        <%= yield :errors %>
+      </div>
+      <div id="notifications">
+        <%- #byebug %>
+        <%- if current_user.present? %>
+          <%- current_user.notifications.each do |n| %>
+            <div class= "notice">
+              <span class='closebtn'>×</span>
+              <b><%=n.message%></b>
+              <%-n.destroy%>
+            </div>
+          <%- end %>
+        <%- end %>
+      </div>
       <div id="content">
         <%= yield :content %>
       </div>
 
-      <%= render 'layouts/footer' %>    
+      <%= render 'layouts/footer' %>
+      <script>
+      $(".closebtn").click(function(){this.parentElement.style.display='none';});
+      </script>
     </div>
   </body>
 </html>

@@ -18,6 +18,7 @@
 #  activated          :boolean          default("false")
 #  activated_at       :datetime
 #  gravatar_usage     :boolean          default("false")
+#  access_token       :string
 #
 
 # For use with the Gravatar API
@@ -42,7 +43,7 @@ class User < ApplicationRecord
   has_many :comments
   has_many :friends
   has_many :bets
-
+  has_many :notifications
   # Triggers
   after_create  :send_activation_email
   before_create :create_activation_digest

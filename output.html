@@ -181,8 +181,8 @@ p {
       <td>5.0.2</td>
       <td>3.6.2
       <td>
-        2017-06-14 21:19:03 -0400<br><br>
-        1.25117473 seconds
+        2017-07-01 17:36:31 -0400<br><br>
+        1.429745223 seconds
       </td>
       <td>BasicAuth, BasicAuthTimingAttack, ContentTag, CreateWith, CrossSiteScripting, DefaultRoutes, Deserialize, DetailedExceptions, DigestDoS, DynamicFinders, EscapeFunction, Evaluation, Execute, FileAccess, FileDisclosure, FilterSkipping, ForgerySetting, HeaderDoS, I18nXSS, JRubyXML, JSONEncoding, JSONParsing, LinkTo, LinkToHref, MailTo, MassAssignment, MimeTypeDoS, ModelAttrAccessible, ModelAttributes, ModelSerialize, NestedAttributes, NestedAttributesBypass, NumberToCurrency, QuoteTableName, Redirect, RegexDoS, Render, RenderDoS, RenderInline, ResponseSplitting, RouteDoS, SQL, SQLCVEs, SSLVerify, SafeBufferManipulation, SanitizeMethods, SelectTag, SelectVulnerability, Send, SendFile, SessionManipulation, SessionSettings, SimpleFormat, SingleQuotes, SkipBeforeFilter, StripTags, SymbolDoSCVE, TranslateBug, UnsafeReflection, ValidationRegex, WithoutProtection, XMLDoS, YAMLParsing</td>
     </tr>
@@ -216,7 +216,7 @@ p {
     </tr>
     <tr>
       <td>Security Warnings</td>
-      <td>1 <span class='high-confidence'>(0)</span></td>
+      <td>0 <span class='high-confidence'>(0)</span></td>
     </tr>
   
     <tr>
@@ -227,93 +227,4 @@ p {
   </tbody>
 </table>
 <br>
-<table>
-  <thead>
-    <tr>
-      <th>Warning Type</th>
-      <th>Total</th>
-    </tr>
-  </thead>
-  <tbody>
-  
-    <tr>
-      <td>Cross Site Scripting</td>
-      <td>1</td>
-    </tr>
-  
-  </tbody>
-</table>
-<br>
-<p>View Warnings</p>
-<table>
-  <thead>
-    <tr>
-      <th>Confidence</th>
-      <th>Template</th>
-      <th>Warning Type</th>
-      <th>Message</th>
-    </tr>
-  </thead>
-  <tbody>
-  
-    <tr>
-      <td><span class='med-confidence'>Medium</span></td>
-      <td>
-        
-          bets/edit (BetsController#edit)
-        
-      </td>
-      <td><a rel="no-referrer" href="http://brakemanscanner.org/docs/warning_types/link_to_href">Cross Site Scripting</a></td>
-      <td><div class='warning_message' onClick="toggle('context1');toggle('message1');toggle('full_message1')" ><span id='message1' style='display:block' >Unsafe model attribute in link_to href near line 3: link_to(&quot;Show&quot;, ((<span class="user_input">Bet.all</span> or Bet.where(:visible =...</span><span id='full_message1' style='display:none'>Unsafe model attribute in link_to href near line 3: link_to(&quot;Show&quot;, ((<span class="user_input">Bet.all</span> or Bet.where(:visible =&gt; true).or(Bet.where(:user_id =&gt; Friend.where(:friend_id =&gt; current_user.id).pluck(:user_id)))).find_by(:id =&gt; params[:id]) or nil))</span><table id='context1' class='context' style='display:none'><caption>app/views/bets/edit.html.haml</caption>      <thead style='display:none'>
-        <tr>
-          <th>line number</th>
-          <th>line content</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr class='context first'>
-          <td class='context_line'>
-            <pre class='context'>1</pre>
-          </td>
-          <td class='context'>
-            <pre class='context'>%h1 Editing Bet</pre>
-          </td>
-        </tr>
-          <tr class='context alt near_error'>
-            <td class='context_line'>
-              <pre class='context'>2</pre>
-            </td>
-            <td class='context'>
-              <pre class='context'>= render &#39;form&#39;, bet: @bet</pre>
-            </td>
-          </tr>
-          <tr class='context error'>
-            <td class='context_line'>
-              <pre class='context'>3</pre>
-            </td>
-            <td class='context'>
-              <pre class='context'>= link_to &#39;Show&#39;, @bet</pre>
-            </td>
-          </tr>
-          <tr class='context alt near_error'>
-            <td class='context_line'>
-              <pre class='context'>4</pre>
-            </td>
-            <td class='context'>
-              <pre class='context'>|</pre>
-            </td>
-          </tr>
-          <tr class='context'>
-            <td class='context_line'>
-              <pre class='context'>5</pre>
-            </td>
-            <td class='context'>
-              <pre class='context'>= link_to &#39;Back&#39;, bets_path</pre>
-            </td>
-          </tr>
-</tbody></table></div></td>
-    </tr>
-  
-  </tbody>
-</table>
 </body></html>

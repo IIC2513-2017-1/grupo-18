@@ -5,7 +5,7 @@
   <body>
     <% content_for :content do %>
       <div class="UI_column">
-        <h1><%= "Your friends" %></h1>
+        <h1><%= t('title.your_friends') %></h1>
         <ul>
           <% for friend in real_friends(current_user) %>
             <li><%= link_to friend.name, user_path(friend) %> </li>
@@ -14,15 +14,15 @@
       </div>
 
       <div class="UI_column">
-        <h1><%= "Not yet friends" %></h1>
-        <h2><%= "You've added as friend" %></h2>
+        <h1><%= t('title.not_yet_friends') %></h1>
+        <h2><%= t('title.you_ve_added_as_friend') %></h2>
         <ul>
           <% for friend in who_ive_added(current_user) - real_friends(current_user) %>
             <li><%= link_to friend.name, user_path(friend) %> </li>
           <% end %>
         </ul>
         <br>
-        <h2><%= "Have added you" %></h2>
+        <h2><%= t('title.have_added_you') %></h2>
         <ul>
           <% for friend in who_added_me(current_user) - real_friends(current_user) %>
             <li><%= link_to friend.name, user_path(friend) %> </li>
@@ -30,7 +30,7 @@
         </ul>
       </div>
       <div class="UI_column">
-        <h1> Other users </h1>
+        <h1> <%= t('title.other_users') %> </h1>
         <ul>
           <% friends_ids = current_user.friends.select(:friend_id) %>
           <% non_friends = User.where.not(id: friends_ids) - [current_user] %>

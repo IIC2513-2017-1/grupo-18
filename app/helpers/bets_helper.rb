@@ -1,6 +1,10 @@
 module BetsHelper
 include FriendsHelper
 
+	def all_the_bets
+		Bet.all
+	end
+
 	def bets_where_user_participates(user)
 		Bet.where(id: BetOption.where(id: UserBet.where(user_id:user.id).pluck(:bet_option_id)).pluck(:bet_id))
 	end
@@ -17,8 +21,20 @@ include FriendsHelper
 		Bet.where(visible: true) - bets_of(user) - bets_owned_by_friends_of(user)
 	end
 
+	def bets_private_and_not_owned_by_friends_or_user(user)
+		Bet.where(visible: false) - bets_of(user) - bets_owned_by_friends_of(user)
+	end
+
 	def do_I_have_access?(me, owner)
 		are_we_both_friends?(me, owner) ||
 		me == @bet.user 
+	end
+
+	def is_this_bet_open?
+		@bet.execution_date > Time.now
+	end
+
+	def get_winner_options
+		@bet.bet_options.where(win: :true).first.description
 	end
 end

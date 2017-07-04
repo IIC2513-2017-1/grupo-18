@@ -71,7 +71,7 @@ class Bet < ApplicationRecord
       total_in_winner_bets = 0
 
       winner_user_bets.each do |w_ub|
-        winner_bets_per_user[w_ub.user] += w_ub.amount 
+        winner_bets_per_user[w_ub.user] += w_ub.amount
         total_in_winner_bets += w_ub.amount
       end
 
@@ -108,12 +108,15 @@ class Bet < ApplicationRecord
     # To be run after a bet's execution date has been reached.
     def finish_bet
       bet_options.each do |op|
-        if op.win
-          op.user_bets.each do |ub|
+        op.user_bets.each do |ub|
+          if op.win
             amount = ub.amount * ub.percentage
             us = ub.user
             us.amount = us.amount + amount
             us.save
+            Notification.create(message: "La apuesta #{self.name} ha finalizado.Tu apuesta de #{ub.amount} por #{ub.bet_option.description} ha salido ganadora ", user: ub.user)
+          else
+            Notification.create(message: "La apuesta #{self.name} ha finalizado.Tu apuesta de #{ub.amount} por #{ub.bet_option.description} ha perdido ", user: ub.user)
           end
         end
       end
