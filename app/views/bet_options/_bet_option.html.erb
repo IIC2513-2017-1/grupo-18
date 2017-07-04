@@ -1,14 +1,26 @@
 <!-- <p class="notice"><%=notice%></p> -->
 
-<strong> <%= t('title.description') %>: </strong> <%= bet_option.description %>
-<br>
+<h2> <%= bet_option.description %> </h2> 
 
-<%= form_for(:user_bet, url: user_bets_path, remote: true) do |f| %>
-	<strong><%= t('label.amount')%>:</strong> <%= f.text_field :amount, required: true %>
-    <%= f.text_field :user_id, :value => current_user.id, style: "display: none;" %>
-    <%= f.text_field :bet_option_id, :value => bet_option.id, style: "display: none;" %>
-    <br>
-    <%= f.submit t('smalltitle.bet'), class: "UI_button" %>
+
+<% if is_this_bet_open? %>
+	<%= form_for(:user_bet, url: user_bets_path, remote: true) do |f| %>
+		<strong><%= t('label.amount')%>:</strong> <%= f.text_field :amount, required: true %>
+	    <%= f.text_field :user_id, :value => current_user.id, style: "display: none;" %>
+	    <%= f.text_field :bet_option_id, :value => bet_option.id, style: "display: none;" %>
+	    <br>
+	    <%= f.submit t('smalltitle.bet'), class: "UI_button" %>
+	<% end %>
+<% else %>
+	<!-- Total apostado -->
+	<strong>Total apostado: </strong> <%= total_amount_bet_on(bet_option)%>
+	<!-- Ganadora? -->
+	<% if is_this_bet_opt_winner?(bet_option) %>
+		<br>
+		<h3>Ganadora!</h3>
+	<% else %>
+		<br>
+	<% end %>
+
 <% end %>
-
 <br>

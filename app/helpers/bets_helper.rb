@@ -21,4 +21,12 @@ include FriendsHelper
 		are_we_both_friends?(me, owner) ||
 		me == @bet.user 
 	end
+
+	def is_this_bet_open?
+		@bet.execution_date > Time.now
+	end
+
+	def get_winner_options
+		@bet.bet_options.where(win: :true).first.description
+	end
 end
