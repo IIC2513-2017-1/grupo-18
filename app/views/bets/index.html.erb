@@ -9,7 +9,6 @@
 
       <div class="UI_column">
         <h1> <%= t('title.your_bets') %> </h1>
-        <br>
         <ul>
           <% for bet in current_user.bets %>
             <li><%= link_to bet.name, bet_path(bet) %> </li>
