@@ -31,16 +31,45 @@ felix = User.create!(
 	balance: 9001,
 	name: "Félix Fischer",
 	password: "wololowololo",
-	remote_image_url: "https://steamuserimages-a.akamaihd.net/ugc/595886736952637584/BAD4E4DF66A7C18C1C37C2BE37B8AB2D75BDAA9A/")
+	remote_image_url: "https://steamuserimages-a.akamaihd.net/ugc/595886736952637584/BAD4E4DF66A7C18C1C37C2BE37B8AB2D75BDAA9A/",
+	gravatar_usage: true)
 
-  felipe = User.create!(
+felipe = User.create!(
   	username: "felipe",
   	email: "farojos@uc.cl",
   	user_type: 1,
   	balance: 9001,
   	name: "Felipe Rojos",
   	password: "jojooojo",
-  	remote_image_url: "http://vignette4.wikia.nocookie.net/alejoyvalentina/images/9/91/El_viejo_del_viejo.png/revision/latest?cb=20120129130054&path-prefix=es")
+  	remote_image_url: "http://vignette4.wikia.nocookie.net/alejoyvalentina/images/9/91/El_viejo_del_viejo.png/revision/latest?cb=20120129130054&path-prefix=es",
+	gravatar_usage: true)
+	
+### Nuevos user ###########################
+pablo = User.create!(
+	username: "pablo",
+	email: "pablo.007.gmail@gmail.com",
+	user_type: 0,
+	balance: 1400,
+	name: "Pablo X",
+	password: "1234567890",
+	gravatar_usage: true)
+
+jorge = User.create!(
+	username: "horuhe",
+	email: "horuhe.kun.gmail@gmail.com",
+	user_type: 0,
+	balance: 3200,
+	name: "Horuhe Yoshida",
+	password: "1234567890",
+	gravatar_usage: true)
+
+matthew = User.create!(
+	username: "panzer",
+	email: "matthew.panzerino.gmail@gmail.com",
+	user_type: 0,
+	balance: 3300,
+	name: "Matt Panzerino",
+	password: "1234567890")
 
 User.all.each do |usr|
 	usr.activate
