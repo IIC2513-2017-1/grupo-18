@@ -3,11 +3,17 @@
 en:
   activerecord:
     errors:
+      models:
+        bet:
+          attributes:
+            execution_date:
+              on_or_after: The execution date must be in the future      
       messages:
         record_invalid: "Validation failed: %{errors}"
         restrict_dependent_destroy:
           has_one: "Cannot delete record because a dependent %{record} exists"
           has_many: "Cannot delete record because dependent %{record} exist"
+  
   date:
     abbr_day_names:
     - Sun
@@ -263,6 +269,10 @@ en:
     friends_bets: Friends' Bets
     USER_s: ! "%{user}'s"
     other_public_bets: Other (Public) Bets
+    other_bets: Other Bets
+    public_bets: Public Bets
+    private_bets: Private Bets
+
     excel_export: Excel Export
     # Bets.form
     editing: Editing
@@ -274,8 +284,8 @@ en:
     description: Description
     winner_option: Winner Option
     # Bets.show
-    bet_is_due_in_WORDS: 'Bet is Due in %{tWords}'
-    bet_is_over: Bet is Over!
+    bet_is_due_in_WORDS: 'Bet is due in %{tWords}'
+    bet_is_over: Bet is over!
     options: Options
     users_comments: Users' Comments
     users_bets: Users' Bets

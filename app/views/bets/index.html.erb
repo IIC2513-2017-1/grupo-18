@@ -4,9 +4,11 @@
   </head>
   <body>
     <% content_for :content do %>
+
+      <% the_rest_of_bets = all_the_bets %>
+
       <div class="UI_column">
         <h1> <%= t('title.your_bets') %> </h1>
-        <br>
         <ul>
           <% for bet in current_user.bets %>
             <li><%= link_to bet.name, bet_path(bet) %> </li>
@@ -34,21 +36,47 @@
         </ul>
       </div>
 
+      <% all_the_other_public_ones = bets_public_and_not_owned_by_friends_or_user(current_user) %>
+      <% the_rest_of_bets = bets_private_and_not_owned_by_friends_or_user(current_user) %>
+
       <div class="UI_column">
-        <h1> <%= t('title.other_public_bets') %> </h1>
-        <br>
-        <ul>
-          <% for bet in @bets_public  %>
-            <li><%= link_to bet.name, bet_path(bet) %> </li>
-          <% end %>
-        </ul>
+
+        <% if admin_access? %>
+          <h1><%= t('title.other_bets') %></h1>
+        <% else %>
+          <h1> <%= t('title.other_public_bets') %> </h1>
+          <br>
+        <% end %>
+
+        <% if all_the_other_public_ones != [] %>
+          <h2><%= t('title.public_bets') %></h2>
+          <ul>
+            <% for bet in all_the_other_public_ones %>
+              <li><%= link_to bet.name, bet_path(bet) %> </li>
+            <% end %>
+          </ul>
+        <% end %>
+
+        <% if admin_access? && the_rest_of_bets != [] %>
+
+          <p><% the_rest_of_bets %></p>
+
+          <h2><%= t('title.private_bets') %></h2>
+          <ul>
+            <% for bet in the_rest_of_bets  %>
+              <li><%= link_to bet.name, bet_path(bet) %> </li>
+            <% end %>
+          </ul>
+        <% end %>
       </div>
+
       <div class="UI_column">
           <h1> <%= t('title.excel_export') %> </h1>
           <ul>
         <li><%= link_to "Excel", export_bets_path(format: "xls") %></li>
         </ul>
       </div>
+    
     <% end %>
   </body>
 </html>

@@ -44,10 +44,12 @@
 
   <li style="margin-left: auto; margin-right: 0.5%;">
       <ul class="header_like">
-        <li><%= "UF: $#{get_uf}" %></li>
-        <li><%= "USD: $#{get_dolar}" %></li>
-        <li><%= "€: $#{get_euro}" %></li>
-        <li><%= "UTM: $#{get_utm}" %></li>
+        <% cache("last_money_values", expires_in: 12.hours) do %>
+          <li><%= "UF: $#{get_uf}" %></li>
+          <li><%= "USD: $#{get_dolar}" %></li>
+          <li><%= "€: $#{get_euro}" %></li>
+          <li><%= "UTM: $#{get_utm}" %></li>
+        <% end %>
       </ul>  
   </li>
 
