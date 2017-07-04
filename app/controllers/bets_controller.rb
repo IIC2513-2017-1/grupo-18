@@ -68,6 +68,7 @@ class BetsController < ApplicationController
     aux.delete("bet_options")
     aux = aux.require(:bet).permit(:name , :execution_date,:avatar, :description, :remove_avatar, :visible, bet_options_attributes: [:description, :percentage, :win, :id])
     @bet = Bet.new(aux)
+    #FIXME: It works, but only for GMT -4
     @bet.execution_date+=60*60*4
     @bet.user = current_user
     respond_to do |format|

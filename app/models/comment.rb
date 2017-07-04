@@ -18,4 +18,7 @@ include SessionsHelper
   belongs_to :user
   # Validates
   validates :content, length: { in: 1..512 }
+  def create_notification
+    Notification.create(message: "El usuario #{self.user.name} ha comentado la apuesta #{self.bet.name}", user: self.bet.user)
+  end
 end
