@@ -68,6 +68,7 @@ class BetsController < ApplicationController
     aux.delete("bet_options")
     aux = aux.require(:bet).permit(:name , :execution_date,:avatar, :description, :remove_avatar, :visible, bet_options_attributes: [:description, :percentage, :win, :id])
     @bet = Bet.new(aux)
+    @bet.execution_date+=60*60*4
     @bet.user = current_user
     respond_to do |format|
       if @bet.save
@@ -95,12 +96,14 @@ class BetsController < ApplicationController
     aux[:bet][:bet_options_attributes].delete("{index}")
     aux.delete("bet_options")
     aux = aux.require(:bet).permit(:name , :execution_date,:avatar ,:description, bet_options_attributes: [:description, :percentage, :win, :id])
+    @bet.attributes(aux)
+    @bet.execution_date+=60*60*4
     respond_to do |format|
-      if @bet.update(aux)
+      if @bet.save
         format.html { redirect_to @bet, notice: 'Bet was successfully updated.' }
         format.json { render :show, status: :ok, location: @bet }
       else
-        puts @bet.errors.full_messages
+        #puts @bet.errors.full_messages
         format.html { render :edit }
         format.json { render json: @bet.errors, status: :unprocessable_entity }
       end
